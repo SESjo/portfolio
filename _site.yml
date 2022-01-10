@@ -34,3 +34,5 @@ navbar:
 output:
   bookdown::html_document2:
     theme: cosmo
+    includes:
+      after_body: include_footer.html
