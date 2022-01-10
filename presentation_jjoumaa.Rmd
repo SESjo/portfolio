@@ -1,0 +1,514 @@
+---
+title: "Sægus Interview Project: Predicting Bike Rentals"
+author:
+  - name: "Joffrey JOUMAA"
+    url: https://github.com/SESjo
+date: "October 15, 2019"
+output:
+  bookdown::html_document2:
+    code_folding: hide
+    df_print: paged
+    fig_caption: yes
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: no
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+```{r setup, include = FALSE}
+# options
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      comment = NA, 
+                      cache = TRUE,
+                      rownames.print = FALSE,
+                      fig.align = "center"
+)
+
+knitr::opts_knit$set(root.dir = "~/Documents/post/saegus/bike_rental_hour/")
+```
+
+# Context
+
+## Overview
+
+Many American cities have communal bike sharing stations where you can rent bicycles by the hour or day. Washington, D.C. is one of these cities. The District collects detailed data on the number of bicycles people rent by the hour and day.
+
+[Hadi Fanaee-T](http://www.liaad.up.pt/area/fanaee) at [the University of Porto](http://www.up.pt/) compiled this data into a CSV file, which you'll be working with in this project. The file contains `17380` rows, with each row representing the number of bike rentals for a single hour of a single day. You can download the data from [the University of California](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset), Irvine's website.
+
+Here's what the first five rows look like:
+```{r loadDataset}
+# packages
+library(data.table)
+library(GGally)
+library(caret)
+library(ggplot2)
+library(doMC)
+library(randomForest)
+library(corrplot)
+library(plotly)
+
+# loading file
+dataset = fread("bike_rental_hour.csv")
+
+# print first rows
+head(dataset)
+```
+
+Here are the descriptions for the relevant columns:
+
+- `instant` - A unique sequential ID number for each row
+- `dteday` - The date of the rentals
+- `season` - The season in which the rentals occurred
+- `yr` - The year the rentals occurred
+- `mnth` - The month the rentals occurred
+- `hr` - The hour the rentals occurred
+- `holiday` - Whether or not the day was a holiday
+- `weekday` - The day of the week (as a number, `0` to `7`)
+- `workingday` - Whether or not the day was a working day
+- `weathersit` - The weather (as a categorical variable)
+- `temp` - The temperature, on a `0-1` scale
+- `atemp` - The adjusted temperature
+- `hum` - The humidity, on a `0-1` scale
+- `windspeed` - The wind speed, on a `0-1` scale
+- `casual` - The number of casual riders (people who hadn't previously signed up with the bike sharing program)
+- `registered` - The number of registered riders (people who had already signed up)
+- `cnt` - The total number of bike rentals (`casual` + `registered`)
+
+## Instructions
+
+Let's say your customer want to predict the total number of bikes people rented in a given hour (`cnt` column ).
+
+In this project you'll have to provide a clear and meaningfull data analysis using data story tellings approach and statistical technics.
+
+
+Have Fun!
+
+# Data Pretreatment
+
+For this part, I've simply checked the presence of missing value.
+
+```{r naCheckCode}
+# the coding way 
+dataset[, any(is.na(.SD))]
+```
+
+```{r naCheckGraph, f}
+# the graphical way
+dataPlot = reshape2::melt(is.na(dataset))
+
+ggplot(dataPlot, aes(x = Var2, y = Var1, fill = value))+
+  geom_tile()+
+  labs(x = "Attributes", y = "Rows")+
+  scale_fill_manual(values = c("white", "black"), 
+                    labels = c("Real", "Missing")) +
+  theme(legend.position = "top", 
+        axis.text.x = element_text(angle = 45, hjust = 1), 
+        legend.key = element_rect(colour = "black"))
+```
+
+Which is not the case.
+
+I've also converted few numerical attributes as factors to ease data visualization.
+
+```{r dataConvert}
+# date format
+dataset[, dteday := as.POSIXct(format(dteday,                 
+                                      format = "%Y-%m-%d",
+                                      tz = "CET"))]
+
+# factors
+dataset[, ':=' (season = as.factor(season),                         
+                holiday = as.factor(holiday),
+                mnth = as.factor(mnth),
+                hr = as.factor(hr),
+                yr = as.factor(yr),
+                weekday = as.factor(weekday),
+                workingday = as.factor(workingday),
+                weathersit = as.factor(weathersit))]
+```
+
+# Multiple Scenarios
+
+## A Simple One
+
+In this scenario, I've only got few minutes to answer the question. So I provide a simple graphical way to answer the question.
+
+```{r boxHourSmooth, fig.align='center',fig.width=8}
+# a simple answer
+ggplotly(ggplot(dataset, aes(x = hr, y = cnt)) + 
+           geom_boxplot() + 
+           geom_smooth(data = dataset[, .(cnt = median(cnt)), by = hr],
+                       aes(y = cnt, x = as.numeric(hr)),
+                       se = TRUE,
+                       span = 0.3))
+```
+
+This graph is interesting, since it highlights the distribution of the rental bike count accross an "average" day. The problem here, is that we *simply* aggregate the data, without considering other information, such as the variation induced by weather condition or type of day (working day or holiday) on the rental bike count. That's the reason why, if I've got enough time, I'll definitely support the second scenario.
+
+## Without Weather Conditions
+
+This scenario requires that I have enough time to perform modelling using all information provided in the dataset, except those related to weather conditions (the numerical ones). Why? Simply because in the real world, if my customer wants to know the rental bike count at noon tomorrow, he also has to have relevant information about the weather conditions tomorrow at noon which, as everyknows, might be quite tricky. 
+
+That is the reason why for this part, I've focused on building a predictive model of the rental bike count, only based on *non-numerical-weather-condition* variables.
+
+### Overview of Selected Variables {.tabset}
+
+Here, for each variable I've performed a non-parametric statistical test, to highlight if there is difference in rental bike count between the modalities of the considered categorial variable:
+
+* **Wilcox Test**: to compare two modalities
+* **kruskal-Wallis Test**: to compare more than two modalities
+
+```{r pairsCat}
+# but first, build plots
+pairsVarCat = lapply(colnames(dataset)[3:10],function(x){
+  ggpairs(dataset, columns = c("cnt", x), cardinality_threshold = 24)})
+```
+
+
+#### Season
+
+```{r seasonTest}
+# statistical test
+kruskal.test(cnt~season, data = dataset)
+```
+
+The result is strongly significant, which means there is at least one season for which the median of the rental bike count is different from the others.
+
+```{r seasonGraph}
+# draw plot
+pairsVarCat[[1]]
+```
+
+#### Year
+
+```{r yrTest}
+# statistical test
+wilcox.test(cnt ~ yr, data = dataset)
+```
+
+The result is strongly significant, which means there is a difference in the distribution of rental bike count between both years.
+
+```{r yrGraph}
+# draw plot
+pairsVarCat[[2]]
+```
+
+#### Month
+
+```{r monthTest}
+# statistical test
+kruskal.test(cnt ~ mnth, data = dataset)
+```
+
+The result is strongly significant, which means there is at least one month for which the median of the rental bike count is different from the others.
+
+```{r monthGraph}
+# draw plot
+pairsVarCat[[3]]
+```
+
+#### Hour
+
+```{r hrTest}
+# statistical test
+kruskal.test(cnt ~ hr, data = dataset)
+```
+
+The result is strongly significant, which means there is at least one hour for which the median of the rental bike count is different from the others.
+
+```{r hrGraph}
+# draw plot
+pairsVarCat[[4]]
+```
+
+#### Holiday
+
+```{r holidayTest}
+# statistical test
+wilcox.test(cnt ~ holiday, data = dataset)
+```
+
+The result is strongly significant, which means there is a difference in the distribution of rental bike count whether the customer is in holiday or not.
+
+```{r holidayGraph}
+# draw plot
+pairsVarCat[[5]]
+```
+
+#### Weekday
+
+```{r weekdayTest}
+# statistical test
+kruskal.test(cnt ~ weekday, data = dataset)
+```
+
+The result is still significant (*i.e.* `p-value` < 0.05), but less than other variables. That means that it seems there is at least one weekday for which the median of the rental bike count is different from the others.
+
+```{r weekdayGraph}
+# draw plot
+pairsVarCat[[6]]
+```
+
+
+#### Working Day
+
+```{r workdayTest}
+# statistical test
+wilcox.test(cnt ~ workingday, data = dataset)
+```
+
+The result is still significant (*i.e.* `p-value` < 0.05), but less than other variables. That means that it seems there is a difference in the distribution of the rental bike count between a working day or not.
+
+```{r workdayGraph}
+# draw plot
+pairsVarCat[[7]]
+```
+
+#### Weathersit
+
+```{r weathersitTest}
+# statistical test
+kruskal.test(cnt ~ weathersit, data = dataset)
+```
+
+The result is strongly significant, which means there is at least one weather condition for which the median of the rental bike count is different from the others.
+
+```{r weathersitGraph}
+# draw plot
+pairsVarCat[[8]]
+```
+
+### Machine Learning Part
+
+In this part, I've only chosen to present a random forest, but it is advised to test several other algorithms. To build this model, I've used the `caret` package which provides relevant tools when building a whole pipeline.
+
+```{r RF1}
+# format data
+dataset[,':=' (season = as.numeric(season),
+               holiday = as.numeric(holiday),
+               mnth = as.numeric(mnth),
+               hr = as.numeric(hr),
+               yr = as.numeric(yr),
+               weekday = as.numeric(weekday),
+               workingday = as.numeric(workingday),
+               weathersit = as.numeric(weathersit),
+               cnt  =  as.numeric(cnt))]
+
+# train set - repeated cross validation 5-fold
+control = trainControl(method = "repeatedcv",
+                       number = 5,
+                       repeats = 2, 
+                       savePredictions = "final")
+
+# to speed-up calculations
+registerDoMC(cores = 4)
+
+# performance metric
+metrics = "RMSE"
+
+# fix the seed for reproducible results
+set.seed(123)
+
+# 10% random indices due to calculatio, but I would advice 80%
+trainIndex = createDataPartition(dataset$cnt,
+                                 p = 0.1, 
+                                 list = FALSE)
+
+# training dataset
+dataTrain1 = dataset[trainIndex,
+                     -c("instant", "dteday", "casual", "registered", "temp", "atemp", "hum", "windspeed")]
+
+# test dataset
+dataTest1 = dataset[-trainIndex, 
+                    -c("instant", "dteday", "casual", "registered", "temp", "atemp", "hum", "windspeed")]
+
+# model
+mdl.rf1 = train(cnt~.,
+                data = dataTrain1,
+                method = "rf",
+                metric = metrics,
+                trControl = control,
+                importance = TRUE)
+```
+
+One way to evaluate the model is to look at the plot Predictions *vs* Real Values:
+
+```{r RF1predictions}
+# make prediction
+predictionsRf1 = predict(mdl.rf1, 
+                         dataTest1, 
+                         type="raw")
+
+# plot against real value
+ggplot(data.table(Predictions = predictionsRf1,
+                  `Real values` = dataTest1$cnt),
+       aes(x = `Real values`, y = Predictions)) +
+  geom_point() +
+  geom_path(data = data.table(x = c(0, max(dataTest1$cnt)),
+                              y = c(0, max(dataTest1$cnt))),
+            aes(x = x, y = y), col = "blue")
+```
+
+The results are not so bad. This model tends to over-estimate the rental bike count for small values and under-estimate for high values.
+
+
+## With Weather Conditions
+
+In this scenario, I've assumed the customer has an absolute knowledge of everything (especially the weather condition for the day and the hour he wants to predict the rental bike count). So, I've developed a model that includes variables related to weather conditions.
+
+As information on weather conditions is represented by numerical variables, I've drawn a correlogram to identify if there are variables correlated with one another.
+
+```{r correlogram}
+# identification weather conditions variables
+colWea = which(colnames(dataset) %in% c("temp", "atemp", "hum", "windspeed"))
+
+# correlation calculation
+descrCor = cor(dataset[, .SD, .SDcols = colWea])
+
+# correlogram
+corrplot(descrCor, method = "pie")
+```
+
+Here, we can see that `temp` and `atemp` are two strongly correlated variables. That means they carry almost the same information, which is why, to avoid redundant information for the Machine Learning Part, we must remove one of both variables. Here I choose to remove the `temp` variable since it is not *adjusted*. It's a subjective choice, but I've supposed if `atemp` is the adjusted temperature, then it must have more information than simply the temperature alone. One way to choose more objectively between both variables, would be to compare the predictions of two models, one with `temp` and the other with `atemp`, and to keep the variable associated with the model having the best predictions.
+
+Now I'll present the numerical variables that we're going to add to the previous model.
+
+### Overview of Selected Weather-Conditions Variables {.tabset}
+
+Here, for each weather condition variable, I've drawn a multi plot that allows to investigate the correlation associated with the `cnt` variable.
+
+```{r pairsNum}
+# but first, build plots
+pairsVarNum = lapply(c("atemp", "hum", "windspeed"),function(x){     
+  ggpairs(dataset,
+          columns = c("cnt",x),
+          lower = list(continuous = wrap("smooth",              
+                                         colour = "grey50",       
+                                         size = 0.1),             
+                       combo = "facetdensity"),
+          upper = list(combo = wrap("box_no_facet",             
+                                    outlier.shape = NA)))})       
+```
+
+#### Adjusted Temperature
+
+```{r atemp}
+pairsVarNum[[1]]
+```
+
+This suggests an increase of the rental bike count with the increasing of the adjusted temperature.
+
+#### Humidity
+
+```{r hum}
+pairsVarNum[[2]]
+```
+
+This suggests a decrease of the rental bike count with the increasing of the humidity.
+
+#### Windspeed
+
+```{r windspeed}
+pairsVarNum[[3]]
+```
+
+This suggests there is almost to linear relationship between rental bike count and windspeed.
+
+### Machine Learning Part
+
+It's almost the same process seen previously, except than we added `atemp`, `hum` and `windspeed` to the variables of the model.
+
+```{r RF2}
+# training dataset
+dataTrain2 = dataset[trainIndex,
+                     -c("instant", "dteday", "casual", "registered", "temp")]
+
+# test dataset
+dataTest2 = dataset[-trainIndex,
+                    -c("instant", "dteday", "casual", "registered", "temp")]
+
+# model
+mdl.rf2 = train(cnt~.,
+                data = dataTrain2,
+                method = "rf",
+                metric = metrics,
+                trControl = control,
+                importance = TRUE)
+```
+
+The same way we did previously, we can check the plot Predictions *vs* Real Values.
+
+```{r RF2predictions}
+# make prediction
+predictionsRf2 = predict(mdl.rf2, 
+                         dataTest2, 
+                         type="raw")
+
+# plot against real value
+ggplot(data.table(Predictions = predictionsRf2,
+                  `Real values` = dataTest2$cnt),
+       aes(x = `Real values`, y = Predictions)) +
+  geom_point() +
+  geom_path(data = data.table(x = c(0, max(dataTest2$cnt)),
+                              y = c(0, max(dataTest2$cnt))),
+            aes(x = x, y = y), col = "blue")
+```
+
+The result is quite the same as shown previously. Predictions are not so bad, but the model tends to over-estimate the rental bike count for small values and under-estimate for high values.
+
+
+## Model Selection
+
+Since we build two random forest models, we then need to choose which one to use to make prediction on the rental bike counts. First, we can check the performance metric (*i.e.* RMSE, for Root Mean Square Error, here) during the cross validation process.
+
+```{r resample}
+# resample results
+results = resamples(list(RF1 = mdl.rf1, 
+                       RF2 = mdl.rf2))
+
+# data wrangling
+results = data.table(reshape2::melt(results$values, id.vars = "Resample")) 
+results[, c("mdl", "crit") := tstrsplit(variable,
+                                    "~", 
+                                    fixed = T, 
+                                    type.convert = T)]
+
+# plot
+ggplot(results[, ':=' (mdl = as.factor(mdl),
+                     crit = as.factor(crit))])+
+  geom_boxplot(aes(y = value, x = reorder(mdl, value)))+
+  coord_flip()+
+  facet_wrap(~crit, scales = "free")+
+  labs(y = "Valeurs", x = "Modèles")
+```
+
+Here, the difference between both models doesn't seem to help choosing one model over the other. Since we build both models using a *training dataset*, we can use the *test dataset* which have not been used during the pipeline, to evaluate the predictions of each model, and finally choose the best one.
+
+```{r finalPrediction}
+# RF1
+print('Results for the model with only categorial variables')
+postResample(pred = predictionsRf1, obs = dataTest1$cnt)
+
+# RF2
+print('Results for the model with almost all variables')
+postResample(pred = predictionsRf2, obs = dataTest2$cnt)
+```
+
+These results suggest the Random Forest based only on categorial variables performed better than the other model including weather condition information.
+
+## Go Further
+
+  * **Data Preparation**
+    - Data Transform: Try normalized numerical variables
+    - Data Split: Increase the proportion of dataset used during the training part
+  * **Data Modelling**
+    - Model Selection: I would definitely encourage to test several algorithms
+    - Stacking Method: Combine predictions from several model
+  * **Model Deployment**: If I had more time, I would have provided a small shiny application, allowing the customer to have prediction for a given set of inputs

@@ -1,0 +1,24 @@
+---
+title: "About Me"
+description: |
+  Some additional details about the website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r out.width='30%', out.extra='style="float:right; padding:10px"'}
+knitr::include_graphics("files/jjoumaa_ucsc.jpg")
+```
+
+Key Achievements include:
+
+* PhD in a quantitative data science discipline involving motion sensors for wildlife
+* creating a regression model to predict company greenhouse gas emission, reducing by days estimation time
+* set up Self-Service Business Intelligence in a top international logistics company with Tableau product suite
+
+I'm always looking for new challenges that involve developing new skills related to data science. Highly data savvy, I have gained extensive hard skills (machine learning, statistical inference, programming) and soft skills (project management, communication) resulting in eight publications in highly ranked scientific journals.
+
+If you are looking for a team player, a dedicated and productive member for your data science team, I am a self-motivated individual and believe I would be a valuable contribution for the right position.

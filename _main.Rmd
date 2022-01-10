@@ -1,0 +1,190 @@
+---
+title: "My Website"
+description: |
+  Welcome to the website. I hope you enjoy it!
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+# Learn more about publishing to GitHub Pages at:
+# https://rstudio.github.io/distill/publish_website.html#github-pages
+
+#site: distill::distill_website
+#output: distill::distill_article
+
+# output: bookdown::gitbook
+# site: bookdown::bookdown_site
+
+```
+
+
+<!--chapter:end:index.Rmd-->
+
+---
+title: "About this site"
+description: |
+  Some additional details about the website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+<!--chapter:end:about.Rmd-->
+
+---
+title: "Saegus Interview Project: Predicting Bike Rentals"
+author:
+  - name: "Joffrey JOUMAA"
+    url: https://github.com/SESjo
+    affiliation: TheGreenData
+    affiliation_url: https://www.thegreendata.com
+description: | 
+  Scientific and technical writing, native to the web
+output: 
+  bookdown::html_document2:
+    code_folding: hide
+    df_print: paged
+    fig_caption: yes
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: no
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+```{r setup, include = FALSE}
+# options
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE, 
+                      comment = NA, 
+                      cache = FALSE,
+                      fig.align = "center"
+)
+
+knitr::opts_knit$set(root.dir = "~/Documents/post/saegus/bike_rental_hour/")
+
+
+    # code_folding: hide
+    # df_print: paged
+    # fig_caption: yes
+    # toc: yes
+    # toc_float:
+    #   collapsed: yes
+    #   smooth_scroll: no
+```
+
+# Context
+
+## Overview
+
+Many American cities have communal bike sharing stations where you can rent bicycles by the hour or day. Washington, D.C. is one of these cities. The District collects detailed data on the number of bicycles people rent by the hour and day.
+
+[Hadi Fanaee-T](http://www.liaad.up.pt/area/fanaee) at [the University of Porto](http://www.up.pt/) compiled this data into a CSV file, which you'll be working with in this project. The file contains `17380` rows, with each row representing the number of bike rentals for a single hour of a single day. You can download the data from [the University of California](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset), Irvine's website.
+
+Here's what the first five rows look like:
+```{r loadDataset}
+# packages
+library(data.table)
+library(GGally)
+library(caret)
+library(ggplot2)
+library(doMC)
+library(randomForest)
+library(corrplot)
+library(plotly)
+
+# loading file
+dataset = fread("bike_rental_hour.csv")
+
+# print first rows
+head(dataset)
+```
+
+Here are the descriptions for the relevant columns:
+
+- `instant` - A unique sequential ID number for each row
+- `dteday` - The date of the rentals
+- `season` - The season in which the rentals occurred
+- `yr` - The year the rentals occurred
+- `mnth` - The month the rentals occurred
+- `hr` - The hour the rentals occurred
+- `holiday` - Whether or not the day was a holiday
+- `weekday` - The day of the week (as a number, `0` to `7`)
+- `workingday` - Whether or not the day was a working day
+- `weathersit` - The weather (as a categorical variable)
+- `temp` - The temperature, on a `0-1` scale
+- `atemp` - The adjusted temperature
+- `hum` - The humidity, on a `0-1` scale
+- `windspeed` - The wind speed, on a `0-1` scale
+- `casual` - The number of casual riders (people who hadn't previously signed up with the bike sharing program)
+- `registered` - The number of registered riders (people who had already signed up)
+- `cnt` - The total number of bike rentals (`casual` + `registered`)
+
+## Instructions
+
+Let's say your customer want to predict the total number of bikes people rented in a given hour (`cnt` column ).
+
+In this project you'll have to provide a clear and meaningfull data analysis using data story tellings approach and statistical technics.
+
+
+Have Fun!
+
+# Data Pretreatment
+
+For this part, I've simply checked the presence of missing value.
+
+```{r naCheckCode}
+# the coding way 
+dataset[, any(is.na(.SD))]
+```
+
+```{r naCheckGraph, f}
+# the graphical way
+dataPlot = melt(is.na(dataset))
+
+ggplot(dataPlot, aes(x = Var2, y = Var1, fill = value))+
+  geom_tile()+
+  labs(x = "Attributes", y = "Rows")+
+  scale_fill_manual(values = c("white", "black"), 
+                    labels = c("Real", "Missing")) +
+  theme(legend.position = "top", 
+        axis.text.x = element_text(angle = 45, hjust = 1), 
+        legend.key = element_rect(colour = "black"))
+```
+
+Which is not the case.
+
+I've also converted few numerical attributes as factors to ease data visualization.
+
+```{r dataConvert}
+# date format
+dataset[, dteday := as.POSIXct(format(dteday,                 
+                                      format = "%Y-%m-%d",
+                                      tz = "CET"))]
+
+# factors
+dataset[, ':=' (season = as.factor(season),                         
+                holiday = as.factor(holiday),
+                mnth = as.factor(mnth),
+                hr = as.factor(hr),
+                yr = as.factor(yr),
+                weekday = as.factor(weekday),
+                workingday = as.factor(workingday),
+                weathersit = as.factor(weathersit))]
+```
+
+<!--chapter:end:presentation_jjoumaa.Rmd-->
+
