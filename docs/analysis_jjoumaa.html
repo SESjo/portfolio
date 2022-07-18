@@ -14,7 +14,6 @@
 
 <title>Dataiku Interview Project</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -41,14 +40,14 @@
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="site_libs/datatables-binding-0.19/datatables.js"></script>
-<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="site_libs/dt-ext-fixedcolumns-1.10.20/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
-<script src="site_libs/dt-ext-fixedcolumns-1.10.20/js/dataTables.fixedColumns.min.js"></script>
-<link href="site_libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="site_libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<script src="site_libs/datatables-binding-0.23/datatables.js"></script>
+<link href="site_libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/dt-ext-fixedcolumns-1.11.3/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-fixedcolumns-1.11.3/js/dataTables.fixedColumns.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -79,6 +78,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -99,6 +99,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -327,7 +330,7 @@ div.tocify {
 <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -342,7 +345,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Notebooks
      
     <span class="caret"></span>
@@ -354,10 +357,13 @@ div.tocify {
     <li>
       <a href="presentation_jjoumaa.html">Saegus Interview</a>
     </li>
+    <li>
+      <a href="booking_interview.html">Booking Interview</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Webapps
      
     <span class="caret"></span>
@@ -372,7 +378,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Packages
      
     <span class="caret"></span>
@@ -403,7 +409,7 @@ div.tocify {
 <div id="header">
 
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
 <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
 <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
@@ -423,7 +429,7 @@ div.tocify {
 body {
 text-align: justify}
 </style>
-<p>Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 10/01/2022, under a UNIX/LINUX environment (Debian 9.2). The provided script (<code>code_jjoumaa.R</code>) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4).</p>
+<p>Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 17/07/2022, under a UNIX/LINUX environment (Debian 9.2). The provided script (<code>code_jjoumaa.R</code>) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4).</p>
 <div id="prepare-problem" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Prepare Problem</h1>
 <div id="load-libraries" class="section level2" number="1.1">
@@ -465,22 +471,25 @@ datasetNames = fread(&quot;census_income_metadata.txt&quot;,
 # extraction of word in capital
 colInter = datasetNames[, unlist(str_extract_all(V2, &#39;\\b[A-Z]+[A-Z0-9]\\b&#39;))]
 colInter</code></pre>
-<pre><code> [1] &quot;AAGE&quot;     &quot;ACLSWKR&quot;  &quot;ADTIND&quot;   &quot;ADTOCC&quot;   &quot;AGI&quot;      &quot;AHGA&quot;     &quot;AHRSPAY&quot; 
- [8] &quot;AHSCOL&quot;   &quot;AMARITL&quot;  &quot;AMJIND&quot;   &quot;AMJOCC&quot;   &quot;ARACE&quot;    &quot;AREORGN&quot;  &quot;ASEX&quot;    
-[15] &quot;AUNMEM&quot;   &quot;AUNTYPE&quot;  &quot;AWKSTAT&quot;  &quot;CAPGAIN&quot;  &quot;CAPLOSS&quot;  &quot;DIVVAL&quot;   &quot;FEDTAX&quot;  
-[22] &quot;FILESTAT&quot; &quot;GRINREG&quot;  &quot;GRINST&quot;   &quot;HHDFMX&quot;   &quot;HHDREL&quot;   &quot;MARSUPWT&quot; &quot;MIGMTR1&quot; 
-[29] &quot;MIGMTR3&quot;  &quot;MIGMTR4&quot;  &quot;MIGSAME&quot;  &quot;MIGSUN&quot;   &quot;NOEMP&quot;    &quot;PARENT&quot;   &quot;PEARNVAL&quot;
-[36] &quot;PEFNTVTY&quot; &quot;PEMNTVTY&quot; &quot;PENATVTY&quot; &quot;PRCITSHP&quot; &quot;PTOTVAL&quot;  &quot;SEOTR&quot;    &quot;TAXINC&quot;  
+<pre><code> [1] &quot;AAGE&quot;     &quot;ACLSWKR&quot;  &quot;ADTIND&quot;   &quot;ADTOCC&quot;   &quot;AGI&quot;      &quot;AHGA&quot;    
+ [7] &quot;AHRSPAY&quot;  &quot;AHSCOL&quot;   &quot;AMARITL&quot;  &quot;AMJIND&quot;   &quot;AMJOCC&quot;   &quot;ARACE&quot;   
+[13] &quot;AREORGN&quot;  &quot;ASEX&quot;     &quot;AUNMEM&quot;   &quot;AUNTYPE&quot;  &quot;AWKSTAT&quot;  &quot;CAPGAIN&quot; 
+[19] &quot;CAPLOSS&quot;  &quot;DIVVAL&quot;   &quot;FEDTAX&quot;   &quot;FILESTAT&quot; &quot;GRINREG&quot;  &quot;GRINST&quot;  
+[25] &quot;HHDFMX&quot;   &quot;HHDREL&quot;   &quot;MARSUPWT&quot; &quot;MIGMTR1&quot;  &quot;MIGMTR3&quot;  &quot;MIGMTR4&quot; 
+[31] &quot;MIGSAME&quot;  &quot;MIGSUN&quot;   &quot;NOEMP&quot;    &quot;PARENT&quot;   &quot;PEARNVAL&quot; &quot;PEFNTVTY&quot;
+[37] &quot;PEMNTVTY&quot; &quot;PENATVTY&quot; &quot;PRCITSHP&quot; &quot;PTOTVAL&quot;  &quot;SEOTR&quot;    &quot;TAXINC&quot;  
 [43] &quot;VETQVA&quot;   &quot;VETYN&quot;    &quot;WKSWORK&quot; </code></pre>
 <p>The problem was that 45 columns were mentioned in the description files (<code>colInter</code>), whereas both datasets only have 42 columns. To solve this, I’ve matched each column with their respective names based on the number of unique “value” by columns and the one exposed in the description file. Using this method, I’ve found that AGI, FEDTAX, PEARNVAL, PTOTVAL and TAXINC attributes could be removed from the initial column names, and that the attributes YEARS and Y (the attributes to model, <em>i.e</em> the income level) should be added.</p>
 <pre class="r"><code># number of instances for each attributes
 dataset[, sapply(.SD, function(x){length(unique(x))})]</code></pre>
-<pre><code>   V1    V2    V3    V4    V5    V6    V7    V8    V9   V10   V11   V12   V13   V14   V15 
-   91     9    52    47    17  1240     3     7    24    15     5    10     2     3     6 
-  V16   V17   V18   V19   V20   V21   V22   V23   V24   V25   V26   V27   V28   V29   V30 
-    8   132   113  1478     6     6    51    38     8 99800    10     9    10     3     4 
-  V31   V32   V33   V34   V35   V36   V37   V38   V39   V40   V41   V42 
-    7     5    43    43    43     5     3     3     3    53     2     2 </code></pre>
+<pre><code>   V1    V2    V3    V4    V5    V6    V7    V8    V9   V10   V11   V12   V13 
+   91     9    52    47    17  1240     3     7    24    15     5    10     2 
+  V14   V15   V16   V17   V18   V19   V20   V21   V22   V23   V24   V25   V26 
+    3     6     8   132   113  1478     6     6    51    38     8 99800    10 
+  V27   V28   V29   V30   V31   V32   V33   V34   V35   V36   V37   V38   V39 
+    9    10     3     4     7     5    43    43    43     5     3     3     3 
+  V40   V41   V42 
+   53     2     2 </code></pre>
 <pre class="r"><code># remove unexpected column names
 colInter = colInter[-c(which(colInter == &quot;AGI&quot;))]
 colInter = colInter[-c(which(colInter == &quot;FEDTAX&quot;))]
@@ -501,8 +510,8 @@ datatable(head(validation, 5),
             dom = &quot;t&quot;, 
             scrollX = TRUE, 
             fixedColumns = FALSE))</code></pre>
-<div id="htmlwidget-ec53886b876e86c3cdfe" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ec53886b876e86c3cdfe">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns"],"caption":"<caption>Preview of the dataset<\/caption>","data":[["1","2","3","4","5"],[38,44,2,35,49],["Private","Self-employed-not incorporated","Not in universe","Private","Private"],[6,37,0,29,4],[36,12,0,3,34],["1st 2nd 3rd or 4th grade","Associates degree-occup /vocational","Children","High school graduate","High school graduate"],[0,0,0,0,0],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Married-civilian spouse present","Married-civilian spouse present","Never married","Divorced","Divorced"],["Manufacturing-durable goods","Business and repair services","Not in universe or children","Transportation","Construction"],["Machine operators assmblrs &amp; inspctrs","Professional specialty","Not in universe","Executive admin and managerial","Precision production craft &amp; repair"],["White","White","White","White","White"],["Mexican (Mexicano)","All other","Mexican-American","All other","All other"],["Female","Female","Male","Female","Male"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Full-time schedules","PT for econ reasons usually PT","Children or Armed Forces","Children or Armed Forces","Full-time schedules"],[0,0,0,0,0],[0,0,0,0,0],[0,2500,0,0,0],["Joint one under 65 &amp; one 65+","Joint both under 65","Nonfiler","Head of household","Single"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Spouse of householder","Spouse of householder","Child &lt;18 never marr not in subfamily","Householder","Secondary individual"],["Spouse of householder","Spouse of householder","Child under 18 never married","Householder","Nonrelative of householder"],[1032.38,1462.33,1601.75,1866.88,1394.54],[null,null,null,"Nonmover",null],[null,null,null,"Nonmover",null],[null,null,null,"Nonmover",null],["Not in universe under 1 year old","Not in universe under 1 year old","Not in universe under 1 year old","Yes","Not in universe under 1 year old"],[null,null,null,"Not in universe",null],[4,1,0,5,4],["Not in universe","Not in universe","Both parents present","Not in universe","Not in universe"],["Mexico","United-States","United-States","United-States","United-States"],["Mexico","United-States","United-States","United-States","United-States"],["Mexico","United-States","United-States","United-States","United-States"],["Foreign born- Not a citizen of U S","Native- Born in the United States","Native- Born in the United States","Native- Born in the United States","Native- Born in the United States"],[0,0,0,2,0],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],[2,2,0,2,2],[12,26,0,52,50],[95,95,95,94,95],["- 50000.","- 50000.","- 50000.","- 50000.","- 50000."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>AAGE<\/th>\n      <th>ACLSWKR<\/th>\n      <th>ADTIND<\/th>\n      <th>ADTOCC<\/th>\n      <th>AHGA<\/th>\n      <th>AHRSPAY<\/th>\n      <th>AHSCOL<\/th>\n      <th>AMARITL<\/th>\n      <th>AMJIND<\/th>\n      <th>AMJOCC<\/th>\n      <th>ARACE<\/th>\n      <th>AREORGN<\/th>\n      <th>ASEX<\/th>\n      <th>AUNMEM<\/th>\n      <th>AUNTYPE<\/th>\n      <th>AWKSTAT<\/th>\n      <th>CAPGAIN<\/th>\n      <th>CAPLOSS<\/th>\n      <th>DIVVAL<\/th>\n      <th>FILESTAT<\/th>\n      <th>GRINREG<\/th>\n      <th>GRINST<\/th>\n      <th>HHDFMX<\/th>\n      <th>HHDREL<\/th>\n      <th>MARSUPWT<\/th>\n      <th>MIGMTR1<\/th>\n      <th>MIGMTR3<\/th>\n      <th>MIGMTR4<\/th>\n      <th>MIGSAME<\/th>\n      <th>MIGSUN<\/th>\n      <th>NOEMP<\/th>\n      <th>PARENT<\/th>\n      <th>PEFNTVTY<\/th>\n      <th>PEMNTVTY<\/th>\n      <th>PENATVTY<\/th>\n      <th>PRCITSHP<\/th>\n      <th>SEOTR<\/th>\n      <th>VETQVA<\/th>\n      <th>VETYN<\/th>\n      <th>WKSWORK<\/th>\n      <th>YEAR<\/th>\n      <th>Y<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","scrollX":true,"fixedColumns":false,"columnDefs":[{"className":"dt-right","targets":[1,3,4,6,17,18,19,25,31,37,39,40,41]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-26eb6cda9dbcf2ae2f0d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-26eb6cda9dbcf2ae2f0d">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns"],"caption":"<caption>Preview of the dataset<\/caption>","data":[["1","2","3","4","5"],[38,44,2,35,49],["Private","Self-employed-not incorporated","Not in universe","Private","Private"],[6,37,0,29,4],[36,12,0,3,34],["1st 2nd 3rd or 4th grade","Associates degree-occup /vocational","Children","High school graduate","High school graduate"],[0,0,0,0,0],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Married-civilian spouse present","Married-civilian spouse present","Never married","Divorced","Divorced"],["Manufacturing-durable goods","Business and repair services","Not in universe or children","Transportation","Construction"],["Machine operators assmblrs &amp; inspctrs","Professional specialty","Not in universe","Executive admin and managerial","Precision production craft &amp; repair"],["White","White","White","White","White"],["Mexican (Mexicano)","All other","Mexican-American","All other","All other"],["Female","Female","Male","Female","Male"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Full-time schedules","PT for econ reasons usually PT","Children or Armed Forces","Children or Armed Forces","Full-time schedules"],[0,0,0,0,0],[0,0,0,0,0],[0,2500,0,0,0],["Joint one under 65 &amp; one 65+","Joint both under 65","Nonfiler","Head of household","Single"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Spouse of householder","Spouse of householder","Child &lt;18 never marr not in subfamily","Householder","Secondary individual"],["Spouse of householder","Spouse of householder","Child under 18 never married","Householder","Nonrelative of householder"],[1032.38,1462.33,1601.75,1866.88,1394.54],[null,null,null,"Nonmover",null],[null,null,null,"Nonmover",null],[null,null,null,"Nonmover",null],["Not in universe under 1 year old","Not in universe under 1 year old","Not in universe under 1 year old","Yes","Not in universe under 1 year old"],[null,null,null,"Not in universe",null],[4,1,0,5,4],["Not in universe","Not in universe","Both parents present","Not in universe","Not in universe"],["Mexico","United-States","United-States","United-States","United-States"],["Mexico","United-States","United-States","United-States","United-States"],["Mexico","United-States","United-States","United-States","United-States"],["Foreign born- Not a citizen of U S","Native- Born in the United States","Native- Born in the United States","Native- Born in the United States","Native- Born in the United States"],[0,0,0,2,0],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],[2,2,0,2,2],[12,26,0,52,50],[95,95,95,94,95],["- 50000.","- 50000.","- 50000.","- 50000.","- 50000."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>AAGE<\/th>\n      <th>ACLSWKR<\/th>\n      <th>ADTIND<\/th>\n      <th>ADTOCC<\/th>\n      <th>AHGA<\/th>\n      <th>AHRSPAY<\/th>\n      <th>AHSCOL<\/th>\n      <th>AMARITL<\/th>\n      <th>AMJIND<\/th>\n      <th>AMJOCC<\/th>\n      <th>ARACE<\/th>\n      <th>AREORGN<\/th>\n      <th>ASEX<\/th>\n      <th>AUNMEM<\/th>\n      <th>AUNTYPE<\/th>\n      <th>AWKSTAT<\/th>\n      <th>CAPGAIN<\/th>\n      <th>CAPLOSS<\/th>\n      <th>DIVVAL<\/th>\n      <th>FILESTAT<\/th>\n      <th>GRINREG<\/th>\n      <th>GRINST<\/th>\n      <th>HHDFMX<\/th>\n      <th>HHDREL<\/th>\n      <th>MARSUPWT<\/th>\n      <th>MIGMTR1<\/th>\n      <th>MIGMTR3<\/th>\n      <th>MIGMTR4<\/th>\n      <th>MIGSAME<\/th>\n      <th>MIGSUN<\/th>\n      <th>NOEMP<\/th>\n      <th>PARENT<\/th>\n      <th>PEFNTVTY<\/th>\n      <th>PEMNTVTY<\/th>\n      <th>PENATVTY<\/th>\n      <th>PRCITSHP<\/th>\n      <th>SEOTR<\/th>\n      <th>VETQVA<\/th>\n      <th>VETYN<\/th>\n      <th>WKSWORK<\/th>\n      <th>YEAR<\/th>\n      <th>Y<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","scrollX":true,"fixedColumns":false,"columnDefs":[{"className":"dt-right","targets":[1,3,4,6,17,18,19,25,31,37,39,40,41]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="summarize-data" class="section level1" number="2">
@@ -750,30 +759,38 @@ kable(data.frame(variable = names(dataset),
 </table>
 <pre class="r"><code># summary of the dataset
 summary(dataset)</code></pre>
-<pre><code>      AAGE                                 ACLSWKR           ADTIND          ADTOCC     
- Min.   : 0.00   Not in universe               :100245   Min.   : 0.00   Min.   : 0.00  
- 1st Qu.:15.00   Private                       : 72028   1st Qu.: 0.00   1st Qu.: 0.00  
- Median :33.00   Self-employed-not incorporated:  8445   Median : 0.00   Median : 0.00  
- Mean   :34.49   Local government              :  7784   Mean   :15.35   Mean   :11.31  
- 3rd Qu.:50.00   State government              :  4227   3rd Qu.:33.00   3rd Qu.:26.00  
- Max.   :90.00   Self-employed-incorporated    :  3265   Max.   :51.00   Max.   :46.00  
-                 (Other)                       :  3529                                  
-                         AHGA          AHRSPAY                          AHSCOL      
- High school graduate      :48407   Min.   :   0.00   College or university:  5688  
- Children                  :47422   1st Qu.:   0.00   High school          :  6892  
- Some college but no degree:27820   Median :   0.00   Not in universe      :186943  
- Bachelors degree(BA AB BS):19865   Mean   :  55.43                                 
- 7th and 8th grade         : 8007   3rd Qu.:   0.00                                 
- 10th grade                : 7557   Max.   :9999.00                                 
- (Other)                   :40445                                                   
-                            AMARITL                                    AMJIND      
- Divorced                       :12710   Not in universe or children      :100684  
- Married-A F spouse present     :  665   Retail trade                     : 17070  
- Married-civilian spouse present:84222   Manufacturing-durable goods      :  9015  
- Married-spouse absent          : 1518   Education                        :  8283  
- Never married                  :86485   Manufacturing-nondurable goods   :  6897  
- Separated                      : 3460   Finance insurance and real estate:  6145  
- Widowed                        :10463   (Other)                          : 51429  
+<pre><code>      AAGE                                 ACLSWKR           ADTIND     
+ Min.   : 0.00   Not in universe               :100245   Min.   : 0.00  
+ 1st Qu.:15.00   Private                       : 72028   1st Qu.: 0.00  
+ Median :33.00   Self-employed-not incorporated:  8445   Median : 0.00  
+ Mean   :34.49   Local government              :  7784   Mean   :15.35  
+ 3rd Qu.:50.00   State government              :  4227   3rd Qu.:33.00  
+ Max.   :90.00   Self-employed-incorporated    :  3265   Max.   :51.00  
+                 (Other)                       :  3529                  
+     ADTOCC                              AHGA          AHRSPAY       
+ Min.   : 0.00   High school graduate      :48407   Min.   :   0.00  
+ 1st Qu.: 0.00   Children                  :47422   1st Qu.:   0.00  
+ Median : 0.00   Some college but no degree:27820   Median :   0.00  
+ Mean   :11.31   Bachelors degree(BA AB BS):19865   Mean   :  55.43  
+ 3rd Qu.:26.00   7th and 8th grade         : 8007   3rd Qu.:   0.00  
+ Max.   :46.00   10th grade                : 7557   Max.   :9999.00  
+                 (Other)                   :40445                    
+                   AHSCOL                                  AMARITL     
+ College or university:  5688   Divorced                       :12710  
+ High school          :  6892   Married-A F spouse present     :  665  
+ Not in universe      :186943   Married-civilian spouse present:84222  
+                                Married-spouse absent          : 1518  
+                                Never married                  :86485  
+                                Separated                      : 3460  
+                                Widowed                        :10463  
+                               AMJIND      
+ Not in universe or children      :100684  
+ Retail trade                     : 17070  
+ Manufacturing-durable goods      :  9015  
+ Education                        :  8283  
+ Manufacturing-nondurable goods   :  6897  
+ Finance insurance and real estate:  6145  
+ (Other)                          : 51429  
                             AMJOCC                               ARACE       
  Not in universe               :100684   Amer Indian Aleut or Eskimo:  2251  
  Adm support including clerical: 14837   Asian or Pacific Islander  :  5835  
@@ -806,30 +823,38 @@ summary(dataset)</code></pre>
  3rd Qu.:    0.0   3rd Qu.:   0.00   3rd Qu.:    0.0  
  Max.   :99999.0   Max.   :4608.00   Max.   :99999.0  
                                                       
-                         FILESTAT                GRINREG                   GRINST      
- Head of household           : 7426   Abroad         :   530   Not in universe:183750  
- Joint both 65+              : 8332   Midwest        :  3575   California     :  1714  
- Joint both under 65         :67383   Northeast      :  2705   Utah           :  1063  
- Joint one under 65 &amp; one 65+: 3867   Not in universe:183750   Florida        :   849  
- Nonfiler                    :75094   South          :  4889   North Carolina :   812  
- Single                      :37421   West           :  4074   (Other)        : 10627  
-                                                               NA&#39;s           :   708  
-                                     HHDFMX                                HHDREL     
- Householder                            :53248   Householder                  :75475  
- Child &lt;18 never marr not in subfamily  :50326   Child under 18 never married :50426  
- Spouse of householder                  :41695   Spouse of householder        :41709  
- Nonfamily householder                  :22213   Child 18 or older            :14430  
- Child 18+ never marr Not in a subfamily:12030   Other relative of householder: 9703  
- Secondary individual                   : 6122   Nonrelative of householder   : 7601  
- (Other)                                :13889   (Other)                      :  179  
-    MARSUPWT                    MIGMTR1                             MIGMTR3     
- Min.   :   37.87   Nonmover        :82538   Nonmover                   :82538  
- 1st Qu.: 1061.62   MSA to MSA      :10601   Same county                : 9812  
- Median : 1618.31   NonMSA to nonMSA: 2811   Different county same state: 2797  
- Mean   : 1740.38   Not in universe : 1516   Not in universe            : 1516  
- 3rd Qu.: 2188.61   MSA to nonMSA   :  790   Different region           : 1178  
- Max.   :18656.30   (Other)         : 1571   (Other)                    : 1986  
-                    NA&#39;s            :99696   NA&#39;s                       :99696  
+                         FILESTAT                GRINREG      
+ Head of household           : 7426   Abroad         :   530  
+ Joint both 65+              : 8332   Midwest        :  3575  
+ Joint both under 65         :67383   Northeast      :  2705  
+ Joint one under 65 &amp; one 65+: 3867   Not in universe:183750  
+ Nonfiler                    :75094   South          :  4889  
+ Single                      :37421   West           :  4074  
+                                                              
+             GRINST                                           HHDFMX     
+ Not in universe:183750   Householder                            :53248  
+ California     :  1714   Child &lt;18 never marr not in subfamily  :50326  
+ Utah           :  1063   Spouse of householder                  :41695  
+ Florida        :   849   Nonfamily householder                  :22213  
+ North Carolina :   812   Child 18+ never marr Not in a subfamily:12030  
+ (Other)        : 10627   Secondary individual                   : 6122  
+ NA&#39;s           :   708   (Other)                                :13889  
+                           HHDREL         MARSUPWT       
+ Householder                  :75475   Min.   :   37.87  
+ Child under 18 never married :50426   1st Qu.: 1061.62  
+ Spouse of householder        :41709   Median : 1618.31  
+ Child 18 or older            :14430   Mean   : 1740.38  
+ Other relative of householder: 9703   3rd Qu.: 2188.61  
+ Nonrelative of householder   : 7601   Max.   :18656.30  
+ (Other)                      :  179                     
+             MIGMTR1                             MIGMTR3     
+ Nonmover        :82538   Nonmover                   :82538  
+ MSA to MSA      :10601   Same county                : 9812  
+ NonMSA to nonMSA: 2811   Different county same state: 2797  
+ Not in universe : 1516   Not in universe            : 1516  
+ MSA to nonMSA   :  790   Different region           : 1178  
+ (Other)         : 1571   (Other)                    : 1986  
+ NA&#39;s            :99696   NA&#39;s                       :99696  
                         MIGMTR4                                  MIGSAME      
  Nonmover                   :82538   No                              : 15773  
  Same county                : 9812   Not in universe under 1 year old:101212  
@@ -988,8 +1013,8 @@ nzv = nearZeroVar(datasetNa, saveMetrics = TRUE)
 datatable(nzv[nzv$nzv, ], 
           caption = &quot;Information relative to zero and near zero variance predictors.&quot;, 
           option = list(dom = &quot;t&quot;))</code></pre>
-<div id="htmlwidget-c87996ef7305b544e38f" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c87996ef7305b544e38f">{"x":{"filter":"none","vertical":false,"caption":"<caption>Information relative to zero and near zero variance predictors.<\/caption>","data":[["AHRSPAY","AHSCOL","AREORGN","AUNTYPE","AWKSTAT","CAPGAIN","CAPLOSS","DIVVAL","GRINST","PENATVTY","VETQVA","YEAR"],[230.485861182519,27.1447288238879,20.1018404907975,83.8842297174111,0,263.784482758621,464.039800995025,157.752310536044,49.7672839506173,31.0068443804035,125.929144385027,0],[0.918742773047409,0.00315357931251971,0.0105119310417324,0.00630715862503942,0.00105119310417324,0.133501524230001,0.111426469042363,0.979711973089457,0.0525596552086618,0.0420477241669295,0.00315357931251971,0.00105119310417324],[false,false,false,false,true,false,false,false,false,false,false,true],[true,true,true,true,true,true,true,true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>freqRatio<\/th>\n      <th>percentUnique<\/th>\n      <th>zeroVar<\/th>\n      <th>nzv<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-15a4f52453f88b3630ee" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-15a4f52453f88b3630ee">{"x":{"filter":"none","vertical":false,"caption":"<caption>Information relative to zero and near zero variance predictors.<\/caption>","data":[["AHRSPAY","AHSCOL","AREORGN","AUNTYPE","AWKSTAT","CAPGAIN","CAPLOSS","DIVVAL","GRINST","PENATVTY","VETQVA","YEAR"],[230.485861182519,27.1447288238879,20.1018404907975,83.8842297174111,0,263.784482758621,464.039800995025,157.752310536044,49.7672839506173,31.0068443804035,125.929144385027,0],[0.918742773047409,0.00315357931251971,0.0105119310417324,0.00630715862503942,0.00105119310417324,0.133501524230001,0.111426469042363,0.979711973089457,0.0525596552086618,0.0420477241669295,0.00315357931251971,0.00105119310417324],[false,false,false,false,true,false,false,false,false,false,false,true],[true,true,true,true,true,true,true,true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>freqRatio<\/th>\n      <th>percentUnique<\/th>\n      <th>zeroVar<\/th>\n      <th>nzv<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code># removal of these predictors
 datasetNaNzv = datasetNa[, .SD, .SDcols = !nzv$nzv]</code></pre>
 <p>The second step was to remove any attributes with a correlation higher than 0.75. This is a basic method, which could be improved by combining correlogram with significance test.</p>
@@ -1010,7 +1035,7 @@ names(ncolInt[highlyCorDescr])</code></pre>
 <pre><code>[1] &quot;WKSWORK&quot;</code></pre>
 <pre class="r"><code># attribute &quot;WKSWORK&quot; removed
 datasetNaNzv[, (names(ncolInt[highlyCorDescr])):= NULL]</code></pre>
-<p>Here, I’ve only removed the attribute “WKSWORK”. At the end of the “Feature selection” step, the current dataset includes 30 attributes instead of 42 in the original one.</p>
+<p>Here, I’ve only removed the attribute “WKSWORK”. At the end of the “Feature selection” step, the current dataset includes 29 attributes instead of 42 in the original one.</p>
 </div>
 <div id="data-transforms" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Data Transforms</h2>
@@ -1077,8 +1102,8 @@ datatable(data.table(
   percentage = round(prop.table(table(datasetNaNzvQr$Y))*100, 2)), 
   caption = &quot;Proportion of each levels of the explaining variable.&quot;, 
   option = list(dom = &quot;t&quot;))</code></pre>
-<div id="htmlwidget-445cbedba014cf6b242f" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-445cbedba014cf6b242f">{"x":{"filter":"none","vertical":false,"caption":"<caption>Proportion of each levels of the explaining variable.<\/caption>","data":[["1","2"],["X..50000.","X50000.."],[89651,5479],["X..50000.","X50000.."],[94.24,5.76]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>freq.V1<\/th>\n      <th>freq.N<\/th>\n      <th>percentage.V1<\/th>\n      <th>percentage.N<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":[2,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9eb210bc75a69aded55b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9eb210bc75a69aded55b">{"x":{"filter":"none","vertical":false,"caption":"<caption>Proportion of each levels of the explaining variable.<\/caption>","data":[["1","2"],["X..50000.","X50000.."],[89651,5479],["X..50000.","X50000.."],[94.24,5.76]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>freq.V1<\/th>\n      <th>freq.N<\/th>\n      <th>percentage.V1<\/th>\n      <th>percentage.N<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":[2,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>… it can have significant negative impact on model fitting (by the way, it seems consistent that a large proportion of these people earn less than 50 000$ pear annum). Here I’ve explored two different ways to deal with it:</p>
 <ul>
 <li><em>down-sampling</em>: randomly subset all the classes in the training set so that their class frequencies match the least prevalent class.</li>
@@ -1141,16 +1166,16 @@ Number of resamples: 10
 Accuracy 
               Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA&#39;s
 KNN_UP   0.7861272 0.7933030 0.8021026 0.7996639 0.8063584 0.8113505    0
-LOG_UP   0.3783500 0.8217768 0.8276406 0.7607319 0.8509673 0.8680336    0
+LOG_UP   0.3608193 0.8272871 0.8399895 0.7953308 0.8436472 0.8949028    0
 KNN_DOWN 0.6006306 0.6115127 0.6203388 0.6213483 0.6330793 0.6405675    0
-LOG_DOWN 0.7519706 0.7656703 0.7871215 0.7820564 0.7952426 0.8072479    0
+LOG_DOWN 0.6263794 0.7792086 0.7866527 0.7728101 0.7977917 0.8128286    0
 
 Kappa 
-                Min.    1st Qu.     Median       Mean   3rd Qu.       Max. NA&#39;s
-KNN_UP    0.12070882 0.13707161 0.14558179 0.14449985 0.1528234 0.16022824    0
-LOG_UP   -0.03647692 0.27638025 0.28574482 0.23501992 0.3020309 0.34433398    0
-KNN_DOWN  0.06257470 0.06846597 0.07426959 0.07606744 0.0841786 0.09147037    0
-LOG_DOWN  0.19528444 0.20958260 0.22604420 0.22825945 0.2491513 0.25819232    0</code></pre>
+               Min.    1st Qu.     Median       Mean   3rd Qu.       Max. NA&#39;s
+KNN_UP   0.12070882 0.13707161 0.14558179 0.14449985 0.1528234 0.16022824    0
+LOG_UP   0.04003155 0.26565309 0.29853090 0.27619801 0.3223886 0.34684118    0
+KNN_DOWN 0.06257470 0.06846597 0.07426959 0.07606744 0.0841786 0.09147037    0
+LOG_DOWN 0.08160797 0.21929935 0.22963676 0.22159830 0.2422348 0.27955925    0</code></pre>
 <p>It appears the <em>up-sampling</em> method performs better than the <em>down-sampling</em>. In addition, the <strong>k-Nearest Neighbors</strong> algorithm provides better results than the <strong>Logistic Regression</strong> one. Let’s now compare both algorithms using the <em>up-sampling</em> method with a dataset including nominal attributes (<em>i.e.</em> not using one-hot encoding).</p>
 <pre class="r"><code># new data split based on the dataset without hot encoding
 datasetNaNzv[, Y:=as.factor(make.names(Y))]
@@ -1192,20 +1217,27 @@ Number of resamples: 10
 Accuracy 
                 Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA&#39;s
 KNN_UP     0.7861272 0.7933030 0.8021026 0.7996639 0.8063584 0.8113505    0
-LOG_UP     0.3783500 0.8217768 0.8276406 0.7607319 0.8509673 0.8680336    0
+LOG_UP     0.3608193 0.8272871 0.8399895 0.7953308 0.8436472 0.8949028    0
 KNN_DOWN   0.6006306 0.6115127 0.6203388 0.6213483 0.6330793 0.6405675    0
-LOG_DOWN   0.7519706 0.7656703 0.7871215 0.7820564 0.7952426 0.8072479    0
+LOG_DOWN   0.6263794 0.7792086 0.7866527 0.7728101 0.7977917 0.8128286    0
 KNN_UP_VAR 0.7854890 0.7935655 0.8015769 0.7989281 0.8043878 0.8108250    0
-LOG_UP_VAR 0.6337362 0.7690824 0.8334648 0.8061751 0.8622686 0.8686285    0
+LOG_UP_VAR 0.1514196 0.7926957 0.8392013 0.7488078 0.8494482 0.8533123    0
 
 Kappa 
-                  Min.    1st Qu.     Median       Mean   3rd Qu.       Max. NA&#39;s
-KNN_UP      0.12070882 0.13707161 0.14558179 0.14449985 0.1528234 0.16022824    0
-LOG_UP     -0.03647692 0.27638025 0.28574482 0.23501992 0.3020309 0.34433398    0
-KNN_DOWN    0.06257470 0.06846597 0.07426959 0.07606744 0.0841786 0.09147037    0
-LOG_DOWN    0.19528444 0.20958260 0.22604420 0.22825945 0.2491513 0.25819232    0
-KNN_UP_VAR  0.12022934 0.13740228 0.14592863 0.14439255 0.1535522 0.15962758    0
-LOG_UP_VAR -0.08948562 0.18339045 0.25932619 0.21196467 0.3022115 0.32559972    0</code></pre>
+                  Min.    1st Qu.     Median       Mean   3rd Qu.       Max.
+KNN_UP      0.12070882 0.13707161 0.14558179 0.14449985 0.1528234 0.16022824
+LOG_UP      0.04003155 0.26565309 0.29853090 0.27619801 0.3223886 0.34684118
+KNN_DOWN    0.06257470 0.06846597 0.07426959 0.07606744 0.0841786 0.09147037
+LOG_DOWN    0.08160797 0.21929935 0.22963676 0.22159830 0.2422348 0.27955925
+KNN_UP_VAR  0.12022934 0.13740228 0.14592863 0.14439255 0.1535522 0.15962758
+LOG_UP_VAR -0.05243764 0.24262988 0.27824470 0.22688123 0.3000925 0.33037603
+           NA&#39;s
+KNN_UP        0
+LOG_UP        0
+KNN_DOWN      0
+LOG_DOWN      0
+KNN_UP_VAR    0
+LOG_UP_VAR    0</code></pre>
 <pre class="r"><code>dotplot(results)</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dotplot"></span>
 <img src="analysis_jjoumaa_files/figure-html/dotplot-1.png" alt="Models comparison" width="672" />
@@ -1284,7 +1316,7 @@ Resampling results:
 
   Accuracy   Kappa
   0.9424007  0    </code></pre>
-<p>The accuracy seems to be better than both algorithms alone (<code>Log</code>: 0.81 and <code>kNN</code>: 0.8, 0.75, 0.71, whereas <code>stacking</code>: 0.94). However, the Kappa value of 0 is symptomatic of a problem that we’re going to clarify when looking at the <a href="#prediction">predictions</a>.</p>
+<p>The accuracy seems to be better than both algorithms alone (<code>Log</code>: 0.75 and <code>kNN</code>: 0.8, 0.75, 0.71, whereas <code>stacking</code>: 0.94). However, the Kappa value of 0 is symptomatic of a problem that we’re going to clarify when looking at the <a href="#prediction">predictions</a>.</p>
 </div>
 <div id="boosting" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Boosting</h3>
@@ -1294,11 +1326,8 @@ set.seed(7)
 fitC5UpVar = train(Y~., data = dataTrainVar, 
                    method = &quot;C5.0Rules&quot;, 
                    metric = metric, 
-                   trControl = trainControl)</code></pre>
-<pre><code>1 package is needed and is not installed. (C50). Would you like to try to install it now?
-1: yes
-2: no</code></pre>
-<pre class="r"><code>print(fitC5UpVar)</code></pre>
+                   trControl = trainControl)
+print(fitC5UpVar)</code></pre>
 <pre><code>Single C5.0 Ruleset 
 
 9514 samples
@@ -1524,7 +1553,7 @@ Figure 6.1: Distribution and barplot of the three most important variables when 
 </div>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr />
 <ol>
 <li id="fn1"><p>Another method is implemented based on bagged trees but at higher computational costs.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>

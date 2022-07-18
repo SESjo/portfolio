@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+<meta name="date" content="2017-06-05" />
+
+<title>Booking Interview Project</title>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Portfolio - Joffrey JOUMAA</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Notebooks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="analysis_jjoumaa.html">Dataiku Interview</a>
+    </li>
+    <li>
+      <a href="presentation_jjoumaa.html">Saegus Interview</a>
+    </li>
+    <li>
+      <a href="booking_interview.html">Booking Interview</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Webapps
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://agile-wildwood-23168.herokuapp.com/">Dash (Python)</a>
+    </li>
+    <li>
+      <a href="https://joffreyjoumaa.shinyapps.io/shiny_risk/">Shiny (R)</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Packages
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://jjoumaa.ddns.net/weanlingNES/">weanlingNES</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resume_jjoumaa.html">Resume</a>
+</li>
+<li>
+  <a href="https://github.com/SESjo">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="about.html">About me</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Booking Interview Project</h1>
+<h4 class="author">Joffrey JOUMAA</h4>
+<h4 class="date">June 5, 2017</h4>
+
+</div>
+
+
+<style>
+body {
+text-align: justify}
+</style>
+<div id="loading-library" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Loading library</h1>
+<pre class="r"><code>library(data.table)
+library(ggplot2)
+library(nlme)
+library(knitr)
+library(magrittr)
+library(pander)
+library(mgcv)
+library(gridExtra)
+# avoid scientific notation
+options(scipen=999)</code></pre>
+</div>
+<div id="preambule" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Preambule</h1>
+<p>I received an email from Irina Itu (HQ Recruiter - <a href="https://www.booking.com">Booking.com</a>), the 2<sup>nd</sup> of June including two documents:</p>
+<ul>
+<li><strong>Assessment_Reporting_Analyst.pdf</strong>, the document presenting the situation and the questions that I have to answer as a reporting analyst.</li>
+<li><strong>Assessment_Reporting_Analyst.csv</strong>, the dataset that would allow me to addressed these questions.</li>
+</ul>
+<p>To make sure everyone knows what I am dealing with, you will find a summary of those data Table <a href="#tab:str">2.1</a>:</p>
+<pre class="r"><code># dataset loading
+data=fread(&quot;./doc/Assessment_Reporting_Analyst.csv&quot;)
+# time format
+data[,first_opened:=as.POSIXct(first_opened,tz=&quot;UTC&quot;,format=&quot;%m/%d/%y&quot;)]
+# summary
+
+kable(data.frame(variable = names(data),
+                 classe = sapply(data, typeof),
+                 first_values = sapply(data, function(x) paste0(head(x),  collapse = &quot;, &quot;)),
+                 row.names = NULL), 
+      booktabs = TRUE,
+      caption = &quot;Summary of the provided dataset.&quot;)</code></pre>
+<table>
+<caption><span id="tab:str">Table 2.1: </span>Summary of the provided dataset.</caption>
+<colgroup>
+<col width="19%" />
+<col width="9%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="left">classe</th>
+<th align="left">first_values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">double</td>
+<td align="left">56676, 99059, 17540, 105158, 107208, 46448</td>
+</tr>
+<tr class="even">
+<td align="left">city</td>
+<td align="left">character</td>
+<td align="left">Paris, Napoli, Paris, Florence, Cannes, Paris</td>
+</tr>
+<tr class="odd">
+<td align="left">cc1</td>
+<td align="left">character</td>
+<td align="left">fr, it, fr, it, fr, fr</td>
+</tr>
+<tr class="even">
+<td align="left">minrate</td>
+<td align="left">double</td>
+<td align="left">234.22, 58.8, 0, 146.02, 78.4, 184.7496</td>
+</tr>
+<tr class="odd">
+<td align="left">nr_rooms</td>
+<td align="left">integer</td>
+<td align="left">1, 1, 1, 1, 1, 1</td>
+</tr>
+<tr class="even">
+<td align="left">checkin</td>
+<td align="left">character</td>
+<td align="left">14:00, 14:00, 16:00, 17:00, 16:00, 15:00</td>
+</tr>
+<tr class="odd">
+<td align="left">default_comm_lang</td>
+<td align="left">character</td>
+<td align="left">NA, it, en, it, fr, NA</td>
+</tr>
+<tr class="even">
+<td align="left">office_id</td>
+<td align="left">integer</td>
+<td align="left">4, 353, 4, 279, 378, 4</td>
+</tr>
+<tr class="odd">
+<td align="left">km_from_city_center</td>
+<td align="left">integer</td>
+<td align="left">2, 15, 0, 6, 13, 0</td>
+</tr>
+<tr class="even">
+<td align="left">first_opened</td>
+<td align="left">double</td>
+<td align="left">2015-04-14, 2015-11-04, 2014-05-14, 2016-02-02, 2016-02-23, 2014-12-05</td>
+</tr>
+<tr class="odd">
+<td align="left">payment_method</td>
+<td align="left">character</td>
+<td align="left">cc,bt, bc, cc,ca,bt,bc, cc,ca, cc,bt, ca</td>
+</tr>
+<tr class="even">
+<td align="left">star_rating</td>
+<td align="left">integer</td>
+<td align="left">5, 5, 2, 5, 3, 5</td>
+</tr>
+<tr class="odd">
+<td align="left">hotel_type</td>
+<td align="left">character</td>
+<td align="left">Apartment, Holiday home, Apartment, Apartment, Villa, Apartment</td>
+</tr>
+</tbody>
+</table>
+<p>This represents a random sample of 10.000 properties from april 2016, wihtout information on the availability of properties.</p>
+</div>
+<div id="first-question" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> First question</h1>
+<div id="statement" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Statement</h2>
+<p>“<em>Dear Reporting Team,</em></p>
+<p><em>I am account manager for France. I would like to get some insights in our supply in regards to the football championship that will be held in France this year. I am especially interested to see if we are opening enough new
+properties. Can you please share your findings on our supply and highlight
+your outtakes?</em></p>
+<p><em>Thanks in advance.</em>”</p>
+</div>
+<div id="data-mining" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Data mining</h2>
+<div id="FC1" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Few comments</h3>
+<p>The dataset (<code>data</code>) is considered as a snapshot of 10.000 properties randomly selected in 10 cities: Paris, Napoli, Florence, Cannes, Roma, Nice, Palermo, Milano, Venice, Lyon, during april 2016. That means we do not know what proportion these 10.000 properties represent in each cities. In addition, this dataset do not include any information on the estimation of the number of people that will attend the football championship this summer, neither the proportion of these people that is expected to book a reservation via <a href="https://www.booking.com">Booking.com</a>, nor the number of properties already booked through <a href="https://www.booking.com">Booking.com</a>. Considering these, we need to:</p>
+<ul>
+<li>Have an idea of the proportion these 10.000 properties represent of the <a href="https://www.booking.com">Booking.com</a>’s offer in each city;</li>
+<li>Estimate the number of people that will attend the football championship.</li>
+</ul>
+<p>We also need to make several asumption:</p>
+<ul>
+<li>Considering the football championship will be held in France, we will only keep french cities in our analysis. In addition, in the present dataset, only Paris, Lyon and Nice have a stadium that will be used for the competition (<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2016">UEFA2016 - Wikipedia</a>), so we will focus on these cities thereafter;</li>
+<li>Someone that will attend the football championship is defined here as someone with a ticket for a match (and not someone that will only go to the Fan zones);</li>
+</ul>
+</div>
+<div id="analysis-results" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Analysis &amp; Results</h3>
+<div id="number-of-rooms-available" class="section level4" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> Number of rooms available</h4>
+<p>Based on a snapshot of the website <a href="https://www.booking.com">Booking.com</a> dated of the 1<sup>st</sup> april 2016 (thanks to <a href="https://web.archive.org">web.archive.org</a>), we know that Paris has <a href="https://web.archive.org/web/20160401205022/http://www.booking.com/city/fr/paris.fr.html">3981</a> properties, Nice <a href="https://web.archive.org/web/20160401225547/http://www.booking.com/city/fr/nice.fr.html">856</a>, and Lyon <a href="https://web.archive.org/web/20160401210028/http://www.booking.com/city/fr/lyon.fr.html">396</a> (Table <a href="#tab:properAvailable">3.1</a>).</p>
+<pre class="r"><code># subset with the relevant cities
+data.uefa=data[city %in% c(&quot;Paris&quot;,&quot;Nice&quot;,&quot;Lyon&quot;),]
+# nb of properties in dataset per city
+data.uefa.cities=data.uefa[,.(nb_rooms_dataset=sum(nr_rooms),
+                              nb_properties_dataset=.N),by=city]
+# add nb of properties available
+data.uefa.cities[,nb_properties_available:=c(3981,856,396)]
+# proportion of properties in the dataset
+data.uefa.cities[,prop_properties_dataset:=round((100/nb_properties_available)*nb_properties_dataset,2)]
+# nb of rooms available based on the proportion of properties in the dataset
+data.uefa.cities[,nb_rooms_available:=floor((nb_rooms_dataset*100)/prop_properties_dataset)]
+kable(data.uefa.cities, caption = &quot;Summary of properties available based on the provided dataset.&quot;)</code></pre>
+<table>
+<caption><span id="tab:properAvailable">Table 3.1: </span>Summary of properties available based on the provided dataset.</caption>
+<colgroup>
+<col width="5%" />
+<col width="15%" />
+<col width="19%" />
+<col width="21%" />
+<col width="21%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">city</th>
+<th align="right">nb_rooms_dataset</th>
+<th align="right">nb_properties_dataset</th>
+<th align="right">nb_properties_available</th>
+<th align="right">prop_properties_dataset</th>
+<th align="right">nb_rooms_available</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Paris</td>
+<td align="right">7411</td>
+<td align="right">2009</td>
+<td align="right">3981</td>
+<td align="right">50.46</td>
+<td align="right">14686</td>
+</tr>
+<tr class="even">
+<td align="left">Nice</td>
+<td align="right">869</td>
+<td align="right">580</td>
+<td align="right">856</td>
+<td align="right">67.76</td>
+<td align="right">1282</td>
+</tr>
+<tr class="odd">
+<td align="left">Lyon</td>
+<td align="right">553</td>
+<td align="right">188</td>
+<td align="right">396</td>
+<td align="right">47.47</td>
+<td align="right">1164</td>
+</tr>
+</tbody>
+</table>
+<p>This means the dataset <code>data</code> represents 50.46 % of the properties in Paris, 67.76 % of the properties in Nice and 47.47 % of the properties in Lyon (considering these proportions, the 10.000 properties within this dataset were probably not randomly selected after all…). Based on the number of rooms available in the dataset and these proportions, we estimated the total number of rooms available for:</p>
+<ul>
+<li>Paris of 14686;</li>
+<li>Nice of 1282;</li>
+<li>Lyon of 1164.</li>
+</ul>
+</div>
+<div id="number-of-attendees-per-city" class="section level4" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> Number of attendees per city</h4>
+<p>I based my estimation of the number of attendees (Figure <a href="#fig:attendees">3.1</a>) on the capacity of each stadium in each cities, multiplied by the number of matches, based on the Wikipedia page (<a href="https://en.wikipedia.org/wiki/UEFA_Euro_2016">UEFA-2016</a>).</p>
+<ul>
+<li>Paris with 5 matches at the <a href="https://en.wikipedia.org/wiki/Parc_des_Princes"><em>Parc des Princes</em></a> (capacity: 48712) and 7 matches at the <a href="https://en.wikipedia.org/wiki/Stade_de_France"><em>Stade de France</em></a> (capacity: 81338) =&gt; <span class="math inline">\(5 \times 48712 + 7 \times 81338 = 812926\)</span>;</li>
+<li>Nice with 4 matches at the <a href="https://en.wikipedia.org/wiki/Allianz_Riviera"><em>Stade de Nice</em></a> (capacity: 35624) =&gt; <span class="math inline">\(4 \times 35624 = 142496\)</span>;</li>
+<li>Lyon with 3 matches at the <a href="https://en.wikipedia.org/wiki/Parc_Olympique_Lyonnais"><em>Parc Olympique Lyonnais</em></a> (capacity: 59186) =&gt; <span class="math inline">\(3 \times 59186 = 177558\)</span>.</li>
+</ul>
+<p>For Paris, I also considered to include the <em>Stade de France</em> which is located in Saint-Denis, closed to Paris. As specified in the <a href="#FC1">Few comments</a> section, this basically means that I made the following assumption:</p>
+<blockquote>
+<p>1 ticket = 1 attendee</p>
+</blockquote>
+<pre class="r"><code>ggplot(data.table(City=c(&quot;Paris&quot;,&quot;Nice&quot;,&quot;Lyon&quot;),
+                  Attendees=c(812926,142496,177558)),aes(City,Attendees))+
+  geom_col()+
+  labs(y=&quot;Expected number of attendees&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:attendees"></span>
+<img src="booking_interview_files/figure-html/attendees-1.png" alt="Expected number of attendees per city based on the capacity of each stadium." width="672" />
+<p class="caption">
+Figure 3.1: Expected number of attendees per city based on the capacity of each stadium.
+</p>
+</div>
+</div>
+<div id="number-of-rooms-vs.-number-of-attendees" class="section level4" number="3.2.2.3">
+<h4><span class="header-section-number">3.2.2.3</span> Number of rooms vs. number of attendees</h4>
+<p>Considering that <a href="https://www.booking.com">Booking.com</a> is able to offer a maximum of 14686, 1282 and 1164 rooms, for respectively Paris, Nice and Lyon, a simple difference (Figure <a href="#fig:diffNbRoomsNbAttendees">3.2</a>) shows that <a href="https://www.booking.com">Booking.com</a> needs to increase significantly the number of rooms available, and so of properties, to reach the demand and welcome all the attendees of the football championship.</p>
+<pre class="r"><code>ggplot(data.table(City=rep(c(&quot;Paris&quot;,&quot;Nice&quot;,&quot;Lyon&quot;),2),
+                  Attendees=c(812926-data.uefa.cities[city==&quot;Paris&quot;,nb_rooms_available],
+                              142496-data.uefa.cities[city==&quot;Nice&quot;,nb_rooms_available],
+                              177558-data.uefa.cities[city==&quot;Lyon&quot;,nb_rooms_available],
+                              data.uefa.cities[city==&quot;Paris&quot;,nb_rooms_available],
+                              data.uefa.cities[city==&quot;Nice&quot;,nb_rooms_available],
+                              data.uefa.cities[city==&quot;Lyon&quot;,nb_rooms_available]),
+                  Group=c(&quot;Other&quot;,&quot;Other&quot;,&quot;Other&quot;,&quot;Booking&quot;,&quot;Booking&quot;,&quot;Booking&quot;)),
+       aes(City,Attendees))+
+  geom_col(aes(fill=Group))+
+  guides(fill = guide_legend(title.position = &quot;top&quot;,
+                               title = &quot;Accomodation&quot;))+
+  labs(y=&quot;Expected number of attendees&quot;)+
+  theme(legend.position = &quot;top&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:diffNbRoomsNbAttendees"></span>
+<img src="booking_interview_files/figure-html/diffNbRoomsNbAttendees-1.png" alt="Histogram of the number of attendees per city with a colour code for the capicity of [Booking.com](https://www.booking.com) to provide them a room." width="672" />
+<p class="caption">
+Figure 3.2: Histogram of the number of attendees per city with a colour code for the capicity of <a href="https://www.booking.com">Booking.com</a> to provide them a room.
+</p>
+</div>
+<p>Fortunately for <a href="https://www.booking.com">Booking.com</a>, this graph does not take into consideration to features:</p>
+<ul>
+<li>The real proportion of attendees behind our estimation of the number of attendees, <em>e.g</em> an attendee could buy two tickets, meaning that our estimation of the number of attendees is over-estimated;</li>
+<li>Not all the estimated attendees will book a room though Booking.com, in other words what is the market share of <a href="https://www.booking.com">Booking.com</a> among those who will book a room through internet.</li>
+</ul>
+<p>Considering this, I propose an image plot (Figure <a href="#fig:imgplot">3.3</a>) where we can easily read if <a href="https://www.booking.com">Booking.com</a> has enough rooms available considering (<em>i</em>) the real proportion of attendees based on our estimation, and (<em>ii</em>) the proportion of this people that will book a room through <a href="https://www.booking.com">Booking.com</a>.</p>
+<pre class="r"><code># a function to create a 100x100 matrix of the number of rooms available in function of the proportion of real attendees and the proportion of these people that will book a room through Booking.com
+img.fct=function(nb_attendees,nb_rooms,city){
+  nb_rooms=nb_rooms
+  A=matrix(seq(1,nb_attendees,length=100),nrow=100,ncol=100)
+  B=t(matrix(seq(1/100,100/100,length=100),nrow=100,ncol=100))
+  C=(A*B)-nb_rooms
+  D=melt(C)
+  D$City=city
+  D
+}
+# calculation of this matrix for each city
+img.data=rbind(img.fct(812926,data.uefa.cities[city==&quot;Paris&quot;,nb_rooms_available],&quot;Paris&quot;),
+               img.fct(142496,data.uefa.cities[city==&quot;Nice&quot;,nb_rooms_available],&quot;Nice&quot;),
+               img.fct(177558,data.uefa.cities[city==&quot;Lyon&quot;,nb_rooms_available],&quot;Lyon&quot;))
+# plot
+ggplot(img.data, aes(Var1, Var2)) +
+  geom_raster(aes(fill = log(value)), interpolate = TRUE)+
+  labs(x=&quot;Proportion of attendees that will book reservation through Booking.com (%)&quot;,
+       y=&quot;Proportion of real attendees based on my estimation (%)&quot;)+
+  scale_fill_gradientn(colours = rev(rainbow(7)), 
+                       na.value = &quot;grey&quot;,
+                       breaks = c(log(2), log(60), log(3000), log(160000)),
+                       labels=c(2,60,3000,160000))+
+  guides(fill = guide_colorbar(title.position = &quot;top&quot;,
+                               barwidth = 11,
+                               title = &quot;Additional nb of rooms to open&quot;))+
+  facet_grid(&quot;~ City&quot;)+
+  theme(legend.position = &quot;top&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:imgplot"></span>
+<img src="booking_interview_files/figure-html/imgplot-1.png" alt="Image plot for the three cities of the number of rooms vs. the real proportion of attendees based on our estimation and the proportion of this people that will book a room through [Booking.com](https://www.booking.com)." width="960" />
+<p class="caption">
+Figure 3.3: Image plot for the three cities of the number of rooms vs. the real proportion of attendees based on our estimation and the proportion of this people that will book a room through <a href="https://www.booking.com">Booking.com</a>.
+</p>
+</div>
+<p>In Figure <a href="#fig:imgplot">3.3</a>, the <em>grey</em> area represents the number of rooms <a href="https://www.booking.com">Booking.com</a> is able to offer, considering a certain proportion of real attendees as well as a proportion of these people that will book a room through <a href="https://www.booking.com">Booking.com</a>.</p>
+</div>
+</div>
+</div>
+<div id="conclusions" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Conclusions</h2>
+<p>Considering all the assumptions and results, Paris seems to have the best capacity to welcome attendees, compared to Nice or Lyon (in Figure <a href="#fig:imgplot">3.3</a>, the <em>grey</em> area is bigger for Paris than Nice and Lyon). Based on this results, I would recommend to increase the number of properties in both cities (Nice and Lyon) to make sure it reach the same level of capicity than Paris. In order to reach this same level of capacity, Nice has to open 1293 rooms and Lyon 2044. In addition, assuming that one ticket in four (the choice is totally arbitrary) will be sell to someone looking for an accomodation, <em>i.e.</em> 25 % of the proportion of real attendees and that 20 % (also an arbitrary choice) of these people will look for an accomodation through <a href="https://www.booking.com">Booking.com</a>, it appears that 24728, 5627 and 7445 rooms needs to be available in Paris, Nice and Lyon, that is to say respectively 6704, 1526 and 2019 new properties to meet the demand.</p>
+</div>
+</div>
+<div id="second-question" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Second question</h1>
+<div id="statement-1" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Statement</h2>
+<p>“<em>Dear Reporting Team,</em></p>
+<p><em>Lately I get the feeling that the properties we are opening in Southern Europe are getting more and more expensive, while our customers demand lower priced accommodations. I would like to present some data in our next account managers meetup, but of course I would like to have some validated insights to back this up. Can you help me out on this?</em></p>
+<p><em>Regards.</em>”</p>
+</div>
+<div id="data-mining-1" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Data mining</h2>
+<div id="few-comments" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Few comments</h3>
+<p>As I only get a snapshot of the situation for 10.000 properties randomly selected from april 2016, we will focus on the relationship between the minimal room rate for a single-night (<code>minrate</code>) and the date that the property was available at <a href="https://www.booking.com">Booking.com</a> for the first time (<code>first_opened</code>). I will thus test the hypothesis of an increase in <code>minrate</code> with <code>first_opened</code>. As the question is focused on the Southern Europe, I only considered cities in Italy (Napoli, Florence, Roma, Palermo, Milano, Venice) in the further analysis.</p>
+</div>
+<div id="analysis-results-1" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Analysis &amp; Results</h3>
+<pre class="r"><code># new dataset for Italia
+data.it=data[cc1==&quot;it&quot;,]
+# some exploratory graphs
+grid.arrange(ggplot(data.it,aes(minrate))+
+               geom_histogram(aes(y=..density..))+
+               geom_density()+
+               labs(x=&quot;Minimal room rate for a single night&quot;,
+                    y=&quot;Density&quot;)
+             ,
+             ggplot(data.it,aes(y=minrate,x=city))+
+               geom_boxplot()+
+               labs(y=&quot;Minimal room rate for a single night&quot;,
+                    x=&quot;City&quot;)
+             ,ncol=2)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:histBox"></span>
+<img src="booking_interview_files/figure-html/histBox-1.png" alt="Histogram and boxplot of the minimal room rate for a single night in several italian cities." width="960" />
+<p class="caption">
+Figure 4.1: Histogram and boxplot of the minimal room rate for a single night in several italian cities.
+</p>
+</div>
+<p>It appears there are a lot of outliers and zeros in the dataset (Figure <a href="#fig:histBox">4.1</a>). I decided then to remove any rows with a minimal room rate for a single night of zero and other outliers using the IQR rule.</p>
+<pre class="r"><code># we removed zeros
+data.it=data.it[minrate!=0,]
+# and other outliers
+outliers=function(out){
+  q1=quantile(out,0.25)
+  q3=quantile(out,0.75)
+  iqr=q3-q1
+  which(out&gt;q1-1.5*iqr &amp; out&lt;q3+1.5*iqr)
+}
+data.it.out=rbindlist(lapply(split(data.it,by=&quot;city&quot;),function(x){
+  x=x[outliers(x$minrate),]
+}))
+# new plot
+grid.arrange(
+  ggplot(data.it.out,aes(minrate))+
+    geom_histogram(aes(y=..density..))+
+    geom_density()+
+    labs(x=&quot;Minimal room rate for a single night&quot;,
+         y=&quot;Density&quot;)
+  ,
+  ggplot(data.it.out,aes(y=minrate,x=city))+
+    geom_boxplot()+
+    labs(y=&quot;Minimal room rate for a single night&quot;,
+         x=&quot;Cities&quot;)
+  ,ncol=2)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:histBoxOUT"></span>
+<img src="booking_interview_files/figure-html/histBoxOUT-1.png" alt="Histogram and boxplot of the minimal room rate in several italian cities, without considering outliers." width="960" />
+<p class="caption">
+Figure 4.2: Histogram and boxplot of the minimal room rate in several italian cities, without considering outliers.
+</p>
+</div>
+<p>This is much better, now we are going to look at the trend over time (Figure <a href="#fig:distriMRRGAM">4.3</a>), by first using a <a href="https://en.wikipedia.org/wiki/Generalized_additive_model">generalized additive model</a>.</p>
+<pre class="r"><code>ggplot(data.it.out,aes(x=first_opened,y=minrate))+
+  geom_point()+
+  geom_smooth()+
+  labs(y=&quot;Minimal room rate for a single night&quot;,
+       x=&quot;Date that the property was available at Booking.com for the first time&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:distriMRRGAM"></span>
+<img src="booking_interview_files/figure-html/distriMRRGAM-1.png" alt="Distribution of minimal room rates for a single night with the date that the property  was available at [Booking.com](https://www.booking.com) for the first time. The blue line is for a generalized additive model automatically adjusted with data." width="672" />
+<p class="caption">
+Figure 4.3: Distribution of minimal room rates for a single night with the date that the property was available at <a href="https://www.booking.com">Booking.com</a> for the first time. The blue line is for a generalized additive model automatically adjusted with data.
+</p>
+</div>
+<p>Nothing really clear here, neither using a simple linear regression (Figure <a href="#fig:distriMRRLM">4.4</a>).</p>
+<pre class="r"><code>ggplot(data.it.out,aes(x=first_opened,y=minrate))+
+  geom_point()+
+  geom_smooth(method=&quot;lm&quot;)+
+  labs(y=&quot;Minimal room rate for a single night&quot;,
+       x=&quot;Date that the property was available at Booking.com for the first time&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:distriMRRLM"></span>
+<img src="booking_interview_files/figure-html/distriMRRLM-1.png" alt="Distribution of minimal room rates for a single night with the date that the property  was available at [Booking.com](https://www.booking.com) for the first time. The blue line is for a linear regression automatically adjusted with data." width="672" />
+<p class="caption">
+Figure 4.4: Distribution of minimal room rates for a single night with the date that the property was available at <a href="https://www.booking.com">Booking.com</a> for the first time. The blue line is for a linear regression automatically adjusted with data.
+</p>
+</div>
+<p>As the dataset is structured by city, it is better to include a random effect in our models, using a <a href="https://en.wikipedia.org/wiki/Mixed_model">linear mixed effects models</a>.</p>
+<pre class="r"><code># building LME
+lme.1=lme(minrate~first_opened,data=data.it.out,random=~1|city,na.action = na.omit)
+# results
+pander(summary(lme.1))</code></pre>
+<table>
+<caption>Fixed effects: minrate ~ first_opened</caption>
+<colgroup>
+<col width="23%" />
+<col width="21%" />
+<col width="20%" />
+<col width="8%" />
+<col width="12%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Value</th>
+<th align="center">Std.Error</th>
+<th align="center">DF</th>
+<th align="center">t-value</th>
+<th align="center">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">144</td>
+<td align="center">54.1</td>
+<td align="center">4132</td>
+<td align="center">2.661</td>
+<td align="center">0.007811</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>first_opened</strong></td>
+<td align="center">-0.00000003283</td>
+<td align="center">0.00000003598</td>
+<td align="center">4132</td>
+<td align="center">-0.9123</td>
+<td align="center">0.3617</td>
+</tr>
+</tbody>
+</table>
+<table style="width:65%;">
+<caption>Standardized Within-Group Residuals</caption>
+<colgroup>
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Min</th>
+<th align="center">Q1</th>
+<th align="center">Med</th>
+<th align="center">Q3</th>
+<th align="center">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">-3.364</td>
+<td align="center">-0.6873</td>
+<td align="center">-0.1539</td>
+<td align="center">0.5618</td>
+<td align="center">3.79</td>
+</tr>
+</tbody>
+</table>
+<table style="width:88%;">
+<caption>Linear mixed-effects model fit by REML : minrate ~ first_opened</caption>
+<colgroup>
+<col width="15%" />
+<col width="20%" />
+<col width="12%" />
+<col width="38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Observations</th>
+<th align="center">Groups</th>
+<th align="center">Log-restricted-likelihood</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>city</strong></td>
+<td align="center">4139</td>
+<td align="center">6</td>
+<td align="center">-21373</td>
+</tr>
+</tbody>
+</table>
+<p>The ouput reveals there is no significant (<code>p-value</code> for <code>first_opened</code> &gt; 0.05) linear trend over time (defined as the date the property was available for the first time) of the minimal room rate for a single. Now, I take a look at the residual to know how trustful this result is.</p>
+<pre class="r"><code>par(mfrow=c(2,2))
+# diagnostic plots
+#plot(lme.1)
+acf(residuals(lme.1,normalized=T))
+hist(residuals(lme.1,normalized=T))
+plot(residuals(lme.1,normalized=T))</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:diagPlot"></span>
+<img src="booking_interview_files/figure-html/diagPlot-1.png" alt="Some diagnostic plot of the linear mixed effect model lme.1." width="672" />
+<p class="caption">
+Figure 4.5: Some diagnostic plot of the linear mixed effect model lme.1.
+</p>
+</div>
+<p>The diagnostic plots (Figure <a href="#fig:diagPlot">4.5</a>) realized on the residuals of the linear mixed effect model <code>lme.1</code> do not reveal any patterns, meaning the model is not missing any relevant variable. This also means that we can be confident in its results, regardless the city: there are no trend towards the minimal room rate for a single night with the date the property was available at Booking.com for the first time in this dataset.</p>
+</div>
+</div>
+<div id="conclusions-1" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Conclusions</h2>
+<p>No matter the city considered, there is no trend towards the minimal room rate for a single night with the date the property was available at Booking.com for the first time. Rather, there is a relative stability of the room rate with the date the property was available for the first time. While this analysis is interesting, it would probably be even more interesting to look at the relationship of the minimal room rate with time, and not only during the month of april 2016. This would may be highlight trends in agreement with your feeling.</p>
+</div>
+</div>
+<div id="other-insights" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Other insights</h1>
+<div id="few-comments-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Few comments</h2>
+<p>Given this dataset, there are a lot of questions that could be adressed, such as:</p>
+<ul>
+<li>Which city has the center the most covered by properties?</li>
+<li>Is there any differences among cities and countries in terms of properties offering (<code>hotel_type</code>, <code>nr_rooms</code>, <code>payment_method</code> or <code>star_rating</code>)?</li>
+<li>Can we relate the type of properties to the distance from the city center?</li>
+</ul>
+<p>But here, I decided to focus on the minimal room rate for a single night, and I tried to model this variable considering other information present within the dataset.</p>
+</div>
+<div id="analysis-results-2" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Analysis &amp; Results</h2>
+<p>I basically used the same approach than before, I removed zeros and outliers:</p>
+<pre class="r"><code># I removed zeros
+data.inter=data[minrate!=0,]
+# and other outliers
+data.inter=rbindlist(lapply(split(data.inter,by=&quot;city&quot;),function(x){
+  x=x[outliers(x$minrate),]
+}))</code></pre>
+<p>Then I converted every qualitative variables as factor:</p>
+<pre class="r"><code>data.inter$city=as.factor(data.inter$city)
+data.inter$cc1=as.factor(data.inter$cc1)
+data.inter$star_rating=as.factor(data.inter$star_rating)
+data.inter$hotel_type=as.factor(data.inter$hotel_type)
+data.inter$payment_method=as.factor(data.inter$payment_method)</code></pre>
+<p>Finally I ran a set of <a href="https://en.wikipedia.org/wiki/Generalized_additive_model">generalized additive models</a> using all the relevant information found in <code>data.inter</code>.</p>
+<pre class="r"><code>bam.list=list()
+bam.list$bam.1=bam(minrate~s(nr_rooms)+
+                     s(km_from_city_center)+
+                     s(nr_rooms, km_from_city_center,city, bs=&quot;fs&quot;,m=1)+
+                     s(nr_rooms, km_from_city_center,payment_method, bs=&quot;fs&quot;,m=1)+
+                     s(nr_rooms, km_from_city_center,star_rating, bs=&quot;fs&quot;,m=1)+
+                     s(nr_rooms, km_from_city_center,hotel_type, bs=&quot;fs&quot;,m=1)
+                   ,
+                   data=data.inter,
+                   na.action = na.omit)
+
+bam.list$bam.2=bam(minrate~s(nr_rooms)+
+                     s(km_from_city_center)+
+                     s(nr_rooms, km_from_city_center,city, bs=&quot;fs&quot;,m=1)+
+                     #s(nr_rooms, km_from_city_center,payment_method, bs=&quot;fs&quot;,m=1)+
+                     s(nr_rooms, km_from_city_center,star_rating, bs=&quot;fs&quot;,m=1)+
+                     s(nr_rooms, km_from_city_center,hotel_type, bs=&quot;fs&quot;,m=1)
+                   ,
+                   data=data.inter,
+                   na.action = na.omit)
+
+bam.list$bam.3=bam(minrate~s(nr_rooms)+
+                     s(km_from_city_center)+
+                     s(nr_rooms, km_from_city_center,city, bs=&quot;fs&quot;,m=1)+
+                     #s(nr_rooms, km_from_city_center,payment_method, bs=&quot;fs&quot;,m=1)+
+                     # s(nr_rooms, km_from_city_center,star_rating, bs=&quot;fs&quot;,m=1)+
+                     s(nr_rooms, km_from_city_center,hotel_type, bs=&quot;fs&quot;,m=1)
+                   ,
+                   data=data.inter,
+                   na.action = na.omit)
+
+bam.list$bam.4=bam(minrate~s(nr_rooms)+
+                     #s(km_from_city_center)+
+                     s(nr_rooms, km_from_city_center,city, bs=&quot;fs&quot;,m=1)+
+                     #s(nr_rooms, km_from_city_center,payment_method, bs=&quot;fs&quot;,m=1)+
+                     # s(nr_rooms, km_from_city_center,star_rating, bs=&quot;fs&quot;,m=1)+
+                     s(nr_rooms, km_from_city_center,hotel_type, bs=&quot;fs&quot;,m=1)
+                   ,
+                   data=data.inter,
+                   na.action = na.omit)
+
+bam.list$bam.5=bam(minrate~#s(nr_rooms)+
+                     #s(km_from_city_center)+
+                     s(nr_rooms, km_from_city_center,city, bs=&quot;fs&quot;,m=1)+
+                     #s(nr_rooms, km_from_city_center,payment_method, bs=&quot;fs&quot;,m=1)+
+                     # s(nr_rooms, km_from_city_center,star_rating, bs=&quot;fs&quot;,m=1)+
+                     s(nr_rooms, km_from_city_center,hotel_type, bs=&quot;fs&quot;,m=1)
+                   ,
+                   data=data.inter,
+                   na.action = na.omit)
+
+bam.list$bam.6=bam(minrate~#s(nr_rooms)+
+                     #s(km_from_city_center)+
+                     s(city, bs=&quot;re&quot;)+
+                     #s(nr_rooms, km_from_city_center,payment_method, bs=&quot;fs&quot;,m=1)+
+                     #s(nr_rooms, km_from_city_center,star_rating, bs=&quot;fs&quot;,m=1)+
+                     s(hotel_type, bs=&quot;re&quot;)
+                   ,
+                   data=data.inter,
+                   na.action = na.omit)</code></pre>
+<p>I based the model selection looking at the <code>p-value</code> and the deviance explained. You can find in the <a href="#appendix">Appendix</a> section a summary of each model. Basically, I removed any non-significant part of the equation that was due to a random effect, <em>i.e</em>:</p>
+<ul>
+<li><code>s(nr_rooms, km_from_city_center,payment_method, bs="fs",m=1)</code></li>
+<li><code>s(nr_rooms, km_from_city_center,star_rating, bs="fs",m=1)</code></li>
+</ul>
+<p>Then I removed any non-significant part of the equation that was due to a fixed effect, <em>i.e</em>:</p>
+<ul>
+<li><code>s(nr_rooms)</code></li>
+<li><code>s(km_from_city_center)</code></li>
+</ul>
+<p>As it remained two random smooth (a random effect on the intercept and the slope) and no fixed terms, I transformed these random smooth effects by random intercept effects, <em>i.e</em>:</p>
+<ul>
+<li><code>s(city, bs="re")</code></li>
+<li><code>s(hotel_type, bs="re"</code></li>
+</ul>
+<p>The deviance, that is to say the proportion of variation in <code>minrate</code>, explained by the first full model <code>bam.1</code> is nearly the same as the much more simplify model (<code>bam.1</code>), around 36 %.</p>
+<pre class="r"><code>ggplot(data.table(deviance=sapply(bam.list,function(x){
+  round(summary(x)$dev.expl*100,2)
+}),
+model=names(bam.list)),aes(x=model,y=deviance))+
+  geom_point()+
+  labs(x=&#39;Generalized additive models&#39;,y=&quot;Deviance explained&quot;)+
+  lims(y=c(0,100))</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:devModel"></span>
+<img src="booking_interview_files/figure-html/devModel-1.png" alt="Deviance explained of the minimal room rate for a single night by each model." width="672" />
+<p class="caption">
+Figure 5.1: Deviance explained of the minimal room rate for a single night by each model.
+</p>
+</div>
+<p>Based on this analysis and using the principle of parsimony, the best model to explain variation of the minimal room rate for a single night is composed of two random intercept effects, the city and the type of properties.</p>
+</div>
+<div id="conclusions-2" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Conclusions</h2>
+<p>Without any fixed term in the model <code>bam.6</code>, this analysis showed that minimal room rate for a single night is nearly constant no matter the number of rooms or the distance from the city center. It also showed that the only qualitative variables that matters when setting a price is the location and the type of property proposed. To go further in the analysis I could have look at the effect of each mode, <em>i.e.</em> Paris, Napoli, Florence, Cannes, Roma, Nice, Milano, Venice, Palermo, Lyon for the cities, and Apartment, Hotel, Bed and Breakfast, ApartHotel, Holiday home, Hostel, Guest house, Homestay, Villa, Farm stay, Country house, Boat for type of properties, within the model <code>bam.1</code>, but a simple boxplot will higlight these differences in a more visual way Figure <a href="#fig:boxplotBAM1">5.2</a> and <a href="#fig:boxplotBAM2">5.3</a>.</p>
+<pre class="r"><code>ggplot(data.inter,aes(x=city,y=minrate))+
+  geom_boxplot()+
+  labs(x=&quot;City&quot;,y=&quot;Minimal room rate for a single night&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplotBAM1"></span>
+<img src="booking_interview_files/figure-html/boxplotBAM1-1.png" alt="Minimal room rate for a single night related to cities" width="672" />
+<p class="caption">
+Figure 5.2: Minimal room rate for a single night related to cities
+</p>
+</div>
+<pre class="r"><code>ggplot(data.inter,aes(x=hotel_type,y=minrate))+
+  geom_boxplot()+
+  labs(x=&quot;Type of property&quot;,y=&quot;Minimal rate for a single room&quot;)</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplotBAM2"></span>
+<img src="booking_interview_files/figure-html/boxplotBAM2-1.png" alt="Minimal room rate for a single night related to type of properties" width="960" />
+<p class="caption">
+Figure 5.3: Minimal room rate for a single night related to type of properties
+</p>
+</div>
+</div>
+</div>
+<div id="appendix" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Appendix</h1>
+<pre class="r"><code># summary of each GAM
+lapply(bam.list,summary)</code></pre>
+<pre><code>$bam.1
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+minrate ~ s(nr_rooms) + s(km_from_city_center) + s(nr_rooms, 
+    km_from_city_center, city, bs = &quot;fs&quot;, m = 1) + s(nr_rooms, 
+    km_from_city_center, payment_method, bs = &quot;fs&quot;, m = 1) + 
+    s(nr_rooms, km_from_city_center, star_rating, bs = &quot;fs&quot;, 
+        m = 1) + s(nr_rooms, km_from_city_center, hotel_type, 
+    bs = &quot;fs&quot;, m = 1)
+
+Parametric coefficients:
+            Estimate Std. Error t value      Pr(&gt;|t|)    
+(Intercept)   102.42      17.36     5.9 0.00000000388 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Approximate significance of smooth terms:
+                                                   edf Ref.df     F
+s(nr_rooms)                                     1.0001   1.00 1.966
+s(km_from_city_center)                          1.5745   1.87 0.628
+s(nr_rooms,km_from_city_center,city)           30.5658 255.00 6.181
+s(nr_rooms,km_from_city_center,payment_method)  0.8026 166.00 0.007
+s(nr_rooms,km_from_city_center,star_rating)     3.4535 129.00 0.054
+s(nr_rooms,km_from_city_center,hotel_type)     11.4710 199.00 1.286
+                                                           p-value    
+s(nr_rooms)                                                  0.161    
+s(km_from_city_center)                                       0.601    
+s(nr_rooms,km_from_city_center,city)           &lt;0.0000000000000002 ***
+s(nr_rooms,km_from_city_center,payment_method)               0.177    
+s(nr_rooms,km_from_city_center,star_rating)                  0.034 *  
+s(nr_rooms,km_from_city_center,hotel_type)     &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+R-sq.(adj) =  0.361   Deviance explained = 36.7%
+fREML =  25963  Scale est. = 2977.6    n = 4781
+
+$bam.2
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+minrate ~ s(nr_rooms) + s(km_from_city_center) + s(nr_rooms, 
+    km_from_city_center, city, bs = &quot;fs&quot;, m = 1) + s(nr_rooms, 
+    km_from_city_center, star_rating, bs = &quot;fs&quot;, m = 1) + s(nr_rooms, 
+    km_from_city_center, hotel_type, bs = &quot;fs&quot;, m = 1)
+
+Parametric coefficients:
+            Estimate Std. Error t value      Pr(&gt;|t|)    
+(Intercept)   102.38      17.36   5.896 0.00000000397 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Approximate significance of smooth terms:
+                                               edf  Ref.df     F
+s(nr_rooms)                                  1.000   1.000 2.053
+s(km_from_city_center)                       1.570   1.864 0.679
+s(nr_rooms,km_from_city_center,city)        31.081 255.000 6.193
+s(nr_rooms,km_from_city_center,star_rating)  3.473 131.000 0.053
+s(nr_rooms,km_from_city_center,hotel_type)  11.400 199.000 1.284
+                                                        p-value    
+s(nr_rooms)                                              0.1520    
+s(km_from_city_center)                                   0.5807    
+s(nr_rooms,km_from_city_center,city)        &lt;0.0000000000000002 ***
+s(nr_rooms,km_from_city_center,star_rating)              0.0362 *  
+s(nr_rooms,km_from_city_center,hotel_type)  &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+R-sq.(adj) =  0.361   Deviance explained = 36.7%
+fREML =  25964  Scale est. = 2977.8    n = 4781
+
+$bam.3
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+minrate ~ s(nr_rooms) + s(km_from_city_center) + s(nr_rooms, 
+    km_from_city_center, city, bs = &quot;fs&quot;, m = 1) + s(nr_rooms, 
+    km_from_city_center, hotel_type, bs = &quot;fs&quot;, m = 1)
+
+Parametric coefficients:
+            Estimate Std. Error t value      Pr(&gt;|t|)    
+(Intercept)   101.52      17.54   5.789 0.00000000743 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Approximate significance of smooth terms:
+                                              edf  Ref.df     F
+s(nr_rooms)                                 1.000   1.000 3.294
+s(km_from_city_center)                      1.539   1.831 0.609
+s(nr_rooms,km_from_city_center,city)       40.279 263.000 7.707
+s(nr_rooms,km_from_city_center,hotel_type) 11.377 187.000 1.772
+                                                       p-value    
+s(nr_rooms)                                             0.0696 .  
+s(km_from_city_center)                                  0.6189    
+s(nr_rooms,km_from_city_center,city)       &lt;0.0000000000000002 ***
+s(nr_rooms,km_from_city_center,hotel_type) &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+R-sq.(adj) =  0.367   Deviance explained = 37.3%
+fREML =  32316  Scale est. = 2949.7    n = 5957
+
+$bam.4
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+minrate ~ s(nr_rooms) + s(nr_rooms, km_from_city_center, city, 
+    bs = &quot;fs&quot;, m = 1) + s(nr_rooms, km_from_city_center, hotel_type, 
+    bs = &quot;fs&quot;, m = 1)
+
+Parametric coefficients:
+            Estimate Std. Error t value      Pr(&gt;|t|)    
+(Intercept)   101.36      17.54   5.779 0.00000000791 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Approximate significance of smooth terms:
+                                             edf Ref.df     F
+s(nr_rooms)                                 1.00      1 2.760
+s(nr_rooms,km_from_city_center,city)       40.14    265 7.630
+s(nr_rooms,km_from_city_center,hotel_type) 13.23    205 1.613
+                                                       p-value    
+s(nr_rooms)                                             0.0967 .  
+s(nr_rooms,km_from_city_center,city)       &lt;0.0000000000000002 ***
+s(nr_rooms,km_from_city_center,hotel_type) &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+R-sq.(adj) =  0.367   Deviance explained = 37.3%
+fREML =  32317  Scale est. = 2948.8    n = 5957
+
+$bam.5
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+minrate ~ s(nr_rooms, km_from_city_center, city, bs = &quot;fs&quot;, m = 1) + 
+    s(nr_rooms, km_from_city_center, hotel_type, bs = &quot;fs&quot;, m = 1)
+
+Parametric coefficients:
+            Estimate Std. Error t value     Pr(&gt;|t|)    
+(Intercept)    99.75      17.61   5.664 0.0000000155 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Approximate significance of smooth terms:
+                                             edf Ref.df     F
+s(nr_rooms,km_from_city_center,city)       40.16    265 7.614
+s(nr_rooms,km_from_city_center,hotel_type) 13.05    206 1.705
+                                                       p-value    
+s(nr_rooms,km_from_city_center,city)       &lt;0.0000000000000002 ***
+s(nr_rooms,km_from_city_center,hotel_type) &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+R-sq.(adj) =  0.367   Deviance explained = 37.2%
+fREML =  32320  Scale est. = 2950.2    n = 5957
+
+$bam.6
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+minrate ~ s(city, bs = &quot;re&quot;) + s(hotel_type, bs = &quot;re&quot;)
+
+Parametric coefficients:
+            Estimate Std. Error t value     Pr(&gt;|t|)    
+(Intercept)    98.62      18.12   5.442 0.0000000547 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Approximate significance of smooth terms:
+                edf Ref.df     F             p-value    
+s(city)       8.947      9 13454 &lt;0.0000000000000002 ***
+s(hotel_type) 9.592     11  1846 &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+R-sq.(adj) =  0.358   Deviance explained =   36%
+fREML =  32334  Scale est. = 2992.9    n = 5957</code></pre>
+</div>
+
+<!–– https://stackoverflow.com/questions/56797898/rmarkdown-html-site-yml-navbar-href-links-open-in-new-tab-with-target-blank ––>
+
+<script type="text/javascript" src="links.js"></script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
