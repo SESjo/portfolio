@@ -330,7 +330,7 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Portfolio - Joffrey JOUMAA</a>
+  <a href="index.html">Portfolio - Joffrey Joumaa</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -409,7 +409,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Booking Interview Project</h1>
-<h4 class="author">Joffrey JOUMAA</h4>
+<h4 class="author">Joffrey Joumaa</h4>
 <h4 class="date">June 5, 2017</h4>
 
 </div>
@@ -627,7 +627,7 @@ kable(data.uefa.cities, caption = &quot;Summary of properties available based on
 </table>
 <p>This means the dataset <code>data</code> represents 50.46 % of the properties in Paris, 67.76 % of the properties in Nice and 47.47 % of the properties in Lyon (considering these proportions, the 10.000 properties within this dataset were probably not randomly selected after all…). Based on the number of rooms available in the dataset and these proportions, we estimated the total number of rooms available for:</p>
 <ul>
-<li>Paris of 14686;</li>
+<li>Paris of 1.4686^{4};</li>
 <li>Nice of 1282;</li>
 <li>Lyon of 1164.</li>
 </ul>
@@ -657,7 +657,7 @@ Figure 3.1: Expected number of attendees per city based on the capacity of each 
 </div>
 <div id="number-of-rooms-vs.-number-of-attendees" class="section level4" number="3.2.2.3">
 <h4><span class="header-section-number">3.2.2.3</span> Number of rooms vs. number of attendees</h4>
-<p>Considering that <a href="https://www.booking.com">Booking.com</a> is able to offer a maximum of 14686, 1282 and 1164 rooms, for respectively Paris, Nice and Lyon, a simple difference (Figure <a href="#fig:diffNbRoomsNbAttendees">3.2</a>) shows that <a href="https://www.booking.com">Booking.com</a> needs to increase significantly the number of rooms available, and so of properties, to reach the demand and welcome all the attendees of the football championship.</p>
+<p>Considering that <a href="https://www.booking.com">Booking.com</a> is able to offer a maximum of 1.4686^{4}, 1282 and 1164 rooms, for respectively Paris, Nice and Lyon, a simple difference (Figure <a href="#fig:diffNbRoomsNbAttendees">3.2</a>) shows that <a href="https://www.booking.com">Booking.com</a> needs to increase significantly the number of rooms available, and so of properties, to reach the demand and welcome all the attendees of the football championship.</p>
 <pre class="r"><code>ggplot(data.table(City=rep(c(&quot;Paris&quot;,&quot;Nice&quot;,&quot;Lyon&quot;),2),
                   Attendees=c(812926-data.uefa.cities[city==&quot;Paris&quot;,nb_rooms_available],
                               142496-data.uefa.cities[city==&quot;Nice&quot;,nb_rooms_available],
@@ -724,7 +724,7 @@ Figure 3.3: Image plot for the three cities of the number of rooms vs. the real
 </div>
 <div id="conclusions" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Conclusions</h2>
-<p>Considering all the assumptions and results, Paris seems to have the best capacity to welcome attendees, compared to Nice or Lyon (in Figure <a href="#fig:imgplot">3.3</a>, the <em>grey</em> area is bigger for Paris than Nice and Lyon). Based on this results, I would recommend to increase the number of properties in both cities (Nice and Lyon) to make sure it reach the same level of capicity than Paris. In order to reach this same level of capacity, Nice has to open 1293 rooms and Lyon 2044. In addition, assuming that one ticket in four (the choice is totally arbitrary) will be sell to someone looking for an accomodation, <em>i.e.</em> 25 % of the proportion of real attendees and that 20 % (also an arbitrary choice) of these people will look for an accomodation through <a href="https://www.booking.com">Booking.com</a>, it appears that 24728, 5627 and 7445 rooms needs to be available in Paris, Nice and Lyon, that is to say respectively 6704, 1526 and 2019 new properties to meet the demand.</p>
+<p>Considering all the assumptions and results, Paris seems to have the best capacity to welcome attendees, compared to Nice or Lyon (in Figure <a href="#fig:imgplot">3.3</a>, the <em>grey</em> area is bigger for Paris than Nice and Lyon). Based on this results, I would recommend to increase the number of properties in both cities (Nice and Lyon) to make sure it reach the same level of capicity than Paris. In order to reach this same level of capacity, Nice has to open 1293 rooms and Lyon 2044. In addition, assuming that one ticket in four (the choice is totally arbitrary) will be sell to someone looking for an accomodation, <em>i.e.</em> 25 % of the proportion of real attendees and that 20 % (also an arbitrary choice) of these people will look for an accomodation through <a href="https://www.booking.com">Booking.com</a>, it appears that 2.4728^{4}, 5627 and 7445 rooms needs to be available in Paris, Nice and Lyon, that is to say respectively 6704, 1526 and 2019 new properties to meet the demand.</p>
 </div>
 </div>
 <div id="second-question" class="section level1" number="4">
