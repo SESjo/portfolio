@@ -1,8 +1,7 @@
 project:
   type: website
   resources: "resume_joumaa.pdf"
-
-# output_dir: "docs"
+  output_dir: docs
 
 website:
   # # not sure what that is...
