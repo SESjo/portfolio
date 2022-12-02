@@ -1,0 +1,630 @@
+---
+title: "Booking Interview Project"
+author:
+  - name: "Joffrey Joumaa"
+date: "June 5, 2017"
+format:
+  html:
+    toc: true
+    toc-location: left
+    number-sections: true
+    smooth-scroll: true
+    code-fold: true
+    code-tools: true
+    code-link: true
+    df-print: paged
+    fig-align: "center"
+execute: 
+  echo: true
+  cache: true
+  warning: false
+knitr:
+  opts_chunk:
+    message: false
+    rownames.print: false
+    tidy: styler
+---
+
+```{=html}
+<style>
+body {
+text-align: justify}
+</style>
+```
+
+# Loading library
+
+```{r}
+library(data.table)
+library(ggplot2)
+library(nlme)
+library(knitr)
+library(magrittr)
+library(pander)
+library(itsadug)
+library(mgcv)
+library(gridExtra)
+# avoid scientific notation
+options(scipen = 999)
+```
+
+# Preambule
+
+I received an email from Irina Itu (HQ Recruiter - [Booking.com](https://www.booking.com)), the 2^nd^ of June including two documents:
+
+* **`r list.files("./booking_data/")[2]`**, the document presenting the situation and the questions that I have to answer as a reporting analyst.
+* **`r list.files("./booking_data/")[1]`**, the dataset that would allow me to addressed these questions.
+
+To make sure everyone knows what I am dealing with, you will find a summary of those data @tbl-str:
+
+
+```{r tbl-str}
+#| tbl-cap: "Summary of the provided dataset."
+
+# dataset loading
+data <- fread("./booking_data//Assessment_Reporting_Analyst.csv")
+
+# time format
+data[, first_opened := as.POSIXct(first_opened, tz = "UTC", format = "%m/%d/%y")]
+
+# summary
+kable(
+  data.frame(
+    variable = names(data),
+    classe = sapply(data, typeof),
+    first_values = sapply(data, function(x) {
+      paste0(head(x), collapse = ", ")
+    }),
+    row.names = NULL
+  ),
+  booktabs = TRUE
+)
+```
+
+This represents a random sample of 10.000 properties from April 2016, wihtout information on the availability of properties. 
+
+# First question
+
+## Statement
+
+"*Dear Reporting Team,*
+
+*I am account manager for France. I would like to get some insights in our supply in regards to the football championship that will be held in France this year. I am especially interested to see if we are opening enough new
+properties. Can you please share your findings on our supply and highlight
+your outtakes?*
+
+*Thanks in advance.*"
+
+## Data mining
+
+### Few comments {#FC1}
+
+```{r}
+#| echo: false
+
+# trick to avoid crash when render using quarto
+nb_unique_city <- prettyNum(length(unique(data$city)), big.mark = ",")
+unique_city <- prettyNum(unique(data$city), big.mark = ",")
+```
+
+The dataset (`data`) is considered as a snapshot of 10.000 properties randomly selected in `r nb_unique_city` cities: `r unique_city`, during April 2016. That means we do not know what proportion these 10.000 properties represent in each cities. In addition, this dataset do not include any information on the estimation of the number of people that will attend the football championship this summer, neither the proportion of these people that is expected to book a reservation via [Booking.com](https://www.booking.com), nor the number of properties already booked through [Booking.com](https://www.booking.com). Considering these, we need to:
+
+* Have an idea of the proportion these 10.000 properties represent of the [Booking.com](https://www.booking.com)'s offer in each city;
+* Estimate the number of people that will attend the football championship.
+
+We also need to make several asumption:
+
+* Considering the football championship will be held in France, we will only keep french cities in our analysis. In addition, in the present dataset, only Paris, Lyon and Nice have a stadium that will be used for the competition ([UEFA2016 - Wikipedia](https://en.wikipedia.org/wiki/UEFA_Euro_2016)), so we will focus on these cities thereafter;
+* Someone that will attend the football championship is defined here as someone with a ticket for a match (and not someone that will only go to the Fan zones);
+
+### Analysis & Results
+
+#### Number of rooms available
+
+Based on a snapshot of the website [Booking.com](https://www.booking.com) dated of April 1^st^, 2016 (thanks to [web.archive.org](https://web.archive.org)), we know that Paris has [3981](https://web.archive.org/web/20160401205022/http://www.booking.com/city/fr/paris.fr.html) properties, Nice [856](https://web.archive.org/web/20160401225547/http://www.booking.com/city/fr/nice.fr.html), and Lyon [396](https://web.archive.org/web/20160401210028/http://www.booking.com/city/fr/lyon.fr.html) (@tbl-properAvailable).
+
+```{r tbl-properAvailable}
+#| tbl-cap: "Summary of properties available based on the provided dataset."
+
+# subset with the relevant cities
+data.uefa <- data[city %in% c("Paris", "Nice", "Lyon"), ]
+# nb of properties in dataset per city
+data.uefa.cities <- data.uefa[, .(
+  nb_rooms_dataset = sum(nr_rooms),
+  nb_properties_dataset = .N
+), by = city]
+# add nb of properties available
+data.uefa.cities[, nb_properties_available := c(3981, 856, 396)]
+# proportion of properties in the dataset
+data.uefa.cities[, prop_properties_dataset := round((100 / nb_properties_available) * nb_properties_dataset, 2)]
+# nb of rooms available based on the proportion of properties in the dataset
+data.uefa.cities[, nb_rooms_available := floor((nb_rooms_dataset * 100) / prop_properties_dataset)]
+kable(data.uefa.cities)
+```
+
+
+```{r}
+#| echo: false
+
+# trick to avoid crash when render using quarto
+prop_city_paris <- prettyNum(data.uefa.cities[data.uefa.cities$city == "Paris"]$prop_properties_dataset,
+  big.mark = ","
+)
+prop_city_nice <- prettyNum(data.uefa.cities[data.uefa.cities$city == "Nice"]$prop_properties_dataset,
+  big.mark = ","
+)
+prop_city_lyon <-
+  prettyNum(data.uefa.cities[data.uefa.cities$city == "Lyon"]$prop_properties_dataset,
+    big.mark = ","
+  )
+nb_room_paris <- prettyNum(data.uefa.cities[data.uefa.cities$city == "Paris"]$nb_rooms_available,
+  big.mark = ","
+)
+nb_room_nice <- prettyNum(data.uefa.cities[data.uefa.cities$city == "Nice"]$nb_rooms_available,
+  big.mark = ","
+)
+nb_room_lyon <- prettyNum(data.uefa.cities[data.uefa.cities$city == "Lyon"]$nb_rooms_available,
+  big.mark = ","
+)
+```
+
+This means the dataset `data` represents `r prop_city_paris` \% of the properties in Paris, `r prop_city_nice` \% of the properties in Nice and `r prop_city_lyon` \% of the properties in Lyon (considering these proportions, the 10.000 properties within this dataset were probably not randomly selected after all...). Based on the number of rooms available in the dataset and these proportions, we estimated the total number of rooms available for:
+
+* Paris of `r nb_room_paris`;
+* Nice of `r nb_room_nice`;
+* Lyon of `r nb_room_lyon`.
+
+#### Number of attendees per city
+
+I based my estimation of the number of attendees (@fig-attendees) on the capacity of each stadium in each cities, multiplied by the number of matches, based on the Wikipedia page ([UEFA-2016](https://en.wikipedia.org/wiki/UEFA_Euro_2016)).
+
+* Paris with 5 matches at the [*Parc des Princes*](https://en.wikipedia.org/wiki/Parc_des_Princes) (capacity: 48712) and 7 matches at the [*Stade de France*](https://en.wikipedia.org/wiki/Stade_de_France) (capacity: 81338) => $5 \times 48712 + 7 \times 81338 = 812926$;
+* Nice with 4 matches at the [*Stade de Nice*](https://en.wikipedia.org/wiki/Allianz_Riviera) (capacity: 35624) => $4 \times 35624 = 142496$;
+* Lyon with 3 matches at the [*Parc Olympique Lyonnais*](https://en.wikipedia.org/wiki/Parc_Olympique_Lyonnais) (capacity: 59186) => $3 \times 59186 = 177558$.
+
+For Paris, I also considered to include the *Stade de France* which is located in Saint-Denis, closed to Paris. As specified in the [Few comments](#FC1) section, this basically means that I made the following assumption:  
+
+> 1 ticket = 1 attendee
+
+```{r fig-attendees}
+#| fig-cap: "Expected number of attendees per city based on the capacity of each stadium."
+
+ggplot(data.table(
+  City = c("Paris", "Nice", "Lyon"),
+  Attendees = c(812926, 142496, 177558)
+), aes(City, Attendees)) +
+  geom_col() +
+  labs(y = "Expected number of attendees")
+```
+
+#### Number of rooms vs. number of attendees
+
+Considering that [Booking.com](https://www.booking.com) is able to offer a maximum of `r nb_room_paris`, `r nb_room_nice` and `r nb_room_lyon` rooms, for respectively Paris, Nice and Lyon, a simple difference (@fig-diffNbRoomsNbAttendees) shows that [Booking.com](https://www.booking.com) needs to increase significantly the number of rooms available, and so of properties, to reach the demand and welcome all the attendees of the football championship.
+
+```{r fig-diffNbRoomsNbAttendees}
+#| fig-cap: "Histogram of the number of attendees per city with a colour code for the capacity of [Booking.com](https://www.booking.com) to provide them a room."
+
+ggplot(
+  data.table(
+    City = rep(c("Paris", "Nice", "Lyon"), 2),
+    Attendees = c(
+      812926 - data.uefa.cities[city == "Paris", nb_rooms_available],
+      142496 - data.uefa.cities[city == "Nice", nb_rooms_available],
+      177558 - data.uefa.cities[city == "Lyon", nb_rooms_available],
+      data.uefa.cities[city == "Paris", nb_rooms_available],
+      data.uefa.cities[city == "Nice", nb_rooms_available],
+      data.uefa.cities[city == "Lyon", nb_rooms_available]
+    ),
+    Group = c("Other", "Other", "Other", "Booking", "Booking", "Booking")
+  ),
+  aes(City, Attendees)
+) +
+  geom_col(aes(fill = Group)) +
+  guides(fill = guide_legend(
+    title.position = "top",
+    title = "accommodation"
+  )) +
+  labs(y = "Expected number of attendees") +
+  theme(legend.position = "top")
+```
+
+Fortunately for [Booking.com](https://www.booking.com), this graph does not take into consideration two features:
+
+* The real proportion of attendees behind our estimation of the number of attendees, *e.g* an attendee could buy two tickets, meaning that our estimation of the number of attendees is over-estimated;
+* Not all the estimated attendees will book a room though Booking.com, in other words what is the market share of [Booking.com](https://www.booking.com) among those who will book a room through internet. 
+
+Considering this, I propose an image plot (@fig-imgplot) where we can easily read if [Booking.com](https://www.booking.com) has enough rooms available considering (*i*) the real proportion of attendees based on our estimation, and (*ii*) the proportion of this people that will book a room through [Booking.com](https://www.booking.com).
+
+```{r fig-imgplot}
+#| fig-cap: "Image plot for the three cities of the number of rooms vs. the real proportion of attendees based on our estimation and the proportion of this people that will book a room through [Booking.com](https://www.booking.com)."
+#| fig-width: 10
+
+# a function to create a 100x100 matrix of the number of rooms available in function of the proportion of real attendees and the proportion of these people that will book a room through Booking.com
+img.fct <- function(nb_attendees, nb_rooms, city) {
+  nb_rooms <- nb_rooms
+  A <- matrix(seq(1, nb_attendees, length = 100), nrow = 100, ncol = 100)
+  B <- t(matrix(seq(1 / 100, 100 / 100, length = 100), nrow = 100, ncol = 100))
+  C <- (A * B) - nb_rooms
+  D <- melt(C)
+  D$City <- city
+  D
+}
+# calculation of this matrix for each city
+img.data <- rbind(
+  img.fct(812926, data.uefa.cities[city == "Paris", nb_rooms_available], "Paris"),
+  img.fct(142496, data.uefa.cities[city == "Nice", nb_rooms_available], "Nice"),
+  img.fct(177558, data.uefa.cities[city == "Lyon", nb_rooms_available], "Lyon")
+)
+# plot
+ggplot(img.data, aes(Var1, Var2)) +
+  geom_raster(aes(fill = log(value)), interpolate = TRUE) +
+  labs(
+    x = "Proportion of attendees that will book reservation through Booking.com (%)",
+    y = "Proportion of real attendees based on my estimation (%)"
+  ) +
+  scale_fill_gradientn(
+    colours = rev(rainbow(7)),
+    na.value = "grey",
+    breaks = c(log(2), log(60), log(3000), log(160000)),
+    labels = c(2, 60, 3000, 160000)
+  ) +
+  guides(fill = guide_colorbar(
+    title.position = "top",
+    barwidth = 11,
+    title = "Additional nb of rooms to open"
+  )) +
+  facet_grid("~ City") +
+  theme(legend.position = "top")
+```
+In @fig-imgplot, the *grey* area represents the number of rooms [Booking.com](https://www.booking.com) is able to offer, considering a certain proportion of real attendees as well as a proportion of these people that will book a room through [Booking.com](https://www.booking.com). 
+
+## Conclusions
+
+```{r}
+#| echo: false
+
+# trick to avoid crash when render using quarto
+nice_room_to_open <- prettyNum(ceiling(((142496 / 100) * (100 / 812926) * 14686) - 1282), big.mark = ",")
+lyon_room_to_open <- prettyNum(ceiling(((177558 / 100) * (100 / 812926) * 14686) - 1164), big.mark = ",")
+room_paris <- prettyNum(floor(img.data$value[img.data$City == "Paris" & img.data$Var1 == 25 & img.data$Var2 == 20]), big.mark = ",")
+room_nice <- prettyNum(floor(img.data$value[img.data$City == "Nice" & img.data$Var1 == 25 & img.data$Var2 == 20]), big.mark = ",")
+room_lyon <- prettyNum(floor(img.data$value[img.data$City == "Lyon" & img.data$Var1 == 25 & img.data$Var2 == 20]), big.mark = ",")
+property_paris <- prettyNum(ceiling(img.data$value[img.data$City == "Paris" & img.data$Var1 == 25 & img.data$Var2 == 20] / mean(data[data$city == "Paris"]$nr_rooms)), big.mark = ",")
+property_nice <- prettyNum(ceiling(img.data$value[img.data$City == "Nice" & img.data$Var1 == 25 & img.data$Var2 == 20] / mean(data[data$city == "Nice"]$nr_rooms)), big.mark = ",")
+property_lyon <- prettyNum(ceiling(img.data$value[img.data$City == "Lyon" & img.data$Var1 == 25 & img.data$Var2 == 20] / mean(data[data$city == "Lyon"]$nr_rooms)), big.mark = ",")
+```
+
+
+Considering all the assumptions and results, Paris seems to have the best capacity to welcome attendees, compared to Nice or Lyon (in @fig-imgplot), the *grey* area is bigger for Paris than Nice and Lyon). Based on this results, I would recommend to increase the number of properties in both cities (Nice and Lyon) to make sure it reach the same level of capacity than Paris. In order to reach this same level of capacity, Nice has to open `r nice_room_to_open` rooms and Lyon `r lyon_room_to_open`. In addition, assuming that one ticket in four (the choice is totally arbitrary) will be sell to someone looking for an accommodation, *i.e.* 25 \% of the proportion of real attendees and that 20 \% (also an arbitrary choice) of these people will look for an accommodation through [Booking.com](https://www.booking.com), it appears that `r room_paris`, `r room_nice` and `r room_lyon` rooms needs to be available in Paris, Nice and Lyon, that is to say respectively `r property_paris`, `r property_nice` and `r property_lyon` new properties to meet the demand.
+
+# Second question
+
+## Statement
+
+"*Dear Reporting Team,*
+
+*Lately I get the feeling that the properties we are opening in Southern Europe are getting more and more expensive, while our customers demand lower priced accommodations. I would like to present some data in our next account managers meetup, but of course I would like to have some validated insights to back this up. Can you help me out on this?*
+
+*Regards.*"
+
+## Data mining
+
+### Few comments
+
+```{r}
+#| echo: false
+
+# trick to avoid crash when render using quarto
+unique_city_it <- prettyNum(data[cc1 == "it", unique(city)], big.mark = ",")
+```
+
+
+As I only get a snapshot of the situation for 10.000 properties randomly selected from April 2016, we will focus on the relationship between the minimal room rate for a single-night (`minrate`) and the date that the property was available at [Booking.com](https://www.booking.com) for the first time (`first_opened`). I will thus test the hypothesis of an increase in `minrate` with `first_opened`. As the question is focused on the Southern Europe, I only considered cities in Italy (`r unique_city_it`) in the further analysis.
+
+### Analysis & Results
+
+```{r fig-histBox}
+#| fig-cap: "Histogram and boxplot of the minimal room rate for a single night in several italian cities."
+#| fig-width: 10
+#| fig-height: 5
+
+# new dataset for Italia
+data.it <- data[cc1 == "it", ]
+# some exploratory graphs
+grid.arrange(
+  ggplot(data.it, aes(minrate)) +
+    geom_histogram(aes(y = ..density..)) +
+    geom_density() +
+    labs(
+      x = "Minimal room rate for a single night",
+      y = "Density"
+    ),
+  ggplot(data.it, aes(y = minrate, x = city)) +
+    geom_boxplot() +
+    labs(
+      y = "Minimal room rate for a single night",
+      x = "City"
+    ),
+  ncol = 2
+)
+```
+
+It appears there are a lot of outliers and zeros in the dataset (@fig-histBox). I decided then to remove any rows with a minimal room rate for a single night of zero and other outliers using the IQR rule. 
+
+```{r fig-histBoxOUT}
+#| fig-cap: "Histogram and boxplot of the minimal room rate in several italian cities, without considering outliers."
+#| fig-width: 10
+#| fig-height: 5
+
+# we removed zeros
+data.it <- data.it[minrate != 0, ]
+# and other outliers
+outliers <- function(out) {
+  q1 <- quantile(out, 0.25)
+  q3 <- quantile(out, 0.75)
+  iqr <- q3 - q1
+  which(out > q1 - 1.5 * iqr & out < q3 + 1.5 * iqr)
+}
+data.it.out <- rbindlist(lapply(split(data.it, by = "city"), function(x) {
+  x <- x[outliers(x$minrate), ]
+}))
+# new plot
+grid.arrange(
+  ggplot(data.it.out, aes(minrate)) +
+    geom_histogram(aes(y = ..density..)) +
+    geom_density() +
+    labs(
+      x = "Minimal room rate for a single night",
+      y = "Density"
+    ),
+  ggplot(data.it.out, aes(y = minrate, x = city)) +
+    geom_boxplot() +
+    labs(
+      y = "Minimal room rate for a single night",
+      x = "Cities"
+    ),
+  ncol = 2
+)
+```
+
+This is much better, now we are going to look at the trend over time (@fig-distriMRRGAM), by first using a [generalized additive model](https://en.wikipedia.org/wiki/Generalized_additive_model). 
+
+```{r fig-distriMRRGAM}
+#| fig-cap: "Distribution of minimal room rates for a single night with the date that the property  was available at [Booking.com](https://www.booking.com) for the first time. The blue line is for a generalized additive model automatically adjusted with data."
+ggplot(data.it.out, aes(x = first_opened, y = minrate)) +
+  geom_point() +
+  geom_smooth() +
+  labs(
+    y = "Minimal room rate for a single night",
+    x = "Date that the property was available at Booking.com for the first time"
+  )
+```
+Nothing really clear here, neither using a simple linear regression (@fig-distriMRRLM).
+
+```{r fig-distriMRRLM}
+#| fig-cap: "Distribution of minimal room rates for a single night with the date that the property  was available at [Booking.com](https://www.booking.com) for the first time. The blue line is for a linear regression automatically adjusted with data."
+ggplot(data.it.out, aes(x = first_opened, y = minrate)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    y = "Minimal room rate for a single night",
+    x = "Date that the property was available at Booking.com for the first time"
+  )
+```
+
+As the dataset is structured by city, it is better to include a random effect in our models, using a [linear mixed effects models](https://en.wikipedia.org/wiki/Mixed_model).
+
+```{r tbl-summaryLME}
+#| tbl-cap: "Output for the linear mixed effect model: lme(minrate~first_opened,data=data.it.out,random=~1|city)"
+# na.action = na.omit)"}
+# building LME
+lme.1 <- lme(minrate ~ first_opened, data = data.it.out, random = ~ 1 | city, na.action = na.omit)
+# results
+pander(summary(lme.1))
+```
+
+The ouput reveals there is no significant (`p-value` for `first_opened` > 0.05) linear trend over time (defined as the date the property was available for the first time) of the minimal room rate for a single. Now, I take a look at the residual to know how trustful this result is.
+
+```{r fig-diagPlot}
+#| fig-cap: "Some diagnostic plot of the linear mixed effect model lme.1."
+
+par(mfrow = c(2, 2))
+# diagnostic plots
+# plot(lme.1)
+acf(residuals(lme.1, normalized = T))
+hist(residuals(lme.1, normalized = T))
+plot(residuals(lme.1, normalized = T))
+```
+
+The diagnostic plots (@fig-diagPlot) realized on the residuals of the linear mixed effect model `lme.1` do not reveal any patterns, meaning the model is not missing any relevant variable. This also means that we can be confident in its results, regardless the city: there are no trend towards the minimal room rate for a single night with the date the property was available at Booking.com for the first time in this dataset.
+
+## Conclusions
+
+No matter the city considered, there is no trend towards the minimal room rate for a single night with the date the property was available at Booking.com for the first time. Rather, there is a relative stability of the room rate with the date the property was available for the first time. While this analysis is interesting, it would probably be even more interesting to look at the relationship of the minimal room rate with time, and not only during the month of April 2016. This would may be highlight trends in agreement with your feeling.
+
+# Other insights
+
+## Few comments
+
+Given this dataset, there are a lot of questions that could be addressed, such as:
+
+* Which city has the center the most covered by properties?
+* Is there any differences among cities and countries in terms of properties offering (`hotel_type`, `nr_rooms`, `payment_method` or ` star_rating`)?
+* Can we relate the type of properties to the distance from the city center?
+
+But here, I decided to focus on the minimal room rate for a single night, and I tried to model this variable considering other information present within the dataset.
+
+## Analysis & Results
+
+I basically used the same approach than before, I removed zeros and outliers:
+
+```{r}
+# I removed zeros
+data.inter <- data[minrate != 0, ]
+# and other outliers
+data.inter <- rbindlist(lapply(split(data.inter, by = "city"), function(x) {
+  x <- x[outliers(x$minrate), ]
+}))
+```
+
+Then I converted every qualitative variables as factor:
+
+```{r}
+data.inter$city <- as.factor(data.inter$city)
+data.inter$cc1 <- as.factor(data.inter$cc1)
+data.inter$star_rating <- as.factor(data.inter$star_rating)
+data.inter$hotel_type <- as.factor(data.inter$hotel_type)
+data.inter$payment_method <- as.factor(data.inter$payment_method)
+```
+
+Finally I ran a set of [generalized additive models](https://en.wikipedia.org/wiki/Generalized_additive_model) using all the relevant information found in `data.inter`.
+
+```{r BAMSet}
+bam.list <- list()
+bam.list$bam.1 <- bam(
+  minrate ~ s(nr_rooms) +
+    s(km_from_city_center) +
+    s(nr_rooms, km_from_city_center, city, bs = "fs", m = 1) +
+    s(nr_rooms, km_from_city_center, payment_method, bs = "fs", m = 1) +
+    s(nr_rooms, km_from_city_center, star_rating, bs = "fs", m = 1) +
+    s(nr_rooms, km_from_city_center, hotel_type, bs = "fs", m = 1),
+  data = data.inter,
+  na.action = na.omit
+)
+
+bam.list$bam.2 <- bam(
+  minrate ~ s(nr_rooms) +
+    s(km_from_city_center) +
+    s(nr_rooms, km_from_city_center, city, bs = "fs", m = 1) +
+    # s(nr_rooms, km_from_city_center,payment_method, bs="fs",m=1)+
+    s(nr_rooms, km_from_city_center, star_rating, bs = "fs", m = 1) +
+    s(nr_rooms, km_from_city_center, hotel_type, bs = "fs", m = 1),
+  data = data.inter,
+  na.action = na.omit
+)
+
+bam.list$bam.3 <- bam(
+  minrate ~ s(nr_rooms) +
+    s(km_from_city_center) +
+    s(nr_rooms, km_from_city_center, city, bs = "fs", m = 1) +
+    # s(nr_rooms, km_from_city_center,payment_method, bs="fs",m=1)+
+    # s(nr_rooms, km_from_city_center,star_rating, bs="fs",m=1)+
+    s(nr_rooms, km_from_city_center, hotel_type, bs = "fs", m = 1),
+  data = data.inter,
+  na.action = na.omit
+)
+
+bam.list$bam.4 <- bam(
+  minrate ~ s(nr_rooms) +
+    # s(km_from_city_center)+
+    s(nr_rooms, km_from_city_center, city, bs = "fs", m = 1) +
+    # s(nr_rooms, km_from_city_center,payment_method, bs="fs",m=1)+
+    # s(nr_rooms, km_from_city_center,star_rating, bs="fs",m=1)+
+    s(nr_rooms, km_from_city_center, hotel_type, bs = "fs", m = 1),
+  data = data.inter,
+  na.action = na.omit
+)
+
+bam.list$bam.5 <- bam(
+  minrate ~ # s(nr_rooms)+
+    # s(km_from_city_center)+
+    s(nr_rooms, km_from_city_center, city, bs = "fs", m = 1) +
+    # s(nr_rooms, km_from_city_center,payment_method, bs="fs",m=1)+
+    # s(nr_rooms, km_from_city_center,star_rating, bs="fs",m=1)+
+    s(nr_rooms, km_from_city_center, hotel_type, bs = "fs", m = 1),
+  data = data.inter,
+  na.action = na.omit
+)
+
+bam.list$bam.6 <- bam(
+  minrate ~ # s(nr_rooms)+
+    # s(km_from_city_center)+
+    s(city, bs = "re") +
+    # s(nr_rooms, km_from_city_center,payment_method, bs="fs",m=1)+
+    # s(nr_rooms, km_from_city_center,star_rating, bs="fs",m=1)+
+    s(hotel_type, bs = "re"),
+  data = data.inter,
+  na.action = na.omit
+)
+```
+
+I based the model selection looking at the `p-value` and the deviance explained. You can find in the [Appendix] section a summary of each model. Basically, I removed any non-significant part of the equation that was due to a random effect, *i.e*:
+
+* `s(nr_rooms, km_from_city_center,payment_method, bs="fs",m=1)`
+* `s(nr_rooms, km_from_city_center,star_rating, bs="fs",m=1)`
+
+Then I removed any non-significant part of the equation that was due to a fixed effect, *i.e*:
+
+* `s(nr_rooms)`
+* `s(km_from_city_center)`
+
+As it remained two random smooth (a random effect on the intercept and the slope) and no fixed terms, I transformed these random smooth effects by random intercept effects, *i.e*:
+
+* `s(city, bs="re")`
+* `s(hotel_type, bs="re"`
+
+```{r}
+#| echo: false
+
+# trick to avoid crash when render using quarto
+bam_1_dev <- prettyNum(round(summary(bam.list$bam.6)$dev.expl * 100, 1), big.mark = ",")
+```
+
+The deviance, that is to say the proportion of variation in `minrate`, explained by the first full model `bam.1` is nearly the same as the much more simplify model (`bam.6`), around `r bam_1_dev` \%.
+
+```{r fig-devModel}
+#| fig-cap: "Deviance explained of the minimal room rate for a single night by each model."
+ggplot(data.table(
+  deviance = sapply(bam.list, function(x) {
+    round(summary(x)$dev.expl * 100, 2)
+  }),
+  model = names(bam.list)
+), aes(x = model, y = deviance)) +
+  geom_point() +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  labs(
+    x = "Generalized additive models",
+    y = "Deviance explained"
+  )
+```
+
+Based on this analysis and using the principle of parsimony, the best model to explain variation of the minimal room rate for a single night is composed of two random intercept effects, the city and the type of properties. 
+
+## Conclusions
+
+```{r}
+#| echo: false
+
+# trick to avoid crash when render using quarto
+unique_city_inter <- prettyNum(unique(data.inter$city), big.mark = ",")
+length_unique_city_inter <- prettyNum(unique(data.inter$hotel_type), big.mark = ",")
+```
+
+Without any fixed term in the model `bam.6`, this analysis showed that minimal room rate for a single night is nearly constant no matter the number of rooms or the distance from the city center. It also showed that the only qualitative variables that matters when setting a price is the location and the type of property proposed. To go further in the analysis I could have look at the effect of each mode, *i.e.* `r unique_city_inter` for the cities, and `r length_unique_city_inter` for type of properties, within the model `bam.1`, but a simple boxplot will higlight these differences in a more visual way @fig-boxplotBAM1 and @fig-boxplotBAM2.
+
+```{r fig-boxplotBAM1}
+#| fig-cap: "Minimal room rate for a single night related to cities"
+#| fig-height: 5
+ggplot(data.inter, aes(x = city, y = minrate)) +
+  geom_boxplot() +
+  labs(x = "City", y = "Minimal room rate for a single night")
+```
+```{r fig-boxplotBAM2}
+#| fig-cap: "Minimal room rate for a single night related to type of properties"
+#| fig-height: 5
+#| fig-width: 10
+ggplot(data.inter, aes(x = hotel_type, y = minrate)) +
+  geom_boxplot() +
+  labs(x = "Type of property", y = "Minimal rate for a single room")
+```
+
+# Appendix
+
+```{r fig-sumBAM}
+#| output: asis
+
+# get the summary of each GAM
+invisible(lapply(bam.list, function(x) {
+  gamtabs(summary(x), type = "HTML")
+}))
+```

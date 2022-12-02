@@ -1,0 +1,155 @@
+---
+title: "Dataiku Interview Project"
+author:
+  - name: "Joffrey Joumaa"
+date: "December 5, 2017"
+format:
+  html:
+    toc: true
+    toc-location: left
+    number-sections: true
+    smooth-scroll: true
+    code-fold: true
+    code-tools: true
+    code-link: true
+    df-print: paged
+    fig-align: "center"
+execute: 
+  echo: true
+  cache: true
+  warning: false
+knitr:
+  opts_chunk:
+    message: false
+  opts_knit: 
+    root.dir: "~/Documents/postdoc/dataiku/dataiku/us_census_full/"
+---
+
+```{r setup}
+#| include: false
+#| eval: false
+
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  message = FALSE, 
+  warning = FALSE, 
+  comment = NA, 
+  cache = TRUE,
+  fig.align = "center"
+)
+
+knitr::opts_knit$set(root.dir = "~/Documents/postdoc/dataiku/dataiku/us_census_full/")
+```
+
+```{=html}
+<style>
+body {
+text-align: justify}
+</style>
+```
+Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on `r format(Sys.Date(), "%d/%m/%Y")`, under a UNIX/LINUX environment (Debian 9.2). The provided script (`code_jjoumaa.R`) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4).
+
+# Prepare Problem
+
+## Load libraries
+
+Most of the data manipulation was done using `data.table` package due to its ability to handle large datasets. Data visualization was mostly done using `ggplot2` package. For the modelling part, I've used `caret` package, which provides a lot of useful tools for data science.
+
+```{r load_libraries}
+# data visualization
+library(ggplot2)
+library(corrplot)
+library(gridExtra)
+# data manipulation
+library(data.table)
+library(stringr)
+# data modeling
+library(caret)
+library(caretEnsemble)
+library(RANN)
+# markdown table
+library(knitr)
+library(DT)
+library(pander)
+# (optional) multithreading
+library(doMC)
+registerDoMC(cores = 4)
+```
+
+## Load dataset
+
+As we'll see in the next steps, both datasets (learning and validation one) present a lot of missing values in the form of `?` in raw files, converted then in `NA` values in R.
+
+```{r load_dataset}
+# learning dataset
+dataset = fread("census_income_learn.csv", 
+                na.strings = "?")
+# validation dataset
+validation = fread("census_income_test.csv", 
+                   na.strings = "?")
+```
+
+Since neither dataset has column names, I've loaded the description file `census_income_metadata.txt`, and extracted rows mentioning column names.
+
+```{r load_colnames}
+# selection of the right rows containing colnames
+datasetNames = fread("census_income_metadata.txt", 
+                     nrows = (68-22), 
+                     skip = 22, 
+                     drop = "V1")
+# extraction of word in capital
+colInter = datasetNames[, unlist(str_extract_all(V2, '\\b[A-Z]+[A-Z0-9]\\b'))]
+colInter
+```
+
+The problem was that 45 columns were mentioned in the description files (`colInter`), whereas both datasets only have 42 columns. To solve this, I've matched each column with their respective names based on the number of unique "value" by columns and the one exposed in the description file. Using this method, I've found that AGI, FEDTAX, PEARNVAL, PTOTVAL and TAXINC attributes could be removed from the initial column names, and that the attributes YEARS and Y (the attributes to model, *i.e* the income level) should be added.
+
+```{r right_colnames, rows.print=5}
+# number of instances for each attributes
+dataset[, sapply(.SD, function(x){length(unique(x))})]
+
+# remove unexpected column names
+colInter = colInter[-c(which(colInter == "AGI"))]
+colInter = colInter[-c(which(colInter == "FEDTAX"))]
+colInter = colInter[-c(which(colInter == "PEARNVAL"))]
+colInter = colInter[-c(which(colInter == "PTOTVAL"))]
+colInter = colInter[-c(which(colInter == "TAXINC"))]
+
+# add two more column names
+colInter = c(colInter, c("YEAR", "Y"))
+colnames(dataset) = colInter[1:42]
+colnames(validation) = colInter[1:42]
+
+# dataset preview
+datatable(head(validation, 5), 
+          caption = "Preview of the dataset", 
+          extensions = 'FixedColumns', 
+          options = list(
+            dom = "t", 
+            scrollX = TRUE, 
+            fixedColumns = FALSE))
+```
+
+# Summarize Data
+
+## Descriptive statistics
+
+It is difficult to present all attributes, but a quick summary provides a good overview of the structure.
+
+```{r descriptive_stat}
+# index of column with characters
+ncolCha = which(sapply(dataset, class) == "character")
+
+# conversion of characters in factors
+dataset[, (ncolCha):=lapply(.SD, as.factor), .SDcols = ncolCha]
+
+# structure of the dataset
+kable(data.frame(variable = names(dataset), 
+                 classe = sapply(dataset, class), 
+                 first_values = sapply(dataset, function(x) {
+                   paste0(head(x), collapse = ", ")}), 
+                 row.names = NULL))
+
+# summary of the dataset
+pander(summary(dataset))
+```
