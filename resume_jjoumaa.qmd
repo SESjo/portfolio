@@ -1,0 +1,70 @@
+---
+title: "Resume"
+resources:
+  - "files/resume_jjoumaa.pdf"
+about:
+  template: solana
+  image: files/jjoumaa_ucsc.png
+  links:
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/joffreyjoumaa/en
+    - icon: github
+      text: Github
+      href: https://github.com/SESjo
+    - icon: send
+      text: Contact
+      href: mailto:joffreyjoumaa@icloud.com
+    - icon: download
+      text: Download
+      href: files/resume_jjoumaa.pdf
+      
+---
+
+## Education
+
+PhD in Quantitative Ecology  
+University of La Rochelle, Chizé, France  
+2013 - 2016  
+
+MSc in Biodiversity, Ecology and Evolution  
+University of Paul Sabatier, Toulouse, France  
+2012 - 2013  
+
+University degree "Discovery of the business world"  
+University of Bretagne Occidentale, Brest, France  
+2011 - 2012  
+
+University of Bretagne Occidentale, Brest, France  
+Master's degree in Marine Biological Sciences   
+2010 - 2011  
+
+BSc in Biology - Biochemistry  
+University of La Rochelle, La Rochelle, France  
+2009 - 2010  
+
+## Experience
+
+Data Scientist  
+University of California, Santa Cruz  
+Oct 2021 - present  
+
+Data Scientist  
+Thegreendata  
+Apr 2020 - Aug 2021  
+
+Data Consultant  
+Saegus  
+Nov 2018 - Mar 2020  
+
+Biostatistician Consultant  
+IT&M STATS  
+Jul 2018 - Oct 2018  
+
+Data Analyst  
+Malakoff Médéric  
+Dec 2017 - Jun 2018  
+
+PhD  
+CNRS  
+Oct 2013 - Nov 2016  

@@ -1,0 +1,45 @@
+project:
+  type: website
+  resources: "resume_joumaa.pdf"
+
+# output_dir: "docs"
+
+website:
+  # # not sure what that is...
+  # reader-mode: true
+  title: "Joffrey Joumaa | portfolio"
+  navbar:
+    # nav bar always visible when scrolling
+    pinned: true
+    left:
+      - text: "Home"
+        href: index.html
+      - text: "Notebooks"
+        menu:
+          - text: "Dataiku Interview"
+            href: dataiku_jjoumaa.qmd
+          - text: "Saegus Interview"
+            href: saegus_jjoumaa.html
+          - text: "Booking Interview"
+            href: booking_jjoumaa.qmd
+      - text: "Webapps"
+        menu:
+          - text: "Dash (Python)"
+            href: https://dash-risk.onrender.com
+          - text: "Shiny (R)"
+            href: https://joffreyjoumaa.shinyapps.io/shiny_risk/
+      - text: "Packages"
+        menu:
+          - text: "weanlingNES"
+            href: https://jjoumaa.ddns.net/weanlingNES/
+      - text: "Resume"
+        href: resume_jjoumaa.qmd
+    right: 
+      - icon: github
+        href: https://github.com/SESjo
+      - text: "About me"
+        href: about.qmd
+
+theme:
+  light: cosmo
+  dark: [cosmo, theme-dark.scss]

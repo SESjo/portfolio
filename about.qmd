@@ -1,0 +1,34 @@
+---
+about:
+  template: jolla
+  image: files/background_jjoumaa.png
+  image-width: 40em
+  image-shape: rectangle
+  links:
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/joffreyjoumaa/en
+    - icon: github
+      text: Github
+      href: https://github.com/SESjo
+    - icon: send
+      text: Contact
+      href: mailto:joffreyjoumaa@icloud.com
+---
+
+::: {#center}
+# "A variety of experiences yields new perspectives"
+
+Always looking for new challenges that involve developing new skills, I have a diverse set of experiences both in industry and academia. Highly data savvy, I have acquired hard skills (machine learning, statistical inference, programming) and soft skills (project management, communication) that have allowed me to cope with any kind of work environment
+
+If you are looking for a team player, a dedicated and productive member for your team, I am a self-motivated individual and believe I would be a valuable contribution to the right position.
+
+Key Achievements include:
+:::
+
+::: {#right style="text-align: left"}
+-   a PhD in a quantitative data science discipline involving wildlife motion sensors.
+-   the development of a greenhouse gas emissions forecasting model, reducing computation time from days to minutes
+-   the implementation of a self-service business intelligence approach with the Tableau product suite
+-   the publication of eight scientific papers in highly ranked journals
+:::
