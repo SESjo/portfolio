@@ -17,8 +17,7 @@ about:
       href: mailto:joffreyjoumaa@icloud.com
     - icon: download
       text: Download
-      href: files/resume_jjoumaa.pdf
-      
+      href: portfolio/files/resume_jjoumaa.pdf
 ---
 
 ## Education
