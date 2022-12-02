@@ -11,7 +11,7 @@
     "href": "dataiku_jjoumaa.html",
     "title": "Dataiku Interview Project",
     "section": "",
-    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 01/12/2022, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
+    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 02/12/2022, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
   },
   {
     "objectID": "dataiku_jjoumaa.html#load-libraries",
@@ -123,7 +123,7 @@
     "href": "test_jjoumaa.html",
     "title": "Dataiku Interview Project",
     "section": "",
-    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 01/12/2022, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
+    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 02/12/2022, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
   },
   {
     "objectID": "test_jjoumaa.html#load-libraries",
