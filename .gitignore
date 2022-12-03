@@ -4,3 +4,7 @@
 .Ruserdata
 *_cache/
 /.quarto/
+*_data/
+*_files/
+*.zip
+renv*
