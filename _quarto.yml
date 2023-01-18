@@ -29,7 +29,7 @@ website:
       - text: "Packages"
         menu:
           - text: "weanlingNES"
-            href: https://jjoumaa.ddns.net/weanlingNES/
+            href: https://weanlingnes.duckdns.org
       - text: "Resume"
         href: resume_jjoumaa.qmd
     right: 
