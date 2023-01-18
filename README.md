@@ -8,7 +8,7 @@ Just go to https://sesjo.github.io/portfolio.
 
 ## Roadmap
 
-* Rework the [Front Page](https://github.com/SESjo/portfolio/blob/main/index.qmd)
+* Rework the [About Me](https://github.com/SESjo/portfolio/blob/main/about.qmd) page
 * Add more web apps (MGEN, NEStrack, ...)
 
 ## Languages and tools
