@@ -23,18 +23,33 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-* Notebooks:
+## Notebooks
+
   - [Dataiku Interview](dataiku_jjoumaa.qmd): Test job interview for <a href="https://www.dataiku.com/" target="_blank" style="color: black; text-decoration: underline;">Dataiku</a>
   - [Sægus Interview](saegus_jjoumaa.qmd): Test job interview for <a href="https://saegus.com/" target="_blank" style="color: black; text-decoration: underline;">Sægus</a> 
   - [Booking Interview](booking_jjoumaa.qmd): Test job interview for <a href="https://www.booking.com/" target="_blank" style="color: black; text-decoration: underline;">Booking</a> 
-* Webapps:
-  - <a href="https://dash-risk.onrender.com" target="_blank">Dash (Python)</a>: webapp used as a proof of concept for risk assessment in wheat trading
-  ![https://dash-risk.onrender.com](./files/dash.png){width=50%}
-  - <a href="https://joffreyjoumaa.shinyapps.io/shiny_risk/" target="_blank">Shiny (R)</a>: same application but using R and Shiny (it was one of the first version before switching to Python and Dash)
-  ![https://joffreyjoumaa.shinyapps.io/shiny_risk/](./files/shiny.png){width=50%}
-* Package:
-  - <a href="https://jjoumaa.ddns.net/weanlingNES/" target="_blank">weanlingNES</a>: R package developed as part of my current position. Its goal is to provide in the same place analyses and functions developed within the framework of my postdoc on the ontogeny of diving behavior in northern elephant seals (*Mirounga angustirostris*)
-* Publications
+  
+  
+## Webapps
+
++:--------------------------------------------------------------------------------------+:------------------------------------------------------------------------------------------------------------------------------------------+:----------------------------------------------------------------------------:+
+|<a href="https://dash-risk.onrender.com" target="_blank">Dash (Python)</a>             | **Dash App**                                                                                                                              | ![app_1](./files/dash.png){width=60%}                                        |
+|                                                                                       | A webapp used as a proof of concept for risk assessment in wheat trading                                                                  |                                                                              |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+|<a href="https://joffreyjoumaa.shinyapps.io/shiny_risk/" target="_blank">Shiny (R)</a> | **Shiny App**                                                                                                                             | ![app_2](./files/shiny.png){width=60%}                                       |
+|                                                                                       | same application but using R and Shiny (it was one of the first version before switching to Python and Dash)                              |                                                                              |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+
+## Package
+
++:--------------------------------------------------------------------------+:-----------------------------------------------------------------------------------------------------------------------------------------------+:--------------------------------------------------------:+
+|<a href="https://weanlingnes.duckdns.org/" target="_blank">weanlingNES</a> | **R Package**                                                                                                                                  | ![r_package_1](./files/logo_weanlingnes.png){width=50%}  |
+|                                                                           | The goal of this package is to provide in one place the analyses and functions developed during my postdoc on the ontogeny of diving behavior  |                                                          |
+|                                                                           | in elephant seals.                                                                                                                             |                                                          |
++---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+
+
+## Publications
+
   - **Jouma'a, Joffrey** Phd Thesis - 2016: Resource Acquisition Strategies and Cost of Transport in Southern Elephant Seal (<a href="http://www.theses.fr/2016LAROS014" style="color: black; text-decoration: underline;" target="_blank">http://www.theses.fr/2016LAROS014</a>)
   - **Jouma’a, Joffrey**, Yves, Le Bras, Picard, Baptiste & Guinet, Christophe. (2017) Three-dimensional assessment of hunting strategies in a deep diving predator. Marine Ecology Progress Series (<a href="https://www.int-res.com/abstracts/meps/v573/p255-268/" style="color: black; text-decoration: underline;" target="_blank">10.3354/meps12191</a>)
   - **Jouma’a, Joffrey**, Yves, Le Bras, Richard, Gaëtan, Vacquié-Garcia, Jade, El Ksabi, Nory, Picard, Baptiste & Guinet Christophe. (2016) Adjustment of diving behaviour with prey encounters and body condition in a deep diving predator: the Southern Elephant Seal. Functional Ecology, 30, (4), 636-648 (<a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/1365-2435.12514" style="color: black; text-decoration: underline;" target="_blank">10.1111/1365-2435.12514</a>)
