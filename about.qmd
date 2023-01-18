@@ -27,7 +27,7 @@ Key Achievements include:
 :::
 
 ::: {#right style="text-align: left"}
--   a PhD in a quantitative data science discipline involving wildlife motion sensors.
+-   a PhD in a quantitative discipline involving wildlife motion sensors, *i.e.* wearable devices
 -   the development of a greenhouse gas emissions forecasting model, reducing computation time from days to minutes
 -   the implementation of a self-service business intelligence approach with the Tableau product suite
 -   the publication of eight scientific papers in highly ranked journals
