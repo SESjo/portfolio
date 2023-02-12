@@ -4,14 +4,14 @@
     "href": "about.html",
     "title": "Joffrey Joumaa | portfolio",
     "section": "",
-    "text": "“A variety of experiences yields new perspectives”\nAlways looking for new challenges that involve developing new skills, I have a diverse set of experiences both in industry and academia. Highly data savvy, I have acquired hard skills (machine learning, statistical inference, programming) and soft skills (project management, communication) that have allowed me to cope with any kind of work environment\nIf you are looking for a team player, a dedicated and productive member for your team, I am a self-motivated individual and believe I would be a valuable contribution to the right position.\nKey Achievements include:\n\n\n\n\na PhD in a quantitative discipline involving wildlife motion sensors, i.e. wearable devices\nthe development of a greenhouse gas emissions forecasting model, reducing computation time from days to minutes\nthe implementation of a self-service business intelligence approach with the Tableau product suite\nthe publication of eight scientific papers in highly ranked journals"
+    "text": "“A variety of experiences yields new perspectives”\nHighly data savvy, I bring a diverse set of experiences in both industry and academia, including expertise in machine learning, data visualization, and programming. My ability to manage projects, communicate effectively, and work collaboratively has allowed me to excel in a variety of work environments.\nI am confident that my skills and experience will make me a valuable asset for any relevant data-related position, and I look forward to the opportunity to contribute my expertise to your organization.\nKey Achievements include:\n\n\n\n\na PhD in a quantitative discipline involving wildlife motion sensors, i.e. wearable devices\nthe development of a greenhouse gas emissions forecasting model, reducing computation time from days to minutes\nthe implementation of a self-service business intelligence approach with the Tableau product suite\nthe publication of eight scientific papers in highly ranked journals\nthe use of version control and containerization, to ensure reproducible work and create consistent and portable analyses"
   },
   {
     "objectID": "dataiku_jjoumaa.html",
     "href": "dataiku_jjoumaa.html",
     "title": "Dataiku Interview Project",
     "section": "",
-    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 18/01/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
+    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 12/02/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
   },
   {
     "objectID": "dataiku_jjoumaa.html#load-libraries",
@@ -123,7 +123,7 @@
     "href": "test_jjoumaa.html",
     "title": "Dataiku Interview Project",
     "section": "",
-    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 18/01/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
+    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 12/02/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
   },
   {
     "objectID": "test_jjoumaa.html#load-libraries",
