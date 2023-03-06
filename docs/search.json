@@ -270,7 +270,7 @@
     "href": "index.html#webapps",
     "title": "Some Achievements:",
     "section": "Webapps",
-    "text": "Webapps\n\n\n\n\n\n\n\n\nDash (Python)\nDash App A webapp used as a proof of concept for risk assessment in wheat trading\n\n\n\nShiny (R)\nShiny App same application but using R and Shiny (it was one of the first version before switching to Python and Dash)"
+    "text": "Webapps\n\n\n\n\n\n\n\n\nDiveMap (Python)\nDash App A webapp to explore the diving behavior of northern elephant seals\n\n\n\nCropRisk (Python)\nDash App A webapp used as a proof of concept for risk assessment in wheat trading\n\n\n\nCropRisk (R)\nShiny App same application but using R and Shiny (it was one of the first version before switching to Python and Dash)"
   },
   {
     "objectID": "index.html#package",
@@ -299,5 +299,12 @@
     "title": "Resume",
     "section": "Experience",
     "text": "Experience\nData Scientist\nUniversity of California, Santa Cruz\nOct 2021 - present\nData Scientist\nThegreendata\nApr 2020 - Aug 2021\nData Consultant\nSaegus\nNov 2018 - Mar 2020\nBiostatistician Consultant\nIT&M STATS\nJul 2018 - Oct 2018\nData Analyst\nMalakoff Médéric\nDec 2017 - Jun 2018\nPhD\nCNRS\nOct 2013 - Nov 2016"
+  },
+  {
+    "objectID": "index.html#section",
+    "href": "index.html#section",
+    "title": "Some Achievements:",
+    "section": "",
+    "text": "CropRisk (Python)\nDash App A webapp used as a proof of concept for risk assessment in wheat trading\n\n\n\nCropRisk (R)\nShiny App same application but using R and Shiny (it was one of the first version before switching to Python and Dash)"
   }
 ]
