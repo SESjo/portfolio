@@ -11,7 +11,7 @@
     "href": "dataiku_jjoumaa.html",
     "title": "Dataiku Interview Project",
     "section": "",
-    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 12/02/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
+    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 06/03/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
   },
   {
     "objectID": "dataiku_jjoumaa.html#load-libraries",
@@ -123,7 +123,7 @@
     "href": "test_jjoumaa.html",
     "title": "Dataiku Interview Project",
     "section": "",
-    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 12/02/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
+    "text": "Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 06/03/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (code_jjoumaa.R) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4)."
   },
   {
     "objectID": "test_jjoumaa.html#load-libraries",
@@ -299,12 +299,5 @@
     "title": "Resume",
     "section": "Experience",
     "text": "Experience\nData Scientist\nUniversity of California, Santa Cruz\nOct 2021 - present\nData Scientist\nThegreendata\nApr 2020 - Aug 2021\nData Consultant\nSaegus\nNov 2018 - Mar 2020\nBiostatistician Consultant\nIT&M STATS\nJul 2018 - Oct 2018\nData Analyst\nMalakoff Médéric\nDec 2017 - Jun 2018\nPhD\nCNRS\nOct 2013 - Nov 2016"
-  },
-  {
-    "objectID": "index.html#section",
-    "href": "index.html#section",
-    "title": "Some Achievements:",
-    "section": "",
-    "text": "CropRisk (Python)\nDash App A webapp used as a proof of concept for risk assessment in wheat trading\n\n\n\nCropRisk (R)\nShiny App same application but using R and Shiny (it was one of the first version before switching to Python and Dash)"
   }
 ]
