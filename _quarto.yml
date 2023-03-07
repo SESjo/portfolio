@@ -22,9 +22,11 @@ website:
             href: booking_jjoumaa.qmd
       - text: "Webapps"
         menu:
-          - text: "Dash (Python)"
+          - text: "DiveMap (Python)"
+            href: https://nestrack.duckdns.org/
+          - text: "CropRisk (Python)"
             href: https://dashrisk.pythonanywhere.com/
-          - text: "Shiny (R)"
+          - text: "CropRisk (R)"
             href: https://joffreyjoumaa.shinyapps.io/shiny_risk/
       - text: "Packages"
         menu:
