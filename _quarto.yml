@@ -30,8 +30,8 @@ website:
             href: https://joffreyjoumaa.shinyapps.io/shiny_risk/
       - text: "Packages"
         menu:
-          - text: "weanlingNES"
-            href: https://weanlingnes.duckdns.org
+          - text: "ontodive"
+            href: https://sesjo.github.io/ontodive/
       - text: "Resume"
         href: resume_jjoumaa.qmd
     right: 

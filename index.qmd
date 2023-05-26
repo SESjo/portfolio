@@ -46,7 +46,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Package
 
 +:--------------------------------------------------------------------------+:-----------------------------------------------------------------------------------------------------------------------------------------------+:--------------------------------------------------------:+
-|<a href="https://weanlingnes.duckdns.org/" target="_blank">weanlingNES</a> | **R Package**                                                                                                                                  | ![r_package_1](./files/logo_weanlingnes.png){width=50%}  |
+|<a href="https://sesjo.github.io/ontodive/" target="_blank">ontodive</a>   | **R Package**                                                                                                                                  | ![r_package_1](./files/logo_ontodive.png){width=50%}     |
 |                                                                           | The goal of this package is to provide in one place the analyses and functions developed during my postdoc on the ontogeny of diving behavior  |                                                          |
 |                                                                           | in elephant seals.                                                                                                                             |                                                          |
 +---------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------+
