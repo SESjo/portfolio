@@ -101,7 +101,7 @@ dataset[, any(is.na(.SD))]
 #| fig-cap: "Presence - Absence of missing values"
 
 # the graphical way
-dataPlot = melt(is.na(dataset))
+dataPlot = reshape2::melt(is.na(dataset))
 
 # plot 
 ggplot(dataPlot, aes(x = Var2, y = Var1, fill = value))+
@@ -513,7 +513,7 @@ results = resamples(list(RF1 = mdl.rf1,
                        RF2 = mdl.rf2))
 
 # data wrangling
-results = data.table(melt(results$values, id.vars = "Resample")) 
+results = data.table(reshape2::melt(results$values, id.vars = "Resample")) 
 results[, c("mdl", "crit") := tstrsplit(variable,
                                     "~", 
                                     fixed = T, 

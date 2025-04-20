@@ -171,7 +171,7 @@ Another way to have an idea of the occurrence of missing values is to used data 
 #| fig.cap="Representation of missing values within the learning dataset"
 
 # build dataPlot
-dataPlot = setDT(melt(is.na(dataset)))
+dataPlot = setDT(reshape2::melt(is.na(dataset)))
 
 # subsample
 dataPlot = dataPlot[,.SD[sample(nrow(dataset), 1000)], by=Var2] %>% 
@@ -197,7 +197,7 @@ It also helps for the representation of numerical attributes.
 ncolInt = which(sapply(dataset, class) == "integer")
 
 # plot for each numerical attributes
-ggplot(melt(dataset[, .SD, .SDcols = c(ncolInt, ncol(dataset))], id.vars = "Y"), 
+ggplot(reshape2::melt(dataset[, .SD, .SDcols = c(ncolInt, ncol(dataset))], id.vars = "Y"), 
        aes(x = value, col = Y, fill = Y))+ 
   geom_histogram(aes(y = ..density..), 
                  bins = 10, 
@@ -212,7 +212,7 @@ Nothing particularly clear here, except that some attributes do not seem to cont
 ```{r fig-boxplot}
 #| fig.cap: "Boxplot for each of the numerical attributes."
 
-ggplot(melt(dataset[, .SD, .SDcols = c(ncolInt, ncol(dataset))], id.vars = "Y"), 
+ggplot(reshape2::melt(dataset[, .SD, .SDcols = c(ncolInt, ncol(dataset))], id.vars = "Y"), 
        aes(x = "", y = value, col = Y, fill = Y)) + 
   geom_boxplot(alpha = .2)+
   theme(legend.position = "top", 
@@ -634,7 +634,7 @@ for (i in which(dataTrainVar[, lapply(.SD, class), .SDcols=-"Y"] == "factor")){
 
 Now that we have a validation dataset that matches the same column names and levels of nominal attributes from the learning one, we can make predictions and compare them to the real values.
 
-```{r prediction}
+```{r prediction, eval=FALSE}
 # make prediction
 predictionsStack = predict(multiFits,
                            validationNa[, .SD, .SDcols = -"Y"],
@@ -653,7 +653,7 @@ confC5
 
 We can see that the stacking model (*i.e* `Log` + `kNN`) has, indeed, an accuracy of `r round(multiFits$error$Accuracy, 2)` which is higher than the boosting model (*i.e* `C5.0`) with "only" `r round(fitC5UpVar$results$Accuracy, 2)`. However, the confusion matrix shows the stacking model simply predicts the same value (the one from the prevalent class), which results in a misleading accuracy (*i.e* accuracy = proportion of the majority class).
 
-```{r accuracy}
+```{r accuracy, eval=FALSE}
 # accuracy & proportion of the majority class
 accuracyStack = round(confStack$overall[1], 2)                     # accuracy of stack model
 propMajorClass = round(max(prop.table(table(validationNa$Y))), 2)  # prop of prevalent class

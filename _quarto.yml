@@ -14,36 +14,52 @@ website:
         href: index.html
       - text: "Notebooks"
         menu:
-          - text: "Dataiku Interview"
-            href: dataiku_jjoumaa.qmd
-          - text: "Saegus Interview"
-            href: saegus_jjoumaa.html
-          - text: "Booking Interview"
-            href: booking_jjoumaa.qmd
+        - text: "Dataiku Interview"
+          href: dataiku_jjoumaa.qmd
+        - text: "Saegus Interview"
+          href: saegus_jjoumaa.html
+        - text: "Booking Interview"
+          href: booking_jjoumaa.qmd
       - text: "Webapps"
         menu:
           - text: "DiveMap (Python)"
             href: https://nestrack.duckdns.org/
+            target: _blank
           - text: "CropRisk (Python)"
-            href: https://dashrisk.pythonanywhere.com/
+            href: https://dash-risk.onrender.com/
+            target: _blank
           - text: "CropRisk (R)"
             href: https://joffreyjoumaa.shinyapps.io/shiny_risk/
+            target: _blank
       - text: "Packages"
         menu:
           - text: "ontodive"
             href: https://sesjo.github.io/ontodive/
+            target: _blank
       - text: "Resume"
         href: resume_jjoumaa.qmd
     right: 
+      - text: "{{< iconify simple-icons:researchgate >}}"
+        href: https://www.researchgate.net/profile/Joffrey-Joumaa-2
+        target: _blank
+      - icon: bi-mortarboard-fill
+        href: https://scholar.google.com/citations?user=8x1xOj4AAAAJ&hl
+        target: _blank
       - icon: fingerprint
         href: https://orcid.org/0000-0002-2862-0899
+        target: _blank
       - icon: linkedin
         href: https://www.linkedin.com/in/joffreyjoumaa/
+        target: _blank
       - icon: github
         href: https://github.com/SESjo
+        target: _blank
       - text: "About me"
         href: about.qmd
-
+        
+# filters:
+#  - auto-dark
+  
 theme:
   light: [cosmo, theme-light.scss]
   dark: [cosmo, theme-dark.scss]

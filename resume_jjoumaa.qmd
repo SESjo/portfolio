@@ -20,50 +20,68 @@ about:
       file: portfolio/files/resume_jjoumaa.pdf
 ---
 
-## Education
-
-PhD in Quantitative Ecology  
-University of La Rochelle, Chizé, France  
-2013 - 2016  
-
-MSc in Biodiversity, Ecology and Evolution  
-University of Paul Sabatier, Toulouse, France  
-2012 - 2013  
-
-University degree "Discovery of the business world"  
-University of Bretagne Occidentale, Brest, France  
-2011 - 2012  
-
-University of Bretagne Occidentale, Brest, France  
-Master's degree in Marine Biological Sciences   
-2010 - 2011  
-
-BSc in Biology - Biochemistry  
-University of La Rochelle, La Rochelle, France  
-2009 - 2010  
-
 ## Experience
 
-Data Scientist  
-University of California, Santa Cruz  
-Oct 2021 - present  
+### Novo Nordisk, Denmark
 
-Data Scientist  
-Thegreendata  
-Apr 2020 - Aug 2021  
+* *Product Owner - Ontology and Semantic Engineering Team*
+* Jan 2025 - Present
+* *Semantic Engineer - Ontologist Steward*
+* Aug 2023 - Dec 2024
 
-Data Consultant  
-Saegus  
-Nov 2018 - Mar 2020  
+### University of California Santa Cruz, US
 
-Biostatistician Consultant  
-IT&M STATS  
-Jul 2018 - Oct 2018  
+* *Data Scientist*  
+* Oct 2021 - Jul 2023  
 
-Data Analyst  
-Malakoff Médéric  
-Dec 2017 - Jun 2018  
+### Thegreendata, France  
 
-PhD  
-CNRS  
-Oct 2013 - Nov 2016  
+* *Data Scientist* 
+* Apr 2020 - Aug 2021  
+
+### Saegus, France
+
+* *Data Consultant*
+* Nov 2018 - Mar 2020  
+
+### IT&M STATS, France
+
+* *Biostatistician Consultant*
+* Jul 2018 - Oct 2018  
+
+### Malakoff Médéric, France
+
+* *Data Analyst*
+* Dec 2017 - Jun 2018  
+
+### CNRS, France
+
+* *PhD*  
+* Oct 2013 - Nov 2016  
+
+## Education
+
+### *PhD* in Quantitative Ecology  
+
+* University of La Rochelle, Chizé, France  
+* 2013 - 2016  
+
+## *MSc* in Biodiversity, Ecology and Evolution  
+
+* University of Paul Sabatier, Toulouse, France  
+* 2012 - 2013  
+
+## *University degree* "Discovery of the business world"  
+
+* University of Bretagne Occidentale, Brest, France  
+* 2011 - 2012  
+
+## *Master's degree* in Marine Biological Sciences
+
+* University of Bretagne Occidentale, Brest, France 
+* 2010 - 2011  
+
+## *BSc* in Biology - Biochemistry  
+
+* University of La Rochelle, La Rochelle, France  
+* 2009 - 2010  

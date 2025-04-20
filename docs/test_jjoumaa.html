@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.6.42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Joffrey Joumaa">
 <meta name="dcterms.date" content="2017-12-05">
-<title>Joffrey Joumaa | portfolio - Dataiku Interview Project</title>
+<title>Dataiku Interview Project – Joffrey Joumaa | portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -16,11 +16,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -31,7 +32,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -45,43 +46,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -95,18 +66,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-2f8a1b2753634644d1dc90402284f863.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-c3132db34a2a42639c44de93e826e000.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -115,38 +93,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script><style>html{ scroll-behavior: smooth; }</style>
-<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="site_libs/datatables-binding-0.26/datatables.js"></script><script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><link href="site_libs/dt-ext-fixedcolumns-1.12.1/css/fixedColumns.dataTables.min.css" rel="stylesheet">
-<script src="site_libs/dt-ext-fixedcolumns-1.12.1/js/dataTables.fixedColumns.min.js"></script><link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script><script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="site_libs/dt-ext-fixedcolumns-1.13.6/css/fixedColumns.dataTables.min.css" rel="stylesheet">
+<script src="site_libs/dt-ext-fixedcolumns-1.13.6/js/dataTables.fixedColumns.min.js"></script><link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
 <body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Joffrey Joumaa | portfolio</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="./index.html">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-notebooks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Notebooks</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-notebooks">
@@ -165,87 +147,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-webapps" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-webapps" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Webapps</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-webapps">
 <li>
-    <a class="dropdown-item" href="https://nestrack.duckdns.org/">
+    <a class="dropdown-item" href="https://nestrack.duckdns.org/" target="_blank">
  <span class="dropdown-text">DiveMap (Python)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://dashrisk.pythonanywhere.com/">
+    <a class="dropdown-item" href="https://dash-risk.onrender.com/" target="_blank">
  <span class="dropdown-text">CropRisk (Python)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://joffreyjoumaa.shinyapps.io/shiny_risk/">
+    <a class="dropdown-item" href="https://joffreyjoumaa.shinyapps.io/shiny_risk/" target="_blank">
  <span class="dropdown-text">CropRisk (R)</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Packages</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-packages">
 <li>
-    <a class="dropdown-item" href="https://weanlingnes.duckdns.org">
- <span class="dropdown-text">weanlingNES</span></a>
+    <a class="dropdown-item" href="https://sesjo.github.io/ontodive/" target="_blank">
+ <span class="dropdown-text">ontodive</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="./resume_jjoumaa.html">
- <span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="./resume_jjoumaa.html"> 
+<span class="menu-text">Resume</span></a>
   </li>  
 </ul>
 <ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://orcid.org/0000-0002-2862-0899"><i class="bi bi-fingerprint" role="img">
-</i> 
- <span class="menu-text"></span></a>
+<li class="nav-item">
+    <a class="nav-link" href="https://www.researchgate.net/profile/Joffrey-Joumaa-2" target="_blank"> 
+<span class="menu-text"><iconify-icon role="img" inline="" icon="simple-icons:researchgate" aria-label="Icon researchgate from simple-icons Iconify.design set." title="Icon researchgate from simple-icons Iconify.design set."></iconify-icon></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/joffreyjoumaa/"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=8x1xOj4AAAAJ&amp;hl" target="_blank"> <i class="bi bi-mortarboard-fill" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/SESjo"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://orcid.org/0000-0002-2862-0899" target="_blank"> <i class="bi bi-fingerprint" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/joffreyjoumaa/" target="_blank"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/SESjo" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
- <span class="menu-text">About me</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About me</span></a>
   </li>  
 </ul>
-<div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
 <li>
-<a href="#prepare-problem" id="toc-prepare-problem" class="nav-link active" data-scroll-target="#prepare-problem"><span class="toc-section-number">1</span>  Prepare Problem</a>
+<a href="#prepare-problem" id="toc-prepare-problem" class="nav-link active" data-scroll-target="#prepare-problem"><span class="header-section-number">1</span> Prepare Problem</a>
   <ul class="collapse">
-<li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="toc-section-number">1.1</span>  Load libraries</a></li>
-  <li><a href="#load-dataset" id="toc-load-dataset" class="nav-link" data-scroll-target="#load-dataset"><span class="toc-section-number">1.2</span>  Load dataset</a></li>
+<li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="header-section-number">1.1</span> Load libraries</a></li>
+  <li><a href="#load-dataset" id="toc-load-dataset" class="nav-link" data-scroll-target="#load-dataset"><span class="header-section-number">1.2</span> Load dataset</a></li>
   </ul>
 </li>
   <li>
-<a href="#summarize-data" id="toc-summarize-data" class="nav-link" data-scroll-target="#summarize-data"><span class="toc-section-number">2</span>  Summarize Data</a>
+<a href="#summarize-data" id="toc-summarize-data" class="nav-link" data-scroll-target="#summarize-data"><span class="header-section-number">2</span> Summarize Data</a>
   <ul class="collapse">
-<li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="toc-section-number">2.1</span>  Descriptive statistics</a></li>
+<li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="header-section-number">2.1</span> Descriptive statistics</a></li>
   </ul>
 </li>
   </ul></nav>
-</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -274,18 +266,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
+
 </header><style>
 body {
 text-align: justify}
 </style>
-<p>Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 06/03/2023, under a UNIX/LINUX environment (Debian 9.2). The provided script (<code>code_jjoumaa.R</code>) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4).</p>
+<p>Please find below my report about the dataset provided by Dataiku. This analysis has been realized using R (version 3.3.3) with all packages updated on 20/04/2025, under a UNIX/LINUX environment (Debian 9.2). The provided script (<code>code_jjoumaa.R</code>) runs in about an hour with an Intel i7 6600U based computer equipped with 32 Gb RAM (DDR4).</p>
 <section id="prepare-problem" class="level1" data-number="1"><h1 data-number="1">
 <span class="header-section-number">1</span> Prepare Problem</h1>
 <section id="load-libraries" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="load-libraries">
 <span class="header-section-number">1.1</span> Load libraries</h2>
 <p>Most of the data manipulation was done using <code>data.table</code> package due to its ability to handle large datasets. Data visualization was mostly done using <code>ggplot2</code> package. For the modelling part, I’ve used <code>caret</code> package, which provides a lot of useful tools for data science.</p>
-<div class="cell" data-hash="test_jjoumaa_cache/html/load_libraries_d6946088d81785069bba1c4786b483f7">
-<details><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># data visualization</span></span>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># data visualization</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/taiyun/corrplot">corrplot</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span></span>
@@ -294,8 +287,8 @@ text-align: justify}
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
 <span><span class="co"># data modeling</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/zachmayer/caretEnsemble">caretEnsemble</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jefferis/RANN">RANN</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://zachmayer.github.io/caretEnsemble/">caretEnsemble</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jefferislab/RANN">RANN</a></span><span class="op">)</span></span>
 <span><span class="co"># markdown table</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT">DT</a></span><span class="op">)</span></span>
@@ -308,19 +301,19 @@ text-align: justify}
 </section><section id="load-dataset" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="load-dataset">
 <span class="header-section-number">1.2</span> Load dataset</h2>
 <p>As we’ll see in the next steps, both datasets (learning and validation one) present a lot of missing values in the form of <code>?</code> in raw files, converted then in <code>NA</code> values in R.</p>
-<div class="cell" data-hash="test_jjoumaa_cache/html/load_dataset_e7c4d6c29d55b56f1dd95b2b932267a5">
-<details><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># learning dataset</span></span>
-<span><span class="va">dataset</span> <span class="op">=</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"census_income_learn.csv"</span>, </span>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># learning dataset</span></span>
+<span><span class="va">dataset</span> <span class="op">=</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"census_income_learn.csv"</span>, </span>
 <span>                na.strings <span class="op">=</span> <span class="st">"?"</span><span class="op">)</span></span>
 <span><span class="co"># validation dataset</span></span>
-<span><span class="va">validation</span> <span class="op">=</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"census_income_test.csv"</span>, </span>
+<span><span class="va">validation</span> <span class="op">=</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"census_income_test.csv"</span>, </span>
 <span>                   na.strings <span class="op">=</span> <span class="st">"?"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Since neither dataset has column names, I’ve loaded the description file <code>census_income_metadata.txt</code>, and extracted rows mentioning column names.</p>
-<div class="cell" data-hash="test_jjoumaa_cache/html/load_colnames_ecb787c4d1905e7c005a2a1ddbba5e57">
-<details><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># selection of the right rows containing colnames</span></span>
-<span><span class="va">datasetNames</span> <span class="op">=</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"census_income_metadata.txt"</span>, </span>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># selection of the right rows containing colnames</span></span>
+<span><span class="va">datasetNames</span> <span class="op">=</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"census_income_metadata.txt"</span>, </span>
 <span>                     nrows <span class="op">=</span> <span class="op">(</span><span class="fl">68</span><span class="op">-</span><span class="fl">22</span><span class="op">)</span>, </span>
 <span>                     skip <span class="op">=</span> <span class="fl">22</span>, </span>
 <span>                     drop <span class="op">=</span> <span class="st">"V1"</span><span class="op">)</span></span>
@@ -339,8 +332,8 @@ text-align: justify}
 </div>
 </div>
 <p>The problem was that 45 columns were mentioned in the description files (<code>colInter</code>), whereas both datasets only have 42 columns. To solve this, I’ve matched each column with their respective names based on the number of unique “value” by columns and the one exposed in the description file. Using this method, I’ve found that AGI, FEDTAX, PEARNVAL, PTOTVAL and TAXINC attributes could be removed from the initial column names, and that the attributes YEARS and Y (the attributes to model, <em>i.e</em> the income level) should be added.</p>
-<div class="cell" data-rows.print="5" data-hash="test_jjoumaa_cache/html/right_colnames_a6a04d747e5e803cef64efb74ca967cc">
-<details><summary>Code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># number of instances for each attributes</span></span>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># number of instances for each attributes</span></span>
 <span><span class="va">dataset</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">.SD</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">}</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output cell-output-stdout">
 <pre><code>   V1    V2    V3    V4    V5    V6    V7    V8    V9   V10   V11   V12   V13 
@@ -352,7 +345,7 @@ text-align: justify}
   V40   V41   V42 
    53     2     2 </code></pre>
 </div>
-<details><summary>Code</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove unexpected column names</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove unexpected column names</span></span>
 <span><span class="va">colInter</span> <span class="op">=</span> <span class="va">colInter</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">colInter</span> <span class="op">==</span> <span class="st">"AGI"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">colInter</span> <span class="op">=</span> <span class="va">colInter</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">colInter</span> <span class="op">==</span> <span class="st">"FEDTAX"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">colInter</span> <span class="op">=</span> <span class="va">colInter</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">colInter</span> <span class="op">==</span> <span class="st">"PEARNVAL"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
@@ -373,9 +366,8 @@ text-align: justify}
 <span>            scrollX <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>            fixedColumns <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-
-<div id="htmlwidget-b2180c4e04d78e523683" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b2180c4e04d78e523683">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns"],"caption":"<caption>Preview of the dataset<\/caption>","data":[["1","2","3","4","5"],[38,44,2,35,49],["Private","Self-employed-not incorporated","Not in universe","Private","Private"],[6,37,0,29,4],[36,12,0,3,34],["1st 2nd 3rd or 4th grade","Associates degree-occup /vocational","Children","High school graduate","High school graduate"],[0,0,0,0,0],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Married-civilian spouse present","Married-civilian spouse present","Never married","Divorced","Divorced"],["Manufacturing-durable goods","Business and repair services","Not in universe or children","Transportation","Construction"],["Machine operators assmblrs &amp; inspctrs","Professional specialty","Not in universe","Executive admin and managerial","Precision production craft &amp; repair"],["White","White","White","White","White"],["Mexican (Mexicano)","All other","Mexican-American","All other","All other"],["Female","Female","Male","Female","Male"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Full-time schedules","PT for econ reasons usually PT","Children or Armed Forces","Children or Armed Forces","Full-time schedules"],[0,0,0,0,0],[0,0,0,0,0],[0,2500,0,0,0],["Joint one under 65 &amp; one 65+","Joint both under 65","Nonfiler","Head of household","Single"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Spouse of householder","Spouse of householder","Child &lt;18 never marr not in subfamily","Householder","Secondary individual"],["Spouse of householder","Spouse of householder","Child under 18 never married","Householder","Nonrelative of householder"],[1032.38,1462.33,1601.75,1866.88,1394.54],[null,null,null,"Nonmover",null],[null,null,null,"Nonmover",null],[null,null,null,"Nonmover",null],["Not in universe under 1 year old","Not in universe under 1 year old","Not in universe under 1 year old","Yes","Not in universe under 1 year old"],[null,null,null,"Not in universe",null],[4,1,0,5,4],["Not in universe","Not in universe","Both parents present","Not in universe","Not in universe"],["Mexico","United-States","United-States","United-States","United-States"],["Mexico","United-States","United-States","United-States","United-States"],["Mexico","United-States","United-States","United-States","United-States"],["Foreign born- Not a citizen of U S","Native- Born in the United States","Native- Born in the United States","Native- Born in the United States","Native- Born in the United States"],[0,0,0,2,0],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],[2,2,0,2,2],[12,26,0,52,50],[95,95,95,94,95],["- 50000.","- 50000.","- 50000.","- 50000.","- 50000."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>AAGE<\/th>\n      <th>ACLSWKR<\/th>\n      <th>ADTIND<\/th>\n      <th>ADTOCC<\/th>\n      <th>AHGA<\/th>\n      <th>AHRSPAY<\/th>\n      <th>AHSCOL<\/th>\n      <th>AMARITL<\/th>\n      <th>AMJIND<\/th>\n      <th>AMJOCC<\/th>\n      <th>ARACE<\/th>\n      <th>AREORGN<\/th>\n      <th>ASEX<\/th>\n      <th>AUNMEM<\/th>\n      <th>AUNTYPE<\/th>\n      <th>AWKSTAT<\/th>\n      <th>CAPGAIN<\/th>\n      <th>CAPLOSS<\/th>\n      <th>DIVVAL<\/th>\n      <th>FILESTAT<\/th>\n      <th>GRINREG<\/th>\n      <th>GRINST<\/th>\n      <th>HHDFMX<\/th>\n      <th>HHDREL<\/th>\n      <th>MARSUPWT<\/th>\n      <th>MIGMTR1<\/th>\n      <th>MIGMTR3<\/th>\n      <th>MIGMTR4<\/th>\n      <th>MIGSAME<\/th>\n      <th>MIGSUN<\/th>\n      <th>NOEMP<\/th>\n      <th>PARENT<\/th>\n      <th>PEFNTVTY<\/th>\n      <th>PEMNTVTY<\/th>\n      <th>PENATVTY<\/th>\n      <th>PRCITSHP<\/th>\n      <th>SEOTR<\/th>\n      <th>VETQVA<\/th>\n      <th>VETYN<\/th>\n      <th>WKSWORK<\/th>\n      <th>YEAR<\/th>\n      <th>Y<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","scrollX":true,"fixedColumns":false,"columnDefs":[{"className":"dt-right","targets":[1,3,4,6,17,18,19,25,31,37,39,40,41]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-5f1ce9f54c2b84af1208" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5f1ce9f54c2b84af1208">{"x":{"filter":"none","vertical":false,"extensions":["FixedColumns"],"caption":"<caption>Preview of the dataset<\/caption>","data":[["1","2","3","4","5"],[38,44,2,35,49],["Private","Self-employed-not incorporated","Not in universe","Private","Private"],[6,37,0,29,4],[36,12,0,3,34],["1st 2nd 3rd or 4th grade","Associates degree-occup /vocational","Children","High school graduate","High school graduate"],[0,0,0,0,0],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Married-civilian spouse present","Married-civilian spouse present","Never married","Divorced","Divorced"],["Manufacturing-durable goods","Business and repair services","Not in universe or children","Transportation","Construction"],["Machine operators assmblrs &amp; inspctrs","Professional specialty","Not in universe","Executive admin and managerial","Precision production craft &amp; repair"],["White","White","White","White","White"],["Mexican (Mexicano)","All other","Mexican-American","All other","All other"],["Female","Female","Male","Female","Male"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Full-time schedules","PT for econ reasons usually PT","Children or Armed Forces","Children or Armed Forces","Full-time schedules"],[0,0,0,0,0],[0,0,0,0,0],[0,2500,0,0,0],["Joint one under 65 &amp; one 65+","Joint both under 65","Nonfiler","Head of household","Single"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],["Spouse of householder","Spouse of householder","Child &lt;18 never marr not in subfamily","Householder","Secondary individual"],["Spouse of householder","Spouse of householder","Child under 18 never married","Householder","Nonrelative of householder"],[1032.38,1462.33,1601.75,1866.88,1394.54],[null,null,null,"Nonmover",null],[null,null,null,"Nonmover",null],[null,null,null,"Nonmover",null],["Not in universe under 1 year old","Not in universe under 1 year old","Not in universe under 1 year old","Yes","Not in universe under 1 year old"],[null,null,null,"Not in universe",null],[4,1,0,5,4],["Not in universe","Not in universe","Both parents present","Not in universe","Not in universe"],["Mexico","United-States","United-States","United-States","United-States"],["Mexico","United-States","United-States","United-States","United-States"],["Mexico","United-States","United-States","United-States","United-States"],["Foreign born- Not a citizen of U S","Native- Born in the United States","Native- Born in the United States","Native- Born in the United States","Native- Born in the United States"],[0,0,0,2,0],["Not in universe","Not in universe","Not in universe","Not in universe","Not in universe"],[2,2,0,2,2],[12,26,0,52,50],[95,95,95,94,95],["- 50000.","- 50000.","- 50000.","- 50000.","- 50000."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>AAGE<\/th>\n      <th>ACLSWKR<\/th>\n      <th>ADTIND<\/th>\n      <th>ADTOCC<\/th>\n      <th>AHGA<\/th>\n      <th>AHRSPAY<\/th>\n      <th>AHSCOL<\/th>\n      <th>AMARITL<\/th>\n      <th>AMJIND<\/th>\n      <th>AMJOCC<\/th>\n      <th>ARACE<\/th>\n      <th>AREORGN<\/th>\n      <th>ASEX<\/th>\n      <th>AUNMEM<\/th>\n      <th>AUNTYPE<\/th>\n      <th>AWKSTAT<\/th>\n      <th>CAPGAIN<\/th>\n      <th>CAPLOSS<\/th>\n      <th>DIVVAL<\/th>\n      <th>FILESTAT<\/th>\n      <th>GRINREG<\/th>\n      <th>GRINST<\/th>\n      <th>HHDFMX<\/th>\n      <th>HHDREL<\/th>\n      <th>MARSUPWT<\/th>\n      <th>MIGMTR1<\/th>\n      <th>MIGMTR3<\/th>\n      <th>MIGMTR4<\/th>\n      <th>MIGSAME<\/th>\n      <th>MIGSUN<\/th>\n      <th>NOEMP<\/th>\n      <th>PARENT<\/th>\n      <th>PEFNTVTY<\/th>\n      <th>PEMNTVTY<\/th>\n      <th>PENATVTY<\/th>\n      <th>PRCITSHP<\/th>\n      <th>SEOTR<\/th>\n      <th>VETQVA<\/th>\n      <th>VETYN<\/th>\n      <th>WKSWORK<\/th>\n      <th>YEAR<\/th>\n      <th>Y<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","scrollX":true,"fixedColumns":false,"columnDefs":[{"className":"dt-right","targets":[1,3,4,6,17,18,19,25,31,37,39,40,41]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"AAGE","targets":1},{"name":"ACLSWKR","targets":2},{"name":"ADTIND","targets":3},{"name":"ADTOCC","targets":4},{"name":"AHGA","targets":5},{"name":"AHRSPAY","targets":6},{"name":"AHSCOL","targets":7},{"name":"AMARITL","targets":8},{"name":"AMJIND","targets":9},{"name":"AMJOCC","targets":10},{"name":"ARACE","targets":11},{"name":"AREORGN","targets":12},{"name":"ASEX","targets":13},{"name":"AUNMEM","targets":14},{"name":"AUNTYPE","targets":15},{"name":"AWKSTAT","targets":16},{"name":"CAPGAIN","targets":17},{"name":"CAPLOSS","targets":18},{"name":"DIVVAL","targets":19},{"name":"FILESTAT","targets":20},{"name":"GRINREG","targets":21},{"name":"GRINST","targets":22},{"name":"HHDFMX","targets":23},{"name":"HHDREL","targets":24},{"name":"MARSUPWT","targets":25},{"name":"MIGMTR1","targets":26},{"name":"MIGMTR3","targets":27},{"name":"MIGMTR4","targets":28},{"name":"MIGSAME","targets":29},{"name":"MIGSUN","targets":30},{"name":"NOEMP","targets":31},{"name":"PARENT","targets":32},{"name":"PEFNTVTY","targets":33},{"name":"PEMNTVTY","targets":34},{"name":"PENATVTY","targets":35},{"name":"PRCITSHP","targets":36},{"name":"SEOTR","targets":37},{"name":"VETQVA","targets":38},{"name":"VETYN","targets":39},{"name":"WKSWORK","targets":40},{"name":"YEAR","targets":41},{"name":"Y","targets":42}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section></section><section id="summarize-data" class="level1" data-number="2"><h1 data-number="2">
@@ -383,8 +375,8 @@ text-align: justify}
 <section id="descriptive-statistics" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="descriptive-statistics">
 <span class="header-section-number">2.1</span> Descriptive statistics</h2>
 <p>It is difficult to present all attributes, but a quick summary provides a good overview of the structure.</p>
-<div class="cell" data-hash="test_jjoumaa_cache/html/descriptive_stat_3f5f985f68e5fd5ae889b4accbbda348">
-<details><summary>Code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># index of column with characters</span></span>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># index of column with characters</span></span>
 <span><span class="va">ncolCha</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">dataset</span>, <span class="va">class</span><span class="op">)</span> <span class="op">==</span> <span class="st">"character"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># conversion of characters in factors</span></span>
@@ -397,7 +389,7 @@ text-align: justify}
 <span>                   <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>, </span>
 <span>                 row.names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 3%">
 <col style="width: 3%">
@@ -622,10 +614,10 @@ text-align: justify}
 </tbody>
 </table>
 </div>
-<details><summary>Code</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># summary of the dataset</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># summary of the dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pander/man/pander.html">pander</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 20%">
@@ -684,7 +676,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 38%">
@@ -734,7 +726,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 43%">
@@ -775,7 +767,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 45%">
@@ -816,7 +808,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 40%">
@@ -866,7 +858,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 36%">
@@ -916,7 +908,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 23%">
@@ -966,7 +958,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 34%">
@@ -1007,7 +999,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 44%">
@@ -1048,7 +1040,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 25%">
@@ -1098,7 +1090,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 45%">
@@ -1139,7 +1131,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 33%">
@@ -1189,7 +1181,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 31%">
@@ -1239,7 +1231,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 44%">
@@ -1289,7 +1281,7 @@ text-align: justify}
 </tr>
 </tbody>
 </table>
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 22%">
 <col style="width: 22%">
@@ -1396,6 +1388,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1462,13 +1481,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1495,12 +1516,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1532,7 +1556,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -1584,10 +1628,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1597,8 +1658,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1610,9 +1680,244 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1680,19 +1985,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="in">#| include: false</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
 <span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">echo =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">message =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">comment =</span> <span class="cn">NA</span>, </span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align =</span> <span class="st">"center"</span></span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="in">  echo = TRUE, </span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="in">  message = FALSE, </span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="in">  warning = FALSE, </span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="in">  comment = NA, </span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="in">  cache = TRUE,</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.align = "center"</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"~/Documents/postdoc/dataiku/dataiku/us_census_full/"</span>)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(root.dir = "~/Documents/postdoc/dataiku/dataiku/us_census_full/")</span></span>
 <span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
@@ -1710,24 +2015,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>Most of the data manipulation was done using <span class="in">`data.table`</span> package due to its ability to handle large datasets. Data visualization was mostly done using <span class="in">`ggplot2`</span> package. For the modelling part, I've used <span class="in">`caret`</span> package, which provides a lot of useful tools for data science.</span>
 <span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r load_libraries}</span></span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a><span class="co"># data visualization</span></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="co"># data manipulation</span></span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="co"># data modeling</span></span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caretEnsemble)</span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RANN)</span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a><span class="co"># markdown table</span></span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="co"># (optional) multithreading</span></span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doMC)</span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="fu">registerDoMC</span>(<span class="at">cores =</span> <span class="dv">4</span>)</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a><span class="in"># data visualization</span></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="in">library(corrplot)</span></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="in">library(gridExtra)</span></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="in"># data manipulation</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="in">library(data.table)</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="in">library(stringr)</span></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="in"># data modeling</span></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="in">library(caret)</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="in">library(caretEnsemble)</span></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="in">library(RANN)</span></span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a><span class="in"># markdown table</span></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="in">library(knitr)</span></span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a><span class="in">library(DT)</span></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a><span class="in">library(pander)</span></span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="in"># (optional) multithreading</span></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="in">library(doMC)</span></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="in">registerDoMC(cores = 4)</span></span>
 <span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## Load dataset</span></span>
@@ -1735,53 +2040,53 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>As we'll see in the next steps, both datasets (learning and validation one) present a lot of missing values in the form of <span class="in">`?`</span> in raw files, converted then in <span class="in">`NA`</span> values in R.</span>
 <span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r load_dataset}</span></span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="co"># learning dataset</span></span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">=</span> <span class="fu">fread</span>(<span class="st">"census_income_learn.csv"</span>, </span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>                <span class="at">na.strings =</span> <span class="st">"?"</span>)</span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="co"># validation dataset</span></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>validation <span class="ot">=</span> <span class="fu">fread</span>(<span class="st">"census_income_test.csv"</span>, </span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings =</span> <span class="st">"?"</span>)</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="in"># learning dataset</span></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="in">dataset = fread("census_income_learn.csv", </span></span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a><span class="in">                na.strings = "?")</span></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="in"># validation dataset</span></span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="in">validation = fread("census_income_test.csv", </span></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="in">                   na.strings = "?")</span></span>
 <span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>Since neither dataset has column names, I've loaded the description file <span class="in">`census_income_metadata.txt`</span>, and extracted rows mentioning column names.</span>
 <span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r load_colnames}</span></span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="co"># selection of the right rows containing colnames</span></span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>datasetNames <span class="ot">=</span> <span class="fu">fread</span>(<span class="st">"census_income_metadata.txt"</span>, </span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>                     <span class="at">nrows =</span> (<span class="dv">68-22</span>), </span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>                     <span class="at">skip =</span> <span class="dv">22</span>, </span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>                     <span class="at">drop =</span> <span class="st">"V1"</span>)</span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="co"># extraction of word in capital</span></span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>colInter <span class="ot">=</span> datasetNames[, <span class="fu">unlist</span>(<span class="fu">str_extract_all</span>(V2, <span class="st">'</span><span class="sc">\\</span><span class="st">b[A-Z]+[A-Z0-9]</span><span class="sc">\\</span><span class="st">b'</span>))]</span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>colInter</span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="in"># selection of the right rows containing colnames</span></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="in">datasetNames = fread("census_income_metadata.txt", </span></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="in">                     nrows = (68-22), </span></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a><span class="in">                     skip = 22, </span></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a><span class="in">                     drop = "V1")</span></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="in"># extraction of word in capital</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="in">colInter = datasetNames[, unlist(str_extract_all(V2, '\\b[A-Z]+[A-Z0-9]\\b'))]</span></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="in">colInter</span></span>
 <span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>The problem was that 45 columns were mentioned in the description files (<span class="in">`colInter`</span>), whereas both datasets only have 42 columns. To solve this, I've matched each column with their respective names based on the number of unique "value" by columns and the one exposed in the description file. Using this method, I've found that AGI, FEDTAX, PEARNVAL, PTOTVAL and TAXINC attributes could be removed from the initial column names, and that the attributes YEARS and Y (the attributes to model, *i.e* the income level) should be added.</span>
 <span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r right_colnames, rows.print=5}</span></span>
-<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="co"># number of instances for each attributes</span></span>
-<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a>dataset[, <span class="fu">sapply</span>(.SD, <span class="cf">function</span>(x){<span class="fu">length</span>(<span class="fu">unique</span>(x))})]</span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="in"># number of instances for each attributes</span></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a><span class="in">dataset[, sapply(.SD, function(x){length(unique(x))})]</span></span>
 <span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="co"># remove unexpected column names</span></span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a>colInter <span class="ot">=</span> colInter[<span class="sc">-</span><span class="fu">c</span>(<span class="fu">which</span>(colInter <span class="sc">==</span> <span class="st">"AGI"</span>))]</span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>colInter <span class="ot">=</span> colInter[<span class="sc">-</span><span class="fu">c</span>(<span class="fu">which</span>(colInter <span class="sc">==</span> <span class="st">"FEDTAX"</span>))]</span>
-<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>colInter <span class="ot">=</span> colInter[<span class="sc">-</span><span class="fu">c</span>(<span class="fu">which</span>(colInter <span class="sc">==</span> <span class="st">"PEARNVAL"</span>))]</span>
-<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>colInter <span class="ot">=</span> colInter[<span class="sc">-</span><span class="fu">c</span>(<span class="fu">which</span>(colInter <span class="sc">==</span> <span class="st">"PTOTVAL"</span>))]</span>
-<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a>colInter <span class="ot">=</span> colInter[<span class="sc">-</span><span class="fu">c</span>(<span class="fu">which</span>(colInter <span class="sc">==</span> <span class="st">"TAXINC"</span>))]</span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="in"># remove unexpected column names</span></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="in">colInter = colInter[-c(which(colInter == "AGI"))]</span></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="in">colInter = colInter[-c(which(colInter == "FEDTAX"))]</span></span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a><span class="in">colInter = colInter[-c(which(colInter == "PEARNVAL"))]</span></span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a><span class="in">colInter = colInter[-c(which(colInter == "PTOTVAL"))]</span></span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a><span class="in">colInter = colInter[-c(which(colInter == "TAXINC"))]</span></span>
 <span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="co"># add two more column names</span></span>
-<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a>colInter <span class="ot">=</span> <span class="fu">c</span>(colInter, <span class="fu">c</span>(<span class="st">"YEAR"</span>, <span class="st">"Y"</span>))</span>
-<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dataset) <span class="ot">=</span> colInter[<span class="dv">1</span><span class="sc">:</span><span class="dv">42</span>]</span>
-<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(validation) <span class="ot">=</span> colInter[<span class="dv">1</span><span class="sc">:</span><span class="dv">42</span>]</span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="in"># add two more column names</span></span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a><span class="in">colInter = c(colInter, c("YEAR", "Y"))</span></span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a><span class="in">colnames(dataset) = colInter[1:42]</span></span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a><span class="in">colnames(validation) = colInter[1:42]</span></span>
 <span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset preview</span></span>
-<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">head</span>(validation, <span class="dv">5</span>), </span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>          <span class="at">caption =</span> <span class="st">"Preview of the dataset"</span>, </span>
-<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>          <span class="at">extensions =</span> <span class="st">'FixedColumns'</span>, </span>
-<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(</span>
-<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>            <span class="at">dom =</span> <span class="st">"t"</span>, </span>
-<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>            <span class="at">scrollX =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>            <span class="at">fixedColumns =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="in"># dataset preview</span></span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="in">datatable(head(validation, 5), </span></span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a><span class="in">          caption = "Preview of the dataset", </span></span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a><span class="in">          extensions = 'FixedColumns', </span></span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="in">          options = list(</span></span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a><span class="in">            dom = "t", </span></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a><span class="in">            scrollX = TRUE, </span></span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="in">            fixedColumns = FALSE))</span></span>
 <span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="fu"># Summarize Data</span></span>
@@ -1791,22 +2096,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>It is difficult to present all attributes, but a quick summary provides a good overview of the structure.</span>
 <span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r descriptive_stat}</span></span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="co"># index of column with characters</span></span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>ncolCha <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">sapply</span>(dataset, class) <span class="sc">==</span> <span class="st">"character"</span>)</span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="in"># index of column with characters</span></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a><span class="in">ncolCha = which(sapply(dataset, class) == "character")</span></span>
 <span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a><span class="co"># conversion of characters in factors</span></span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>dataset[, (ncolCha)<span class="sc">:</span><span class="er">=</span><span class="fu">lapply</span>(.SD, as.factor), .SDcols <span class="ot">=</span> ncolCha]</span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a><span class="in"># conversion of characters in factors</span></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a><span class="in">dataset[, (ncolCha):=lapply(.SD, as.factor), .SDcols = ncolCha]</span></span>
 <span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="co"># structure of the dataset</span></span>
-<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">variable =</span> <span class="fu">names</span>(dataset), </span>
-<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a>                 <span class="at">classe =</span> <span class="fu">sapply</span>(dataset, class), </span>
-<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a>                 <span class="at">first_values =</span> <span class="fu">sapply</span>(dataset, <span class="cf">function</span>(x) {</span>
-<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">paste0</span>(<span class="fu">head</span>(x), <span class="at">collapse =</span> <span class="st">", "</span>)}), </span>
-<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a>                 <span class="at">row.names =</span> <span class="cn">NULL</span>))</span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="in"># structure of the dataset</span></span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="in">kable(data.frame(variable = names(dataset), </span></span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="in">                 classe = sapply(dataset, class), </span></span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a><span class="in">                 first_values = sapply(dataset, function(x) {</span></span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="in">                   paste0(head(x), collapse = ", ")}), </span></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a><span class="in">                 row.names = NULL))</span></span>
 <span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a><span class="co"># summary of the dataset</span></span>
-<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a><span class="fu">pander</span>(<span class="fu">summary</span>(dataset))</span>
-<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a><span class="in"># summary of the dataset</span></span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a><span class="in">pander(summary(dataset))</span></span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
