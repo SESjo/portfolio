@@ -16,8 +16,11 @@ about:
       text: Contact
       href: mailto:joffreyjoumaa@icloud.com
     - icon: download
-      text: Download
+      text: Resume
       file: portfolio/files/resume_jjoumaa.pdf
+    - icon: download
+      text: CV
+      file: portfolio/files/cv_jjoumaa.pdf
 ---
 
 ## Experience
