@@ -31,9 +31,9 @@ about:
 
 ### Novo Nordisk, DK (Pharma)
 
-* Product Owner - Ontology and Semantic Engineering Team
+* Product Owner & Team Lead - Data Foundation
   * Jan 2025 - Present
-* Semantic Engineer - Ontology Steward
+* Semantic Engineer
   * Aug 2023 - Dec 2024
 
 ### University of California Santa Cruz, US (Ecology)
@@ -46,11 +46,11 @@ about:
 * Data Scientist
   * Apr 2020 - Aug 2021  
 
-### Saegus, FR (Consulting)
+### Saegus, FR (Consultancy)
 
 * Data Scientist - Groupama (Insurance)
   * Jan 2020 - Mar 2020
-* Tableau Practice Leader - Bolloré Transport & Logistics (Transport)
+* Tableau Practice Lead - Bolloré Transport & Logistics (Transport)
   * Jul 2019 - Dec 2019
 * Data Analyst - L'Oréal (BeautyTech)
   * Nov 2018 - Jun 2019

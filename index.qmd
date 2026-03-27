@@ -1,7 +1,7 @@
 ---
 title: "Some Achievements:"
 description: |
-  Welcome to my portfolio. I hope you enjoy it!
+  Welcome to my portfolio. I hope you'll enjoy it!
 ---
 
 ```{r setup}
@@ -53,6 +53,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Publications
 
+  - María José Amador-Capitanachi, Fernando R Elorriaga-Verplancken, **Joffrey Jouma’a**, Roxanne S Beltran, Jeffrey Harris, Héctor Villalobos, Rodrigo Moncayo-Estrada, Tenaya Norris. (2026) Foraging behavior of female Guadalupe fur seals (*Arctocephalus townsendi*) and the implications for offspring dependence. Ecology and Evolution (<a href="https://doi.org/10.1186/s40317-026-00449-1" class="lowhighlight" target="_blank">doi.org/10.1186/s40317-026-00449-1</a>)
+  - Conner M Hale, **Joffrey Jouma'a**, Astarte Brown, Patrick W Robinson, Rachel R Holser, Daniel P Costa, Roxanne S Beltran. (2026) Spatiotemporal Variation in Marine Mammal Antipredator Behaviors Resulting From a Predation Pinch Point. Ecology and Evolution (<a href="https://doi.org/10.1002/ece3.72841" class="lowhighlight" target="_blank">doi.org/10.1002/ece3.72841</a>)
   - Shawn Zheng Kai Tan, Shounak Baksi, Thomas Gade Bjerregaard, Preethi Elangovan, Thrishna Kuttikattu Gopalakrishnan, Darko Hric, **Joffrey Joumaa**, Beidi Li, Kashif Rabbani, Santhosh Kannan Venkatesan *et al*. (2025) Digital evolution: Novo Nordisk’s shift to ontology-based data management. Journal of Biomedical Semantics (<a href="https://doi.org/10.1186/s13326-025-00327-4" class="lowhighlight" target="_blank">10.1186/s13326-025-00327-4</a>)
   - Roxanne S. Beltran, Allison R. Payne, A. Marm Kilpatrick, Conner M. Hale, Madison Reed, Elliott L. Hazen, Steven J. Bograd, **Joffrey Jouma’a**, Patrick W. Robinson, Emma Houle *et al*. (2025) Elephant seals as ecosystem sentinels for the northeast Pacific Ocean twilight zone. Science (<a href="https://www.science.org/doi/10.1126/science.adp2244" class="lowhighlight" target="_blank">10.1126/science.adp2</a>)
   - **Joffrey Jouma’a**, Yves Le Bras, Baptiste Picard & Christophe Guinet. (2017) Three-dimensional assessment of hunting strategies in a deep diving predator. Marine Ecology Progress Series (<a href="https://www.int-res.com/abstracts/meps/v573/p255-268/" class="lowhighlight" target="_blank">10.3354/meps12191</a>)
